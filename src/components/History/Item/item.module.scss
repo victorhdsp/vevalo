@@ -1,0 +1,28 @@
+.history-item {
+    @apply px-7 py-4 rounded-md
+            grid grid-cols-2 justify-between;
+
+    p {
+        @apply text-lg;
+        
+        &:nth-child(2n) {
+            @apply text-right;
+        }
+    }
+
+    background-color: var(--bg-white);
+}
+
+@media screen and (max-width: 768px) {
+    .history-item {
+        @apply grid-cols-1 gap-1;
+
+        p {
+            @apply flex justify-between text-base;
+
+            &:nth-child(2n) {
+                @apply text-left;
+            }
+        }
+    }
+}

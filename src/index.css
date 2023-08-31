@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: #CAE9BF;
+    --secondary: #E2AF9A;
+    --bg-primary: #E9EFD9;
+    --bg-white: #FFFFFF;
+    --bg-gray: #F5F5F5;
+    --text: #000000;
+}
+
+h1, h2, h3, h4 {
+    @apply font-bold uppercase;
+    color: var(--text);
+}
+
+h1 { font-size: 32px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+
+button {
+    @apply rounded-md uppercase font-bold p-1;
+    background-color: var(--bg-gray);
+}

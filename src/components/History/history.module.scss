@@ -1,0 +1,15 @@
+.history {
+    background-color: var(--bg-gray);
+
+    .card {
+        @apply flex flex-col gap-4 max-h-[80vh] overflow-y-auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .history {
+        .card {
+            @apply max-h-none;
+        }
+    }
+}

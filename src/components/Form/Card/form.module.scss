@@ -1,0 +1,39 @@
+.card {
+    @apply grid h-full gap-4;
+    grid-template-rows: auto 1fr auto;
+
+    ._default {
+        @apply grid grid-cols-3 gap-2;
+    }
+    
+    ._additionals {
+        @apply flex flex-col gap-2;
+
+        > div {
+            @apply flex flex-col gap-2 h-full max-h-[44.5vh] overflow-y-auto;
+            
+            &.lateral_scroll {
+                @apply pr-1;
+            }
+        }
+    }
+
+    .button {
+        @apply mt-auto;
+        background-color: var(--primary);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        ._default {
+            @apply grid-cols-1;
+        }
+        
+        ._additionals {
+            > div {
+                @apply max-h-none;
+            }
+        }
+    }
+}

@@ -1,3 +1,8 @@
 .form {
+    @apply flex flex-col gap-2;
     background-color: var(--bg-white);
+    
+    .header {
+        @apply flex justify-between;
+    }
 }

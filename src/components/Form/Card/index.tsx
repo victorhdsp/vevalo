@@ -6,15 +6,21 @@ import AdditionalItem from "../AdditionalItem";
 import { useDispatch, useSelector } from "react-redux";
 import service from "../../../assets/scripts/service";
 
-import { changeEmployees, changeCompanyCost,changeDayHours,changeDaysInWeek,changeEstimatedTime,changeProfitMargin,addNewAdditional, CalculeStateType, resetAllInputs } from "../../../redux/calcule/slice";
+import { changeEmployees, changeCompanyCost,changeDayHours,changeDaysInWeek,changeEstimatedTime,changeProfitMargin,addNewAdditional, CalculeStateType, resetAllInputs, setAllInputs } from "../../../redux/calcule/slice";
 import { addCalculeToHistory } from "../../../redux/history/slice";
+import { CompanyStateType } from "../../../redux/company/slice";
 
 function FormCard() {
     const scrollableDivRef = useRef(null);
 
     const inputs = useSelector((rootReducer) => rootReducer.calculeReducer) as CalculeStateType;
+    const company = useSelector((rootReducer) => rootReducer.companyReducer) as CompanyStateType;
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setAllInputs(company));
+    }, []);
     
     useEffect(() => {
         const scrollableDiv = scrollableDivRef.current as HTMLDivElement | null;
@@ -49,7 +55,7 @@ function FormCard() {
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(addCalculeToHistory({ ...inputs, result: service(inputs)}));
-        // dispatch(resetAllInputs());
+        dispatch(setAllInputs(company));
     }
 
     return (

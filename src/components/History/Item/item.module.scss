@@ -1,5 +1,5 @@
 .history-item {
-    @apply px-7 py-4 rounded-md
+    @apply px-7 py-4 rounded-md cursor-pointer
             grid grid-cols-2 justify-between;
 
     p {
@@ -8,6 +8,10 @@
         &:nth-child(2n) {
             @apply text-right;
         }
+    }
+
+    b {
+        @apply text-right;
     }
 
     background-color: var(--bg-white);

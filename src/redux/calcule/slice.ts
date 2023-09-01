@@ -1,21 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-export type AdditionalType = {
-    id: string,
-    name: string,
-    type: 'porcentage' | 'fixed',
-    value: number,
-}
-
-export type CalculeStateType = {
-    employees: number,
-    day_hours: number,
-    days_in_week: number,
-    company_cost: number,
-    estimated_time: number,
-    profit_margin: number,
-    additionals: AdditionalType[]
-}
+import { CalculeStateType } from './types'
 
 const initialState: CalculeStateType = {
     employees: 0,
@@ -74,6 +58,15 @@ const calculeSlice = createSlice({
             state.estimated_time = 0
             state.profit_margin = 0
             state.additionals = []
+        },
+        setAllInputs: (state, action) => {
+            state.employees = action.payload?.employees || state.employees
+            state.day_hours = action.payload?.day_hours || state.day_hours
+            state.days_in_week = action.payload?.days_in_week || state.days_in_week
+            state.company_cost = action.payload?.company_cost || state.company_cost
+            state.estimated_time = action.payload?.estimated_time || state.estimated_time
+            state.profit_margin = action.payload?.profit_margin || state.profit_margin
+            state.additionals = action.payload?.additionals || state.additionals
         }
     },
 })
@@ -88,6 +81,7 @@ export const {
     addNewAdditional, 
     removeAdditional, 
     changeAdditional,
-    resetAllInputs
+    resetAllInputs,
+    setAllInputs
 } = calculeSlice.actions
 export default calculeSlice.reducer

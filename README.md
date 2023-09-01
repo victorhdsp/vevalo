@@ -11,3 +11,4 @@ Faz um calculo para ajudar na precificação de serviços, ele usa o custo da em
 * TailwindCSS
 * Sass
 * Redux (Toolkit)
+* Typescript

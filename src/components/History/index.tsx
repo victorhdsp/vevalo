@@ -4,10 +4,11 @@ import { HistoryStateType } from "../../redux/history/slice";
 import HistoryItem from "./Item";
 import css from './history.module.scss';
 import { useEffect, useRef } from "react";
+import { RootState } from "../../redux/store";
 
 const History = () => {
     const scrollableDivRef = useRef(null);
-    const history = useSelector((rootReducer) => rootReducer.historyReducer) as HistoryStateType;
+    const history = useSelector((rootReducer: RootState) => rootReducer.historyReducer) as HistoryStateType;
 
     useEffect(() => {
         const scrollableDiv = scrollableDivRef.current as HTMLDivElement | null;

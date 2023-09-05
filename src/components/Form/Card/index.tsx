@@ -6,15 +6,17 @@ import AdditionalItem from "../AdditionalItem";
 import { useDispatch, useSelector } from "react-redux";
 import service from "../../../assets/scripts/service";
 
-import { changeEmployees, changeCompanyCost,changeDayHours,changeDaysInWeek,changeEstimatedTime,changeProfitMargin,addNewAdditional, CalculeStateType, resetAllInputs, setAllInputs } from "../../../redux/calcule/slice";
+import { changeEmployees, changeCompanyCost,changeDayHours,changeDaysInWeek,changeEstimatedTime,changeProfitMargin,addNewAdditional, setAllInputs } from "../../../redux/calcule/slice";
+import { CalculeStateType } from "../../../redux/calcule/types";
 import { addCalculeToHistory } from "../../../redux/history/slice";
 import { CompanyStateType } from "../../../redux/company/slice";
+import { RootState } from "../../../redux/store";
 
 function FormCard() {
     const scrollableDivRef = useRef(null);
 
-    const inputs = useSelector((rootReducer) => rootReducer.calculeReducer) as CalculeStateType;
-    const company = useSelector((rootReducer) => rootReducer.companyReducer) as CompanyStateType;
+    const inputs = useSelector((rootReducer: RootState) => rootReducer.calculeReducer) as CalculeStateType;
+    const company = useSelector((rootReducer: RootState) => rootReducer.companyReducer) as CompanyStateType;
 
     const dispatch = useDispatch();
 

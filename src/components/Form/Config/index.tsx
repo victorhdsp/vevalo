@@ -3,13 +3,14 @@ import css from './config.module.scss'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { changeName, changeCost, changeDayHours, changeDaysInWeek, changeEmployees, CompanyStateType } from '../../../redux/company/slice'
+import { RootState } from '../../../redux/store';
 
 interface ConfigCardProps {
     handleClose: () => void;
 }
 
 const ConfigCard = ({ handleClose }: ConfigCardProps) => {
-    const inputs = useSelector((rootReducer) => rootReducer.companyReducer) as CompanyStateType;
+    const inputs = useSelector((rootReducer: RootState) => rootReducer.companyReducer) as CompanyStateType;
 
     const dispatch = useDispatch();
 

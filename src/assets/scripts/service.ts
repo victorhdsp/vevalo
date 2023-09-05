@@ -1,4 +1,4 @@
-import { CalculeStateType, AdditionalType } from "../../redux/calcule/slice";
+import { CalculeStateType, AdditionalType } from "../../redux/calcule/types";
 
 /*
     hour value = company cost / (employees x (day hours * 30))

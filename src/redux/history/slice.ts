@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { CalculeStateType } from '../calcule/slice';
+import { CalculeStateType } from '../calcule/types';
 
 export interface HistoryItemType extends CalculeStateType {
     result: {

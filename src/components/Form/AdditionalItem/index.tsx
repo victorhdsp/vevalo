@@ -5,7 +5,8 @@ import Input from "../../Input";
 import Select from "../../Select";
 import css from './additional-item.module.scss'
 
-import { AdditionalType, changeAdditional, removeAdditional } from "../../../redux/calcule/slice";
+import { changeAdditional, removeAdditional } from "../../../redux/calcule/slice";
+import { AdditionalType } from "../../../redux/calcule/types";
 
 interface Props {
     item: AdditionalType;

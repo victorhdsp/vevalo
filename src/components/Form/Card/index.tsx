@@ -76,7 +76,7 @@ function FormCard() {
                     <AdditionalItem key={'additional_'+item.id} item={item}/>
                 ))}
                 </div>
-                <button className={css['button']} onClick={handleNewAddicional} type="button">Adicionar novo</button>
+                <button className={css['button']} onClick={handleNewAddicional} type="button">Novo serviço adicional</button>
             </div>
 
             <button className={css['button']} type="submit">Calcular</button>

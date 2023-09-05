@@ -10,7 +10,7 @@
         @apply flex flex-col gap-2;
 
         > div {
-            @apply flex flex-col gap-2 h-full max-h-[44.5vh] overflow-y-auto;
+            @apply flex flex-col gap-2 h-max max-h-[44.5vh] overflow-y-auto;
             
             &.lateral_scroll {
                 @apply pr-1;
@@ -19,7 +19,6 @@
     }
 
     .button {
-        @apply mt-auto;
         background-color: var(--primary);
     }
 }

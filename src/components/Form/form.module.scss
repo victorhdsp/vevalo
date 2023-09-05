@@ -1,8 +1,22 @@
 .form {
-    @apply flex flex-col gap-2;
+    @apply flex flex-col gap-2 relative
+            h-full;
     background-color: var(--bg-white);
     
     .header {
         @apply flex justify-between;
     }
+}
+
+.form-config {
+    @apply absolute left-0 top-0 w-full 
+            min-h-[60%] h-full max-h-[60%] z-20
+            flex flex-col gap-2
+            p-5 rounded-xl shadow-md;
+    background-color: var(--bg-white);
+}
+.background-form {
+    @apply absolute left-0 top-0 w-full h-full 
+            bg-black bg-opacity-20 z-10
+            rounded-xl;
 }

@@ -22,6 +22,7 @@ Faz um calculo para ajudar na precificação de serviços, ele usa o custo da em
 [x] calculo da precificação do serviço.
 [x] historico de precificações feitas.
 [x] informação da empresa e historicos salvos no navegador.
+[x] voltar para uma precificação do historico.
 [ ] presets de serviços salvos pra uso rapido.
 [ ] sistema de login com informação guardada na nuvem.
 [ ] loja de sistemas de precificações.

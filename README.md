@@ -2,7 +2,7 @@
 
 ## Acesso online
 
-[https://get-value-v2ri.vercel.app](https://get-value-v2ri.vercel.app)
+[https://get-value.vercel.app](https://get-value.vercel.app)
 
 ## Descrição
 

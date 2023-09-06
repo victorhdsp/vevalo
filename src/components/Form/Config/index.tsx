@@ -42,6 +42,7 @@ const ConfigCard = ({ handleClose }: ConfigCardProps) => {
         e.preventDefault();
         dispatch(setAllInputs(inputs));
         handleClose();
+        window.location.reload();
     }
 
     return (

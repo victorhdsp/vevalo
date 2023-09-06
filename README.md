@@ -23,6 +23,6 @@ Faz um calculo para ajudar na precificação de serviços, ele usa o custo da em
 [x] historico de precificações feitas.
 [x] informação da empresa e historicos salvos no navegador.
 [x] voltar para uma precificação do historico.
-[ ] presets de serviços salvos pra uso rapido.
+[x] presets de serviços salvos pra uso rapido (limite atual de 1 serviço).
 [ ] sistema de login com informação guardada na nuvem.
 [ ] loja de sistemas de precificações.

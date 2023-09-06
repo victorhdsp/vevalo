@@ -24,3 +24,7 @@ button {
     @apply rounded-md uppercase font-bold p-1;
     background-color: var(--bg-gray);
 }
+
+.lateral_scroll {
+    @apply pr-1;
+}

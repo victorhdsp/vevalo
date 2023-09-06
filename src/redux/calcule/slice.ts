@@ -8,7 +8,7 @@ const initialState: CalculeStateType = {
     company_cost: 0,
     estimated_time: 0,
     profit_margin: 0,
-    additionals: [],
+    additionals: undefined,
 }
 
 const calculeSlice = createSlice({

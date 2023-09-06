@@ -12,5 +12,5 @@ export type CalculeStateType = {
     company_cost: number,
     estimated_time: number,
     profit_margin: number,
-    additionals: AdditionalType[]
+    additionals?: AdditionalType[]
 }

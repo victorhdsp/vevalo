@@ -16,7 +16,6 @@ const HistoryItem = ({ item }: Props) => {
     const dispatch = useDispatch();
 
     const handleSelectHistory = () => {
-        console.log(item);
         dispatch(setAllInputs(item));
     }
 

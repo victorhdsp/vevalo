@@ -26,3 +26,4 @@ Faz um calculo para ajudar na precificação de serviços, ele usa o custo da em
 [x] presets de serviços salvos pra uso rapido (limite atual de 1 serviço).
 [ ] sistema de login com informação guardada na nuvem.
 [ ] loja de sistemas de precificações.
+[ ] mostrar procificação apresentavel para cliente.

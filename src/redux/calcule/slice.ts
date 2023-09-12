@@ -15,23 +15,9 @@ const calculeSlice = createSlice({
     name: 'calcule',
     initialState,
     reducers: {
-        changeEmployees: (state, action) => {
-            state.employees = Number(action.payload)
-        },
-        changeDayHours: (state, action) => {
-            state.day_hours = Number(action.payload)
-        },
-        changeDaysInWeek: (state, action) => {
-            state.days_in_week = Number(action.payload)
-        },
-        changeCompanyCost: (state, action) => {
-            state.company_cost = Number(action.payload)
-        },
-        changeEstimatedTime: (state, action) => {
-            state.estimated_time = Number(action.payload)
-        },
-        changeProfitMargin: (state, action) => {
-            state.profit_margin = Number(action.payload)
+        changeUniqueInput: (state, action) => {
+            const name = action.payload.name as keyof CalculeStateType
+            state[name] = name === 'additionals' ?  action.payload.value : Number(action.payload.value)
         },
         addNewAdditional: (state) => {
             const id = Math.random().toString(36).substr(2, 9)
@@ -72,16 +58,11 @@ const calculeSlice = createSlice({
 })
 
 export const { 
-    changeEmployees,
-    changeDayHours, 
-    changeDaysInWeek,
-    changeCompanyCost, 
-    changeEstimatedTime, 
-    changeProfitMargin, 
-    addNewAdditional, 
-    removeAdditional, 
-    changeAdditional,
-    resetAllInputs,
-    setAllInputs
+  addNewAdditional, 
+  removeAdditional, 
+  changeAdditional,
+  resetAllInputs,
+  setAllInputs,
+  changeUniqueInput,
 } = calculeSlice.actions
 export default calculeSlice.reducer

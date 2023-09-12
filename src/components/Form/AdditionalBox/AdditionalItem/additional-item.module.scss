@@ -1,12 +1,4 @@
 ._additional {
     @apply grid gap-2;
     grid-template-columns: 1fr 1fr 1fr 50px;
-
-    input {
-        @apply w-full;
-    }
-    
-    .remove_button {
-        background-color: var(--secondary);
-    }
 }

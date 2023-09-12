@@ -16,6 +16,7 @@ Faz um calculo para ajudar na precificação de serviços, ele usa o custo da em
 * Sass
 * Redux (Toolkit)
 * Typescript
+* Shadcn/ui
 
 ## Features
 

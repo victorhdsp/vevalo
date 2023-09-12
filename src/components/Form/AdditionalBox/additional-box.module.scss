@@ -4,9 +4,4 @@
     > div {
         @apply flex flex-col gap-2 h-max max-h-[44.5vh] overflow-y-auto;
     }
-    
-    .button {
-        @apply w-full;
-        background-color: var(--primary);
-    }
 }

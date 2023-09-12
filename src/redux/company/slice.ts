@@ -25,6 +25,13 @@ const initialState: CompanyStateType = {
     day_hours: 0,
     days_in_week: 0,
     services: [
+      {
+        id: Math.random().toString(36).substr(2, 9),
+        name: '',
+        estimated_time: 0,
+        margin_profit: 0,
+        additionals: []
+      }
     ]
 }
 
@@ -32,6 +39,24 @@ const companySlice = createSlice({
     name: 'company',
     initialState,
     reducers: {
+        changeUniqueInput: (state, action) => {
+            const name = action.payload.name as keyof CompanyStateType;
+            if (name === 'services' || name === 'company_name') {
+                state[name] = action.payload.value;
+            } else {
+                state[name] = Number(action.payload.value);
+            }
+        },
+        changeUniqueService: (state, action) => {
+            const name = action.payload.name as keyof ServicesType;
+            const { id, value } = action.payload;
+            const service = state.services[id]
+            if (name === 'additionals' || name === 'name' || name === 'id') {
+              service[name] = value;
+            } else {
+              service[name] = Number(value);
+            }
+        },
         setAllInputs: (state, action) => {
             state.company_name = action.payload.company_name || state.company_name ;
             state.company_cost = action.payload.company_cost || state.company_cost;
@@ -55,5 +80,5 @@ const companySlice = createSlice({
     }
 });
 
-export const { setAllInputs, addNewService, removeService } = companySlice.actions;
+export const { setAllInputs, changeUniqueInput, changeUniqueService, addNewService, removeService } = companySlice.actions;
 export default companySlice.reducer;

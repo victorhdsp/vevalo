@@ -13,10 +13,6 @@
             @apply flex flex-col gap-2 h-max max-h-[44.5vh] overflow-y-auto;
         }
     }
-
-    .button {
-        background-color: var(--primary);
-    }
 }
 
 @media screen and (max-width: 768px) {

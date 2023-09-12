@@ -8,6 +8,9 @@ import { useSelector } from 'react-redux'
 import { CompanyStateType } from '../../redux/company/slice'
 import { RootState } from '../../redux/store'
 
+import { Button } from '@/components/ui/button'
+import { Settings, X } from 'lucide-react'
+
 const Form = () => {
   let initialStatusConfig = true;
   const company = useSelector((rootReducer: RootState) => rootReducer.companyReducer) as CompanyStateType;
@@ -26,7 +29,9 @@ const Form = () => {
     <div className={css["form"]}>
       <div className={css["header"]}>
         <h2>Novo calculo</h2>
-        <button onClick={() => setStatusConfig(true)} >⚙️</button>
+        <Button variant="secondary" onClick={() => setStatusConfig(true)} >
+          <Settings className="w-4 h-4" />
+        </Button>
       </div>
       <FormCard />
     </div>
@@ -37,7 +42,9 @@ const Form = () => {
       <div className={css["form-config"]}>
         <div className={css["header"]}>
           <h2>Sobre a empresa</h2>
-          <button onClick={() => setStatusConfig(false)}>✖️</button>
+          <Button variant="secondary" onClick={() => setStatusConfig(false)}>
+            <X className="w-4 h-4" />
+          </Button>
         </div>
         <ConfigCard handleClose={() => setStatusConfig(false)} />
       </div>

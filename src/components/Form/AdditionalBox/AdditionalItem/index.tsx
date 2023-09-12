@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { Minus } from 'lucide-react'
 
 import Input from "../../../Input";
 import Select from "../../../Select";
 import css from './additional-item.module.scss'
 
 import { AdditionalType } from "../../../../redux/calcule/types";
+import { Button } from "@/components/ui/button";
 
 interface Props {
     item: AdditionalType;
@@ -13,31 +14,31 @@ interface Props {
 }
 
 function AdditionalItem({ item, onRemoveAddicional, onChangeAdditional }:Props) {
-    const [dataItem, setDataItem] = useState(item);
-    
     const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement >) => {
         const name = e.target.name;
         const value = name === 'value' ? Number(e.target.value) : e.target.value;
-        setDataItem({ ...dataItem, [name]: value });
+        onChangeAdditional({ ...item, [name]: value })
     }
     
-    const handleRemoveAddicional = () => {
-        onRemoveAddicional(dataItem);
-    }
-    
-    useEffect(() => {
-        onChangeAdditional(dataItem)
-    }, [dataItem]);
+    const handleRemoveAddicional = () => onRemoveAddicional(item);
 
     return (
         <div className={css['_additional']}>
-            <Input type="text" name="name" placeholder="Nome" onChange={handleChangeInput} value={dataItem.name} />
-            <Select name="type" placeholder="Tipo" onChange={handleChangeInput}>
-                <option value="fixed">Fixo</option>
-                <option value="porcentage">Porcentagem</option>
-            </Select>
-            <Input type="number" name="value" placeholder="Valor" onChange={handleChangeInput} value={dataItem.value} />
-            <button className={css['remove_button']} onClick={handleRemoveAddicional} type="button">-</button>
+            <Input type="text" name="name" placeholder="Nome" onChange={handleChangeInput} value={item.name} />
+            <Select 
+              name="type" 
+              placeholder="Tipo" 
+              onChange={handleChangeInput}
+              value={item.type}
+              options={[
+                { value: 'fixed', label: 'Fixo' },
+                { value: 'porcentage', label: 'Porcentagem' },
+              ]}
+            />
+            <Input type="number" name="value" placeholder="Valor" onChange={handleChangeInput} value={item.value} />
+            <Button className="my-auto aspect-square h-auto" variant="destructive" onClick={handleRemoveAddicional} type="button">
+                <Minus className='w-4 h-4' />
+            </Button>
         </div>
     )
 }

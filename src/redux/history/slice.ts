@@ -25,10 +25,13 @@ const historySlice = createSlice({
     reducers: {
         addCalculeToHistory: (state, action) => {
             state.calcules.push(action.payload);
+        },
+        clearHistory: (state) => {
+            state.calcules = [];
         }
     }
 });
 
-export const { addCalculeToHistory } = historySlice.actions;
+export const { addCalculeToHistory, clearHistory } = historySlice.actions;
 
 export default historySlice.reducer;

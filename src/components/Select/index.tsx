@@ -1,22 +1,35 @@
-import css from './select.module.scss'
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-interface SelectProps extends React.InputHTMLAttributes<HTMLSelectElement> {
+interface SelectProps {
     placeholder: string;
     name: string;
-    children: React.ReactNode;
+    options: { value: string, label: string }[];
+    onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    value?: string;
 }
 
-function Select(props: SelectProps) {
-    const { placeholder, children, name } = props;
-    
+function InternSelect({ placeholder, value, options, onChange, name }: SelectProps) {
+
+    const handleOnChange = (value: string) => {
+      if (onChange) onChange({ target: { name, value } });
+    }
+
     return (
-        <label className={css['label_select']}>
-            <div className={css['label']}>{placeholder}</div>
-            <select {...props} name={name}>
-                {children}
-            </select>
-        </label>
+        <Label className="flex flex-col p-1 rounded-md bg-muted relative">
+            <div className="text-xs font-semibold">{placeholder}</div>
+            <Select value={value} onValueChange={(e) => handleOnChange(e)}>
+                <SelectTrigger className="flex-1 border-0 border-b text-sm">
+                  <SelectValue placeholder={placeholder} />
+                </SelectTrigger>
+                <SelectContent>
+                    {options.map((option) => (
+                      <SelectItem className='text-sm' key={option.value} value={option.value}>{option.label}</SelectItem>
+                    ))}
+                </SelectContent>
+            </Select>
+        </Label>
     )    
 }
 
-export default Select
+export default InternSelect

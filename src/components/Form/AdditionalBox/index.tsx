@@ -1,37 +1,36 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import css from './additional-box.module.scss'
 
 import { defaultAdditionalItem, fixScrollBar } from '../actions';
 import { AdditionalType } from '../../../redux/calcule/types';
 import AdditionalItem from './AdditionalItem';
+import { Button } from '@/components/ui/button';
+import { Plus } from 'lucide-react';
 
 interface Props {
-    data: AdditionalType[];
+  elements: AdditionalType[];
     onChangeAdditional: (elements: AdditionalType[]) => void;
     className?: string;
 }
 
-const AdditionalBox = ({ data, onChangeAdditional, className='' }: Props) => {
+const AdditionalBox = ({ elements, onChangeAdditional, className='' }: Props) => {
     const scrollableDivRef = useRef(null);
-    const [elements, setElements] = useState(data);
-
     useEffect(() => { fixScrollBar(scrollableDivRef) }, [elements]);
 
     const handleNewAddicional = () => {
-        setElements([...elements, defaultAdditionalItem()]);
-        onChangeAdditional(elements)
+        const newElements = [...elements, defaultAdditionalItem()];
+        onChangeAdditional(newElements)
     }
 
     const handleRemoveAddicional = (item: AdditionalType) => {
-        setElements(elements.filter((oldItem) => oldItem.id !== item.id));
-        onChangeAdditional(elements)
+        const newElements = elements.filter((oldItem) => oldItem.id !== item.id);
+        onChangeAdditional(newElements)
     }
 
     const handleChangeAdditional = (editItem: AdditionalType) => {
-        setElements(elements.map((oldItem) => (oldItem.id === editItem.id ? editItem : oldItem)));
+        const newElements = elements.map((oldItem) => (oldItem.id === editItem.id ? editItem : oldItem));
+        onChangeAdditional(newElements)
     }
-
-    useEffect(() => { onChangeAdditional(elements) }, [elements])
 
     return (
         <div className={`${css['additional-box']} ${className}`}>
@@ -45,7 +44,10 @@ const AdditionalBox = ({ data, onChangeAdditional, className='' }: Props) => {
                     /> 
                 ))}
             </div>
-            <button className={css['button']} onClick={handleNewAddicional} type="button">Novo serviço adicional</button>
+            <Button onClick={handleNewAddicional} type="button">
+              Novo serviço adicional
+              <Plus className="w-4 h-4 ml-2" />
+            </Button>
         </div>
     )
 }

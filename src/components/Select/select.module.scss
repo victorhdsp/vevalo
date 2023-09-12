@@ -2,10 +2,6 @@
     @apply flex flex-col p-1 rounded-md;
     background-color: var(--bg-gray);
 
-    .label {
-        @apply text-sm font-semibold;
-    }
-
     select {
         @apply w-full bg-transparent;
     }

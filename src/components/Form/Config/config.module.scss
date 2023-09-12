@@ -25,11 +25,6 @@
     ._alt-box {
         @apply max-h-[26.5vh];
     }
-
-    .button {
-        @apply mt-auto;
-        background-color: var(--primary);
-    }
 }
 
 @media screen and (max-width: 768px) {

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import css from './form.module.scss'
 
 import Input from "../../Input";
@@ -6,36 +5,34 @@ import AdditionalBox from "../AdditionalBox";
 import { useDispatch, useSelector } from "react-redux";
 import service from "../../../assets/scripts/service";
 
-import { setAllInputs } from "../../../redux/calcule/slice";
+import { changeUniqueInput, setAllInputs } from "../../../redux/calcule/slice";
 import { AdditionalType, CalculeStateType } from "../../../redux/calcule/types";
 import { addCalculeToHistory } from "../../../redux/history/slice";
 import { CompanyStateType } from "../../../redux/company/slice";
 import { RootState } from "../../../redux/store";
 import { selectCalculeWithCompany } from "../../../redux/calcule/calcule.selectors";
 
+import { Button } from "@/components/ui/button";
+import { Sparkle } from "lucide-react";
+
 function FormCard() {
-    const calcule = useSelector(selectCalculeWithCompany) as CalculeStateType;
+    const inputs = useSelector(selectCalculeWithCompany) as CalculeStateType;
     const company = useSelector((rootReducer: RootState) => rootReducer.companyReducer) as CompanyStateType;
 
     const dispatch = useDispatch();
 
-    const [inputs, setInputs] = useState<CalculeStateType>(calcule);
-
-    useEffect(() => { setInputs(calcule), console.log(calcule) }, [calcule]);
-    useEffect(() => { dispatch(setAllInputs(inputs)) }, [inputs])
-
     const changeDefaultInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setInputs({ ...inputs, [name]: Number(value) });
+        dispatch(changeUniqueInput({ name, value }))
     }
 
     const handleChangeAdditional = (additionals: AdditionalType[]) => {
-        setInputs({ ...inputs, additionals });
+        dispatch(changeUniqueInput({ name: 'additionals', value: additionals }))
     }
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(addCalculeToHistory({ ...calcule, result: service(calcule)}));
+        dispatch(addCalculeToHistory({ ...inputs, result: service(inputs)}));
         dispatch(setAllInputs(company));
     }
 
@@ -49,9 +46,12 @@ function FormCard() {
                 <Input type="number" name="profit_margin" placeholder="Margem de lucro (%)" onChange={changeDefaultInput} value={inputs.profit_margin} min={0} />
                 <Input type="number" name="estimated_time" placeholder="Horas estimadas" onChange={changeDefaultInput} value={inputs.estimated_time} min={1} />
             </div>
-            { <AdditionalBox data={inputs.additionals || []} onChangeAdditional={handleChangeAdditional} /> }
+            { <AdditionalBox elements={inputs.additionals || []} onChangeAdditional={handleChangeAdditional} /> }
 
-            <button className={css['button']} type="submit">Calcular</button>
+            <Button type="submit">
+              Calcular
+              <Sparkle className="w-4 h-4 ml-2" />
+            </Button>
         </form>
     )
 }

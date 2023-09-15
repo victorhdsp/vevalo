@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react";
 import { RootState } from "../../redux/store";
 import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
+import { DestructiveButton } from "../DestructiveButton";
 
 const History = () => {
     const scrollableDivRef = useRef(null);
@@ -35,9 +36,11 @@ const History = () => {
         <div className={css["history"]}>
           <div className="flex justify-between">
             <h2>Histórico</h2>
-            <Button variant="secondary" onClick={handleClearHistory}>
-              <Trash className="w-4 h-4" />
-            </Button>
+            <DestructiveButton onConfirm={handleClearHistory}>
+              <Button variant="secondary">
+                <Trash className="w-4 h-4" />
+              </Button>
+            </DestructiveButton>
           </div>
           <div className={css["card"]} ref={scrollableDivRef}>
             { history.calcules.map((item, index) => (

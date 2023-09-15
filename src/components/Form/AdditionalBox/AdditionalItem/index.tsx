@@ -5,7 +5,8 @@ import Select from "../../../Select";
 import css from './additional-item.module.scss'
 
 import { AdditionalType } from "../../../../redux/calcule/types";
-import { Button } from "@/components/ui/button";
+import { DestructiveButton } from '@/components/DestructiveButton';
+import { Button } from '@/components/ui/button';
 
 interface Props {
     item: AdditionalType;
@@ -36,9 +37,11 @@ function AdditionalItem({ item, onRemoveAddicional, onChangeAdditional }:Props) 
               ]}
             />
             <Input type="number" name="value" placeholder="Valor" onChange={handleChangeInput} value={item.value} />
-            <Button className="my-auto aspect-square h-auto" variant="destructive" onClick={handleRemoveAddicional} type="button">
+            <DestructiveButton onConfirm={handleRemoveAddicional}>
+              <Button className="my-auto aspect-square h-auto" variant="destructive" type="button">
                 <Minus className='w-4 h-4' />
-            </Button>
+              </Button>
+            </DestructiveButton>
         </div>
     )
 }

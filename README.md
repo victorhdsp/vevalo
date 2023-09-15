@@ -21,10 +21,19 @@ Faz um calculo para ajudar na precificação de serviços, ele usa o custo da em
 ## Features
 
 [x] calculo da precificação do serviço.
+
 [x] historico de precificações feitas.
+
 [x] informação da empresa e historicos salvos no navegador.
+
 [x] voltar para uma precificação do historico.
+
 [x] presets de serviços salvos pra uso rapido (limite atual de 1 serviço).
+
 [ ] sistema de login com informação guardada na nuvem.
+
 [ ] loja de sistemas de precificações.
+
 [ ] mostrar procificação apresentavel para cliente.
+
+[ ] listar os clientes ativos com um timer do dia que começou até a data planejada, permitindo mostrar como esta correndo o projeto, se tem atraso e o preço do atraso caso tenha. tipo: 3/10 dias 

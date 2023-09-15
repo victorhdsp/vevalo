@@ -1,7 +1,7 @@
 import { Minus } from 'lucide-react'
 
 import Input from "../../../Input";
-import Select from "../../../Select";
+import Select, { InternSelectionEvent } from "../../../Select";
 import css from './additional-item.module.scss'
 
 import { AdditionalType } from "../../../../redux/calcule/types";
@@ -15,7 +15,7 @@ interface Props {
 }
 
 function AdditionalItem({ item, onRemoveAddicional, onChangeAdditional }:Props) {
-    const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement >) => {
+    const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement> | InternSelectionEvent) => {
         const name = e.target.name;
         const value = name === 'value' ? Number(e.target.value) : e.target.value;
         onChangeAdditional({ ...item, [name]: value })

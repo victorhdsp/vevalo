@@ -1,11 +1,18 @@
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
+export type InternSelectionEvent = {
+    target: {
+        name: string;
+        value: string;
+    }
+}
+
 interface SelectProps {
     placeholder: string;
     name: string;
     options: { value: string, label: string }[];
-    onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    onChange: (event: InternSelectionEvent) => void;
     value?: string;
 }
 

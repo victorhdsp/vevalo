@@ -1,0 +1,11 @@
+.home {
+  @apply grid gap-4
+          h-full;
+  grid-template-columns: 2fr 1fr;
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    @apply grid-cols-1;
+  }
+}

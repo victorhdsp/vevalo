@@ -1,0 +1,40 @@
+.AsideRoot {
+  @apply rounded-lg px-1 py-2 
+          bg-white;
+
+  menu {
+    @apply flex flex-col gap-2
+            h-full;
+
+    > *[name="settings"] { 
+      @apply mt-auto; 
+    }
+  }
+}
+
+.AsideButton {
+  @apply flex flex-col gap-1 items-center justify-center
+          aspect-square w-full h-max p-1;
+
+  > * {
+    @apply w-12 max-w-max mx-auto;
+  }
+
+  .label {
+    @apply text-xs text-ellipsis overflow-hidden;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .AsideRoot {
+    @apply hidden;
+    
+    menu {
+      @apply flex-row h-max w-full;
+    }
+  }
+
+  .AsideButton {
+    @apply w-max;
+  }
+}

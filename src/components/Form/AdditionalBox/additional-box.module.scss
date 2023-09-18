@@ -1,7 +1,0 @@
-.additional-box {
-    @apply flex flex-col gap-2;
-
-    > div {
-        @apply flex flex-col gap-2 h-max max-h-[44.5vh] overflow-y-auto;
-    }
-}

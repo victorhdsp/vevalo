@@ -1,0 +1,37 @@
+.HistoryRoot {
+    @apply  p-2 rounded-md;
+    background-color: var(--bg-gray);
+}
+
+.HistoryHeader {
+  @apply flex justify-between items-center;
+}
+
+.HistoryContent {
+  @apply flex flex-col gap-2;
+}
+
+.HistoryItem {
+  @apply grid gap-1 cursor-pointer
+        bg-white rounded-md p-2;
+  grid-template-columns: 48px 1fr;
+
+  .logo {
+    @apply aspect-square w-full h-full
+            flex flex-col justify-center items-center;
+  }
+
+  .content {
+    @apply flex flex-col justify-center gap-2;
+
+    p {
+      @apply text-base leading-none;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .HistoryContent {
+    @apply h-max;
+  }
+}

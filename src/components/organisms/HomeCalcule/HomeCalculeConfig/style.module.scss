@@ -1,0 +1,19 @@
+.HomeCalculeConfig {
+  @apply flex flex-col gap-4 h-full;
+}
+
+.HomeCalculeContent {
+  @apply grid grid-cols-6 gap-2;
+
+  label {
+      @apply col-span-2;
+
+      &:nth-child(1), &:nth-child(2) {
+          @apply col-span-3;
+      }
+  }
+}
+
+.HomeCalculeAdditionalBox {
+  @apply flex flex-col gap-2;
+}

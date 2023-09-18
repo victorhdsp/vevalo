@@ -1,11 +1,11 @@
-export type AdditionalType = {
+export interface AdditionalType {
     id: string,
     name: string,
     type: 'porcentage' | 'fixed',
     value: number,
 }
 
-export type CalculeStateType = {
+export interface CalculeStateType {
     employees: number,
     day_hours: number,
     days_in_week: number,

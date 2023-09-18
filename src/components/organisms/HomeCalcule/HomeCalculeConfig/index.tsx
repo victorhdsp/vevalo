@@ -7,6 +7,7 @@ import { HomeCalculeContent } from "./HomeCalculeContent"
 import { setHomeStage } from "@/redux/manager/slice"
 import { Separator } from "@/components/ui/separator"
 import { HomeCalculeAdditionalBox } from "./HomeCalculeAdditionalBox"
+import { HomeCalculeService } from "./HomeCalculeService"
 
 export const HomeCalculeConfig = () => {
   const dispatch = useDispatch()
@@ -27,6 +28,7 @@ export const HomeCalculeConfig = () => {
       <main className="flex flex-col gap-4">
         <HomeCalculeContent />
         <Separator />
+        <HomeCalculeService />
         <HomeCalculeAdditionalBox  />
       </main>
 

@@ -30,9 +30,9 @@ export const HomeCalculeAdditionalBox = () => {
 
   return (
     <div className={css["HomeCalculeAdditionalBox"]}>
-      <h3 className="min-h-[1.75rem] flex">Serviços adicionais</h3>
+      <h4 className="min-h-[1.5rem] flex">Serviços adicionais</h4>
 
-      <OverflowBox maxHeight="47vh" className="space-y-2">
+      <OverflowBox maxHeight="30vh" className="space-y-2">
         {elements.map((item, index) => (
           <AdditionalItem key={index} item={item} onChangeAdditional={handleChangeAdditional} onRemoveAddicional={handleRemoveAddicional} />
         ))}

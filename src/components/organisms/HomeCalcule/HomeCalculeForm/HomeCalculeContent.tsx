@@ -22,8 +22,8 @@ export const HomeCalculeContent = () => {
       <Input type="number" name="day_hours" placeholder="Horas por dia" onChange={handleChangeInput} value={inputs.day_hours} min={1} />
       <Input type="number" name="days_in_week" placeholder="Dias por semana" onChange={handleChangeInput} value={inputs.days_in_week} min={1} max={7} />
       <Input type="number" name="employees" placeholder="Funcionarios" onChange={handleChangeInput} value={inputs.employees} min={1} />
-      <Input type="number" name="profit_margin" placeholder="Margem de lucro (%)" onChange={handleChangeInput} value={inputs.profit_margin} min={0} />
-      <Input type="number" name="estimated_time" placeholder="Horas estimadas" onChange={handleChangeInput} value={inputs.estimated_time} min={1} />
+      {/* <Input type="number" name="profit_margin" placeholder="Margem de lucro (%)" onChange={handleChangeInput} value={inputs.profit_margin} min={0} /> */}
+      {/* <Input type="number" name="estimated_time" placeholder="Horas estimadas" onChange={handleChangeInput} value={inputs.estimated_time} min={1} /> */}
     </div>
   )
 }

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 
 import { Header } from '@/components/organisms/Header'
-import { Aside } from '@/components/organisms/Aside'
+// import { Aside } from '@/components/organisms/Aside'
 
 import { Home } from '@/components/pages/Home'
 import { History } from '@/components/pages/History'
@@ -32,7 +32,7 @@ function App() {
     <>
       <Header />
       <div className='content'>
-        <Aside />
+        {/* <Aside /> */}
         <main>
           { pages[currentPage] }
         </main>

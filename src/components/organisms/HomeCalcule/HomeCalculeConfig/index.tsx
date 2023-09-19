@@ -28,8 +28,8 @@ export const HomeCalculeConfig = () => {
       <main className="flex flex-col gap-4">
         <HomeCalculeContent />
         <Separator />
-        <HomeCalculeService />
-        <HomeCalculeAdditionalBox  />
+        <HomeCalculeService service={0} />
+        <HomeCalculeAdditionalBox service={0} />
       </main>
 
       <homeCalcule.footer 

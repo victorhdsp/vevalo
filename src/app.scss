@@ -9,7 +9,7 @@
     
     > .content {
       @apply grid gap-4 h-full;
-      grid-template-columns: minmax(60px, max-content) 1fr;
+      // grid-template-columns: minmax(60px, max-content) 1fr;
     }
 }
 

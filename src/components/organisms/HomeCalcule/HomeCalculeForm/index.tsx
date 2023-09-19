@@ -11,6 +11,7 @@ import { setHomeStage } from "@/redux/manager/slice"
 import { addCalculeToHistory } from "@/redux/history/slice"
 import { CalculeStateType } from "@/redux/calcule/types"
 import { selectCalculeWithCompany } from "@/redux/calcule/calcule.selectors"
+import { HomeCalculeService } from "./HomeCalculeService";
 
 export const HomeCalculeForm = () => {
   const inputs: CalculeStateType = useSelector(selectCalculeWithCompany);
@@ -35,6 +36,7 @@ export const HomeCalculeForm = () => {
       <main className="flex flex-col gap-4">
         <HomeCalculeContent />
         <Separator />
+        <HomeCalculeService service={0}/>
         <HomeCalculeAdditionalBox />
       </main>
 

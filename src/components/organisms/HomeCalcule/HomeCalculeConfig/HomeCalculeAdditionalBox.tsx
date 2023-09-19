@@ -10,13 +10,17 @@ import { AdditionalType } from "@/redux/calcule/types";
 import { CompanyStateType, changeUniqueService } from "@/redux/company/slice";
 import { RootState } from "@/redux/store";
 
-export const HomeCalculeAdditionalBox = () => {
+interface Props {
+  service: number;
+}
+
+export const HomeCalculeAdditionalBox = ({service}: Props) => {
   const company: CompanyStateType = useSelector((rootReducer: RootState) => rootReducer.companyReducer);
-  const elements = company.services[0].additionals || [];
+  const elements = company.services[service].additionals || [];
   const dispatch = useDispatch();
 
   const dispatchUniqueInput = (value: AdditionalType[]) => {
-    dispatch(changeUniqueService({ id: 0, name: 'additionals', value }))
+    dispatch(changeUniqueService({ id: service, name: 'additionals', value }))
   }
 
   const handleNewAddicional = () => 

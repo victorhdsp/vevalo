@@ -7,15 +7,15 @@ import { useEffect } from "react";
 
 const Controller = () => {
   useEffect(() => {
-    firebase()
+    // firebase()
 
-    const token = getCookie('token')
-    const email = getCookie('email')
-    const currentPage = window.location.pathname
+    // const token = getCookie('token')
+    // const email = getCookie('email')
+    // const currentPage = window.location.pathname
     
-    if ((!token || !email) && currentPage != "/entrar") {
-      window.location.href = "/entrar"
-    }
+    // if ((!token || !email) && currentPage != "/entrar") {
+    //   window.location.href = "/entrar"
+    // }
   }, [])
 
   return (

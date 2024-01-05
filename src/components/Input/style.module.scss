@@ -1,0 +1,18 @@
+.input-box {
+  @apply flex flex-col gap-xs;
+
+  .input {
+    @apply border border-gray;
+    @apply rounded-md;
+    @apply flex items-center;
+    @apply w-full h-full min-h-[36px];
+    @apply flex gap-xs;
+    @apply overflow-hidden;
+    @apply pl-xs;
+    @apply text-base;
+    
+    &[aria-disabled='true'] {
+      @apply bg-white;
+    }
+  }
+}

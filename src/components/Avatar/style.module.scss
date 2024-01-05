@@ -1,0 +1,10 @@
+.avatar-box {
+  @apply rounded-full;
+  @apply aspect-square;
+  @apply overflow-hidden;
+
+  .image {
+    @apply w-full h-full;
+    @apply object-cover;
+  }
+}

@@ -1,0 +1,10 @@
+.card {
+  @apply p-md;
+  @apply flex gap-sm;
+  @apply bg-white-full;
+  @apply border border-gray rounded-xl;
+
+  &[data-oriented="vertical"] {
+    @apply flex-col;
+  }
+}

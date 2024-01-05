@@ -1,0 +1,31 @@
+.data {
+  @apply flex flex-col gap-lg;
+  @apply h-full;
+
+  .inputs {
+    @apply flex flex-col gap-md;
+
+    .avatar_and_email {
+      @apply grid gap-md;
+      grid-template-columns: 55px 1fr;
+    }
+
+    .name_and_follow {
+      @apply grid grid-cols-2 gap-md;
+    }
+  }
+  
+  .finance {
+    @apply grid grid-cols-2 auto-rows-auto gap-md;
+
+    h3 { @apply col-span-2; }
+  }
+
+  .services {
+    @apply h-full;
+
+    .content {
+      @apply flex gap-md;
+    }
+  }
+}

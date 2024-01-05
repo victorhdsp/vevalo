@@ -1,0 +1,35 @@
+.Service {
+  @apply w-[191px] max-w-sm;
+  aspect-ratio: 1.2 / 1;
+  @apply gap-lg;
+  
+  .body {
+    @apply flex flex-col gap-sm;
+    @apply h-full;
+
+    .header {
+      @apply text-lg font-bold;
+      @apply flex justify-between gap-md;
+      
+      button {
+        @apply p-0;
+      }
+    }
+    
+    .content {
+      ul {
+        @apply list-disc;
+        @apply pl-lg;
+      }
+    }
+  }
+  
+  .footer {
+    @apply text-lg font-bold text-gray;
+    @apply flex justify-between items-center;
+
+    button {
+      @apply p-0;
+    }
+  }
+}

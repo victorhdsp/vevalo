@@ -1,0 +1,37 @@
+
+#app {
+  @apply flex gap-xs;
+  @apply p-xs;
+  @apply h-screen;
+  @apply relative;
+
+  .dashboard {
+    @apply w-full h-full;
+    @apply relative overflow-hidden;
+    @apply grid grid-rows-1 gap-md;
+    grid-template-columns: 4fr 6fr;
+
+    .pages {
+      @apply relative;
+
+      >* {
+        @apply transform;
+        @apply opacity-0;
+        @apply absolute top-0 left-0 -z-10;
+        @apply w-full h-full;
+        transition: all 0.3s ease-in-out;
+      }
+      
+      .last {
+        @apply -translate-x-full opacity-0 z-0;
+      }
+
+      .current {
+        @apply translate-x-0 opacity-100 z-10;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+}

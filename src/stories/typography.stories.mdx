@@ -1,0 +1,42 @@
+import { Meta, Typeset } from "@storybook/addon-docs/blocks";
+
+<Meta title="Style Guide/Typography" />
+
+export const typography = {
+  type: {
+    primary: '"Karla", sans-serif',
+  },
+  weight: {
+    regular: "400",
+    bold: "700",
+  },
+  size: {
+    base: 16, // 1rem
+    small: 14, //0.825rem
+  },
+};
+
+export const SampleText = "I like potatoes and I like chocolate milk";
+
+# Typography
+
+## 
+<Typeset
+  fontSizes={[
+    Number(typography.size.small),
+    Number(typography.size.base),
+  ]}
+  fontWeight={typography.weight.regular}
+  sampleText={SampleText}
+  fontFamily={typography.type.primary}
+/>
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.small),
+    Number(typography.size.base),
+  ]}
+  fontWeight={typography.weight.bold}
+  sampleText={SampleText}
+  fontFamily={typography.type.primary}
+/>

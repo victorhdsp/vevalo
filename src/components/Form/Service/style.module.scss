@@ -1,0 +1,20 @@
+.formService {
+  @apply flex flex-col gap-lg; 
+  @apply h-full;
+
+  .header {
+    @apply grid gap-lg; 
+    @apply h-full;
+
+    grid-template-columns: 2fr 1fr; 
+  }
+
+  .content {
+    @apply flex flex-col gap-lg; 
+    @apply h-full;
+
+    >button {
+      @apply w-max;
+    }
+  }
+}

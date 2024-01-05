@@ -1,0 +1,20 @@
+.project {
+  .header {
+    @apply flex justify-between items-center;
+    @apply text-lg;
+
+    h3 { @apply text-lg; }
+
+    [data-status] {
+      @apply text-[0px] w-[8px] h-[8px] rounded-full;
+      
+      &[data-status="ongoing"] { @apply bg-slate-300; }
+      &[data-status="recused"] { @apply bg-red; }
+    }
+  }
+
+  .footer {
+    @apply flex justify-between items-end gap-md;
+    @apply text-lg font-bold;
+  }
+}

@@ -1,0 +1,12 @@
+.login {
+  @apply w-full h-full;
+  @apply flex flex-col gap-lg items-center justify-center;
+
+  h1 {
+    @apply text-lg;
+  }
+
+  form {
+    @apply flex flex-col gap-md;
+  }
+}

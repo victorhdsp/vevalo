@@ -1,0 +1,43 @@
+.project {
+  @apply flex items-center justify-between;
+  @apply min-h-[80px];
+  
+  .content {
+    @apply w-full;
+    @apply grid items-center gap-lg;
+    grid-template-columns: 1fr max-content max-content;
+    @apply flex justify-between items-center;
+    
+    .name { 
+      @apply text-lg; 
+      @apply flex-1;
+    }
+    .total { 
+      @apply text-lg; 
+
+      &::before {
+        content: '|';
+        @apply mr-sm;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .project .content {
+    @apply flex-wrap gap-y-md;
+    
+    >* {
+      @apply flex-1;
+    }
+  }
+}
+@media screen and (max-width: 1110px) {
+  .project .content {
+    >* { 
+      @apply text-center;
+
+      &::before { @apply hidden; }
+     }
+  }
+}

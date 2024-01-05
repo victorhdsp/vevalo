@@ -1,0 +1,28 @@
+.label {
+  @apply flex items-center gap-xs;
+  @apply text-sm;
+
+  &[data-visible="false"] {
+    @apply opacity-0 pointer-events-none absolute;
+  }
+
+  .required {
+    @apply text-red;
+    @apply pl-xs;
+  }
+
+  .help {
+    @apply flex justify-center items-center;
+    @apply h-full;
+    @apply cursor-pointer;
+  }
+}
+
+.help-text {
+  @apply bg-white-full;
+  @apply border border-gray;
+  @apply rounded-md;
+  @apply py-xs px-sm;
+  @apply w-full max-w-sm;
+  @apply text-sm;
+}

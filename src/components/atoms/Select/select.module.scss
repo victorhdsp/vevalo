@@ -1,8 +1,0 @@
-.label_select {
-    @apply flex flex-col p-1 rounded-md;
-    background-color: var(--bg-gray);
-
-    select {
-        @apply w-full bg-transparent;
-    }
-}

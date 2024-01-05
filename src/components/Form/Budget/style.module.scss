@@ -1,0 +1,24 @@
+.budgetForm {
+  @apply h-full;
+
+  .content {
+    @apply flex flex-col gap-lg; 
+    @apply h-full;
+   
+    .service_and_worked,
+    .discount_and_margin {
+     @apply grid grid-cols-2 gap-md;
+    }
+   
+    .service_costs {
+      @apply flex flex-col gap-md;
+      @apply h-full;
+      @apply overflow-hidden;
+   
+     .body {
+        @apply flex flex-col gap-sm;
+        @apply h-full;
+     }
+    }
+   }
+}

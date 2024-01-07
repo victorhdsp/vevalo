@@ -73,8 +73,6 @@ const Profile = () => {
     reset()
   }
 
-  //  useEffect(() => { if(currentPage === 'profile') reset() }, [currentPage, reset])
-
   return (
     <Card className="h-full" orientation="vertical">
       <h2>Perfil</h2>

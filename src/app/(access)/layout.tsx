@@ -18,13 +18,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR">
-      <body>
-        <Controller />
-        <div id={css["app"]}>
-          {children}
-        </div>
-      </body>
-    </html>
+    <>
+      <Controller />
+      <div id={css["app"]}>
+        {children}
+      </div>
+    </>
   )
 }

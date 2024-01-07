@@ -1,33 +1,37 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import Button from '@/components/Button/Default';
 import css from './style.module.scss'
 
 import Input from '@/components/Input';
-import { FormEvent, useState } from 'react';
-import { useCurrentProfile } from '@/store/currentProfile';
 
-import { loginGoogle, loginUser } from '@/assets/utils/firebase/auth'
+import { useState } from 'react';
+
+import { loginGoogle } from '@/assets/utils/firebase/auth'
+import { userRegister } from '@/app/(access)/entrar/actions'
 
 export default function Home() {
-  const currentProfile = useCurrentProfile(({email, setEmail}) => ({email, setEmail}))
-  const [email, setEmail] = useState(currentProfile.email)
+  const router = useRouter()
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmitToLogin = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmitToLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    loginUser(email, password)
+    const registed = await userRegister(email)
+    if (registed) router.push('/')
   }
 
-  const handleGoogleLogin = () => {
-    loginGoogle()
-  }
+  // const handleGoogleLogin = () => {
+  //   loginGoogle()
+  // }
 
   return (
     <>
       <main className={css["login"]}>
         <h1>Bem vindo ao GET-VALUE</h1>
-        {/* <form onSubmit={handleSubmitToLogin}>
+        <form onSubmit={handleSubmitToLogin}>
           <Input 
             name='email' 
             label='E-mail' 
@@ -35,22 +39,22 @@ export default function Home() {
             required
             onInput={setEmail}
           />
-          <Input 
+          {/* <Input 
             name='password' 
             label='Senha' 
             type='password' 
             required
             onInput={setPassword}
-          />
+          /> */}
           <Button type="submit">Entrar</Button>
-        </form> */}
+        </form>
 
-        <Button 
+        {/* <Button 
           variant="secondary"
           onClick={handleGoogleLogin}
         >
           Entrar com o google
-        </Button>
+        </Button> */}
       </main>
     </>
   )

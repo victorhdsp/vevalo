@@ -2,8 +2,11 @@
 
 import css from './style.module.scss'
 
-import AsideMenu from './parts/AsideMenu';
+import ItemAside from '@/components/Item/Aside';
 import Card from '@/components/Card'
+
+import Logo from '@/components/Icon/Logo';
+import Avatar from '@/components/Avatar';
 
 const Aside = () => {
 
@@ -13,7 +16,8 @@ const Aside = () => {
         <Card className='w-full h-full'>
           <menu type="toolbar">
             <ul>
-              <AsideMenu />
+              <ItemAside label='GET-VALUE' page='calculadora' icon={Logo} />
+              <ItemAside label='Perfil' page='perfil' icon={Avatar} />
             </ul>
           </menu>
         </Card>

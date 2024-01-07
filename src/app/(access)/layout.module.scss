@@ -1,0 +1,10 @@
+
+#app {
+  @apply flex justify-center gap-xs;
+  @apply p-xs;
+  @apply h-screen;
+  @apply relative;
+}
+
+@media screen and (max-width: 768px) {
+}

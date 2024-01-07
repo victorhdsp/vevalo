@@ -6,6 +6,8 @@ import '@/assets/styles/tailwind/index.scss'
 import '@/assets/styles/main/index.scss'
 
 import Controller from '@/components/Controller'
+import Aside from '@/components/Stars/Aside'
+import History from '@/components/Stars/History'
 
 export const metadata: Metadata = {
   title: 'Get-value',
@@ -22,7 +24,13 @@ export default function RootLayout({
       <body>
         <Controller />
         <div id={css["app"]}>
-          {children}
+        <Aside />
+          <main className={css["main"]}>
+            <div className={css["pages"]}>
+              {children}
+            </div>
+            <History />
+          </main>
         </div>
       </body>
     </html>

@@ -18,15 +18,13 @@ import { ProjectsTypes } from "@/assets/data/type";
 import { generateId } from "@/assets/utils";
 
 import { useUser } from "@/store/User";
-import { useCurrentProfile } from "@/store/currentProfile";
 import { useCurrentProject } from "@/store/currentProject";
-import { useMenu } from "@/store/Menu";
+import { newProject } from "./actions";
 
 const NewProject = () => {
-  const [createNewProject] = useUser(store => ([store.createNewProject]))
+  const [createNewProject, profile, uid] = useUser(store => ([store.createNewProject, store.profile, store.id]))
   const currentProject = useCurrentProject(store => store)
-  const fiscal = useCurrentProfile(store => store.fiscal)
-  const currentPage = useMenu(store => store.currentPage)
+  const fiscal = profile.fiscal
   
   const [costumerName, setCostumerName] = useState(currentProject.name || '')
   const [discount, setDiscount] = useState(`${currentProject.discount}`)
@@ -57,11 +55,9 @@ const NewProject = () => {
     }
 
     createNewProject(project)
+    newProject(uid)
     reset()
   }
-  
-  // useEffect(() => { if(currentPage === 'dashboard') reset() }, [currentPage])
-  
 
   return (
     <Card className="h-full" orientation="vertical">

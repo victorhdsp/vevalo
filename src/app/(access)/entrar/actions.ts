@@ -1,31 +1,32 @@
 "use client"
 
+import { UserTypes } from "@/assets/data/type";
+import { createNewUser } from "@/services/firebase/database";
 import { useUser } from "@/store/User";
-import { useCurrentProfile } from "@/store/currentProfile";
+import { User } from "firebase/auth";
 
-export async function userRegister(email:string) {
-  if (email) {
-    const setEmail = useCurrentProfile.getState().setEmail
-    const saveUserProfile = useUser.getState().saveUserProfile
-    
-    setEmail(email)
-    const profile = useCurrentProfile.getState()
-    
-    saveUserProfile(profile)
-    const user = useUser.getState()
-  
-    const response = await fetch('/api/register', {
-      method: 'POST',
-      body: JSON.stringify(user),
-    })
+export async function userRegister(currentUser: User) {
+  if (currentUser && currentUser.uid && currentUser.email) {
+    const { profile, services, budgets, projects} = useUser.getState()
 
-    if (response.ok) {
+    const user: UserTypes = {
+      id: currentUser.uid,
+      profile: {
+        ...profile,
+        email: currentUser.email,
+      },
+      services,
+      budgets,
+      projects
+    }
+    
+    const created = await createNewUser(user.id, user)
+
+    if (created) {
       return true
     } else {
-      console.log('erro ao registrar usuário: ', response)
+      console.log('erro ao registrar usuário')
     }
-  } else {
-    console.log('email inválido: ', email)
   }
 
   return false

@@ -15,10 +15,9 @@ import { useCurrentBudget } from '@/store/currentBudget';
 import { calculeBudget } from '@/assets/utils/number';
 
 import { useUser } from '@/store/User';
-import { useCurrentProfile } from '@/store/currentProfile';
 
 const Budget = () => {
-  const fiscal = useCurrentProfile(store => store.fiscal)
+  const fiscal = useUser(store => store.profile.fiscal)
   const services = useUser(store => store.services)
   
   const servicesForSelect = services.map(service => ({ value: service.id, label: service.name }))

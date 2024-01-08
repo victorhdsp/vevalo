@@ -15,47 +15,33 @@ import ItemService from '@/components/Item/Service'
 import Select from '@/components/Select/Default'
 
 import { useUser } from '@/store/User'
-import { useCurrentProfile } from '@/store/currentProfile'
 import { useSegment } from '@/store/segments'
 
 import { ProfileType } from '@/assets/data/type'
 import { useTaxRegime } from '@/store/taxRegime'
-import { useMenu } from '@/store/Menu'
+import { updateProfile } from './actions'
 
 
 const Profile = () => {
-  const user = useUser(({ services }) => ({ services }))
-  const currentProfile = useCurrentProfile(store => store)
+  const user = useUser(({ id, services, profile, saveUserProfile }) => ({ id, services, profile, saveUserProfile }))
   const segments = useSegment(store => store.segments)
   const taxRegimes = useTaxRegime(store => store.taxRegimes)
-  const currentPage = useMenu(store => store.currentPage)
 
-  const [email, setEmail] = useState(currentProfile.email)
-  const [company, setCompany] = useState(currentProfile.name)
-  const [segment, setSegment] = useState(currentProfile.segment)
-  const [taxRegime, setTaxRegime] = useState(currentProfile.tax_regime)
-  const [administrativeExpenses, setAdministrativeExpenses] = useState(currentProfile.fiscal.administrative_expenses)
-  const [payment, setPayment] = useState(currentProfile.fiscal.worker.salary)
-  const [weeklyHours, setweeklyHours] = useState(currentProfile.fiscal.weekly_hours)
+  const [company, setCompany] = useState(user.profile.name)
+  const [segment, setSegment] = useState(user.profile.segment)
+  const [taxRegime, setTaxRegime] = useState(user.profile.tax_regime)
+  const [administrativeExpenses, setAdministrativeExpenses] = useState(user.profile.fiscal.administrative_expenses)
+  const [payment, setPayment] = useState(user.profile.fiscal.worker.salary)
+  const [weeklyHours, setweeklyHours] = useState(user.profile.fiscal.weekly_hours)
 
   const selectTheFollow = (value:string) => setSegment(value)
   const selectTheTaxRegime = (value:string) => setTaxRegime(value)
-
-  const reset = () => {
-    setEmail(currentProfile.email)
-    setCompany(currentProfile.name)
-    setSegment(currentProfile.segment)
-    setTaxRegime(currentProfile.tax_regime)
-    setAdministrativeExpenses(currentProfile.fiscal.administrative_expenses)
-    setPayment(currentProfile.fiscal.worker.salary)
-    setweeklyHours(currentProfile.fiscal.weekly_hours)
-  }
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
     
     const profile: ProfileType = {
-      email,
+      email: user.profile.email,
       name: company,
       segment,
       tax_regime: taxRegime,
@@ -69,8 +55,8 @@ const Profile = () => {
       },
     }
 
-    currentProfile.saveProfile(profile)
-    reset()
+    user.saveUserProfile(profile)
+    updateProfile(user.id, profile)
   }
 
   return (
@@ -86,8 +72,7 @@ const Profile = () => {
               name="email" 
               label="E-mail" 
               disabled
-              value={email}
-              onInput={(value) => setEmail(value)} 
+              value={user.profile.email}
             />
           </div>
           <div className={css["name_and_follow"]}>

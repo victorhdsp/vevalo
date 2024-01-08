@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { PageNames, pagePath } from '@/assets/data/sitemap';
 import { useEffect } from 'react';
 import { getCookie } from '@/assets/utils';
-import { getUser } from '@/assets/utils/firebase/database';
+import { getUser } from '@/services/firebase/database';
 import Controller from '@/components/Controller';
 
 export default function ProfilePage() {

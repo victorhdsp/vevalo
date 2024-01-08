@@ -8,24 +8,40 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/Button/Default';
 import Input from '@/components/Input';
 
-import '@/assets/utils/firebase'
-
-import { loginGoogle } from '@/assets/utils/firebase/auth'
+import { loginGoogle } from '@/services/firebase/auth'
 import { userRegister } from '@/app/(access)/entrar/actions'
+import { User } from 'firebase/auth';
+import { getUser } from '@/services/firebase/database';
 
 export default function Home() {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmitToLogin = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const registed = await userRegister(email)
-    if (registed) router.push('/')
+  const hasRegisted = async (currentUser: User) => {
+    let registed = await getUser()
+    
+    if (!registed) {
+      registed = await userRegister(currentUser)
+    }
+  
+    if (registed) {
+      router.push('/perfil')
+    }
   }
 
-  const handleGoogleLogin = () => {
-    loginGoogle()
+  const handleSubmitToLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    // await hasRegisted(currentUser)
+  }
+
+  const handleGoogleLogin = async () => {
+    const userHasConnected = await loginGoogle()
+    
+    if (userHasConnected && userHasConnected.email) {
+      await hasRegisted(userHasConnected)
+      
+    }
   }
 
   return (
@@ -33,13 +49,13 @@ export default function Home() {
       <main className={css["login"]}>
         <h1>Bem vindo ao GET-VALUE</h1>
         <form onSubmit={handleSubmitToLogin}>
-          <Input 
+          {/* <Input 
             name='email' 
             label='E-mail' 
             type='email' 
             required
             onInput={setEmail}
-          />
+          /> */}
           {/* <Input 
             name='password' 
             label='Senha' 
@@ -47,7 +63,7 @@ export default function Home() {
             required
             onInput={setPassword}
           /> */}
-          <Button type="submit">Entrar</Button>
+          {/* <Button type="submit">Entrar</Button> */}
         </form>
 
         <Button 

@@ -2,7 +2,7 @@ import { create } from 'zustand'
 
 import { BudgetTypes, ProjectsTypes } from '@/assets/data/type'
 import { generateId } from '@/assets/utils'
-import { useCurrentProfile } from '@/store/currentProfile'
+import { useUser } from './User'
 
 type CurrentProjectStore = ProjectsTypes & {
   reset: () => void
@@ -10,7 +10,7 @@ type CurrentProjectStore = ProjectsTypes & {
   removeBudget: (id: string) => void
 }
 
-const fiscal = useCurrentProfile.getState().fiscal
+const fiscal = useUser.getState().profile.fiscal
 
 const initialState: () => ProjectsTypes = () => ({
   id: generateId(),

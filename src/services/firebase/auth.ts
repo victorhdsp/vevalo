@@ -1,17 +1,18 @@
 import {  
   GoogleAuthProvider, 
+  browserSessionPersistence, 
   createUserWithEmailAndPassword, 
+  inMemoryPersistence, 
+  setPersistence, 
   signInWithEmailAndPassword, 
   signInWithPopup, 
 } from "firebase/auth";
 
-import { auth, google } from "./index";
+import { auth, currentUser } from "./index";
 
 import { setCookie } from "@/assets/utils";
 
 export const registerUser = (email:string, password:string) => {
-  if (!auth) return
-
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed up 
@@ -26,8 +27,6 @@ export const registerUser = (email:string, password:string) => {
 }
 
 export const loginUser = (email:string, password:string) => {
-  if (!auth) return
-
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
@@ -41,29 +40,22 @@ export const loginUser = (email:string, password:string) => {
     })
 }
 
-export const loginGoogle = () => {
-  console.log(auth)
-  if (!auth || !google) return
+export const loginGoogle = async () => {
+  const provider = new GoogleAuthProvider();
+  
+  try {
+    const signIn = await auth.setPersistence(browserSessionPersistence).then(
+      () => signInWithPopup(auth, provider)
+    )
+    const accessToken = GoogleAuthProvider.credentialFromResult(signIn)?.accessToken;
+  
+    if (accessToken) {
+      setCookie('token', accessToken, 2)
+    }
+    return currentUser()
 
-  signInWithPopup(auth, google)
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken;
-      const email = result.user.email;
-
-      if (token && email) {
-        setCookie('token', token, 2)
-        setCookie('email', email, 2)
-        window.location.href = "/"
-      }
-    }).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    })
+  } catch (error) {
+    console.log('error: ', error)
+    return undefined
+  }
 }

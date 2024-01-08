@@ -33,6 +33,8 @@ const Service = () => {
     }
 
     createNewService(service)
+    const closeButton: HTMLButtonElement | null = document.querySelector('[data-close]')
+    closeButton?.click()
     currentService.reset()
   }
   

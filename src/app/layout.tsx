@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 import '@/assets/styles/tailwind/index.scss'
 import '@/assets/styles/main/index.scss'
 
-import firebase from '@/assets/utils/firebase'
+import '@/services/firebase'
 
 export const metadata: Metadata = {
   title: 'Get-value',

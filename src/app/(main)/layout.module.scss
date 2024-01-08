@@ -1,19 +1,11 @@
+.main {
+  @apply w-full h-full;
+  @apply relative overflow-hidden;
+  @apply grid grid-rows-1 gap-md;
+  grid-template-columns: 4fr 6fr;
 
-#app {
-  @apply flex gap-xs;
-  @apply p-xs;
-  @apply h-screen;
-  @apply relative;
-
-  .main {
-    @apply w-full h-full;
-    @apply relative overflow-hidden;
-    @apply grid grid-rows-1 gap-md;
-    grid-template-columns: 4fr 6fr;
-  
-    .pages {
-      @apply relative;
-    }
+  .pages {
+    @apply relative;
   }
 }
 

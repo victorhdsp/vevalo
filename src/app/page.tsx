@@ -3,12 +3,22 @@
 import { useRouter } from 'next/router';
 import { PageNames, pagePath } from '@/assets/data/sitemap';
 import { useEffect } from 'react';
+import { getCookie } from '@/assets/utils';
+import { getUser } from '@/assets/utils/firebase/database';
+import Controller from '@/components/Controller';
 
 export default function ProfilePage() {
-  const home:PageNames = "entrar"
+  // useEffect(() => {
+  //   const email = getCookie('email')
+  //   const hasAccount = getUser(email)
+    
+  //   console.log('hasAccount: ' + hasAccount)
 
-  useEffect(() => {
-    window.location.href = pagePath[home]
-  }, [])
-  return <></>
+  //   if (hasAccount) {
+  //     window.location.href = pagePath['perfil']
+  //   } else {
+  //     window.location.href = pagePath['entrar']
+  //   }
+  // }, [])
+  return <><Controller/></>
 }

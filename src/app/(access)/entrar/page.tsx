@@ -1,13 +1,14 @@
 'use client';
 
+import css from './style.module.scss'
+import { useEffect, useState } from 'react';
+
 import { useRouter } from 'next/navigation';
 
 import Button from '@/components/Button/Default';
-import css from './style.module.scss'
-
 import Input from '@/components/Input';
 
-import { useState } from 'react';
+import '@/assets/utils/firebase'
 
 import { loginGoogle } from '@/assets/utils/firebase/auth'
 import { userRegister } from '@/app/(access)/entrar/actions'
@@ -23,9 +24,9 @@ export default function Home() {
     if (registed) router.push('/')
   }
 
-  // const handleGoogleLogin = () => {
-  //   loginGoogle()
-  // }
+  const handleGoogleLogin = () => {
+    loginGoogle()
+  }
 
   return (
     <>
@@ -49,12 +50,12 @@ export default function Home() {
           <Button type="submit">Entrar</Button>
         </form>
 
-        {/* <Button 
+        <Button 
           variant="secondary"
           onClick={handleGoogleLogin}
         >
           Entrar com o google
-        </Button> */}
+        </Button>
       </main>
     </>
   )

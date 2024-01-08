@@ -1,21 +1,13 @@
-import { 
-  getAuth, 
+import {  
   GoogleAuthProvider, 
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, 
   signInWithPopup, 
-  Auth
 } from "firebase/auth";
 
+import { auth, google } from "./index";
+
 import { setCookie } from "@/assets/utils";
-
-let auth:Auth | undefined = undefined
-let google:GoogleAuthProvider | undefined = undefined
-
-export const PopuleAuthAndProvider = () => {
-  auth = getAuth();
-  google = new GoogleAuthProvider();
-}
 
 export const registerUser = (email:string, password:string) => {
   if (!auth) return

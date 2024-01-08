@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
+
+import { getDatabase } from "firebase/database";
 import { getAnalytics } from "firebase/analytics";
-import { PopuleAuthAndProvider } from './auth';
+import { GoogleAuthProvider, getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCGx5nHg65n83deSZ582rF8FiKpccIl0ko",
@@ -14,11 +16,10 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
-export const analytics = getAnalytics(app);
 
+// const analytics = getAnalytics(app)
 
-const execute = () => {
-  PopuleAuthAndProvider()
-}
+export const database = getDatabase(app)
 
-export default execute
+export const auth = getAuth(app)
+export const google = new GoogleAuthProvider();

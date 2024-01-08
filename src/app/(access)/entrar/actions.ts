@@ -1,7 +1,5 @@
 "use client"
 
-import { redirect } from 'next/navigation'
-
 import { useUser } from "@/store/User";
 import { useCurrentProfile } from "@/store/currentProfile";
 
@@ -30,4 +28,5 @@ export async function userRegister(email:string) {
     console.log('email inválido: ', email)
   }
 
+  return false
 }

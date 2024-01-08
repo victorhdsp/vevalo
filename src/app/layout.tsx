@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 import '@/assets/styles/tailwind/index.scss'
 import '@/assets/styles/main/index.scss'
 
-import Controller from '@/components/Controller'
+import firebase from '@/assets/utils/firebase'
 
 export const metadata: Metadata = {
   title: 'Get-value',
@@ -20,7 +20,6 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
-        <Controller />
         <div id={css["app"]}>
           {children}
         </div>

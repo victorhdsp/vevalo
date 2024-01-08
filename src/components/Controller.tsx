@@ -1,21 +1,33 @@
 "use client";
 
+import '@/assets/utils/firebase'
+
+import { UserTypes } from '@/assets/data/type';
 import { getCookie } from '@/assets/utils';
-import firebase from '@/assets/utils/firebase'
+
+import { getUser } from '@/assets/utils/firebase/database'
+
+import { useUser } from '@/store/User';
 
 import { useEffect } from "react";
 
 const Controller = () => {
-  useEffect(() => {
-    // firebase()
+  const [profile, saveUser] = useUser(store => [store.profile, store.saveUser])
 
-    // const token = getCookie('token')
-    // const email = getCookie('email')
-    // const currentPage = window.location.pathname
-    
-    // if ((!token || !email) && currentPage != "/entrar") {
-    //   window.location.href = "/entrar"
-    // }
+  useEffect(() => {
+    if (!profile.email) {
+      const email = getCookie('email')
+
+      if (email) {
+        const user = getUser(email)
+        console.log(user)
+        if (!user) {
+          // window.location.href = "/entrar"
+        } else {
+          saveUser(user)
+        }
+      }
+    }
   }, [])
 
   return (

@@ -10,4 +10,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .main {
+    @apply h-max;
+    @apply flex flex-col justify-start;
+    @apply overflow-y-auto;
+  }
 }

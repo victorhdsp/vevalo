@@ -20,3 +20,9 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+@media screen and (max-width: 768px) {
+  #history {
+    @apply flex flex-col;
+  }
+}

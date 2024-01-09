@@ -46,3 +46,29 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .outside {
+    max-width: none;
+    @apply h-max;
+    
+    .inside {
+      max-width: none;
+      @apply w-full h-max;
+      @apply relative;
+
+      menu {
+        @apply w-full;
+        
+        ul {
+          @apply flex-row;
+          @apply h-max w-full;
+  
+          .logout {
+            @apply mt-0 ml-auto;
+          }
+        }
+      }
+    }
+  }
+}

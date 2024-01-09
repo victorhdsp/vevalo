@@ -46,3 +46,9 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .root .viewport {
+    @apply pr-0;
+  }
+}

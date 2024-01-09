@@ -24,6 +24,9 @@ export const database = getDatabase(app)
 export const auth = getAuth(app)
 
 export const currentUser = () => {
-  console.log(auth)
   return auth.currentUser
+}
+
+export const logout = async () => {
+  return await auth.signOut()
 }

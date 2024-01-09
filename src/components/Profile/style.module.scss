@@ -23,6 +23,7 @@
 
   .services {
     @apply h-full;
+    @apply flex flex-col gap-md;
 
     .content {
       @apply flex gap-md;

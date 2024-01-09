@@ -7,6 +7,8 @@ import '@/assets/styles/main/index.scss'
 
 import '@/services/firebase'
 
+import { ChakraProvider } from '@chakra-ui/react'
+
 export const metadata: Metadata = {
   title: 'Get-value',
   description: 'Um app para gerenciar seus orçamentos de serviços e te ajudar a converter mais clientes.'
@@ -20,9 +22,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
-        <div id={css["app"]}>
-          {children}
-        </div>
+        <ChakraProvider>
+          <div id={css["app"]}>
+            {children}
+          </div>
+        </ChakraProvider>
       </body>
     </html>
   )

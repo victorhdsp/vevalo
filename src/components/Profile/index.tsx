@@ -3,6 +3,7 @@ import css from './style.module.scss'
 import { Save } from 'lucide-react'
 
 import { FormEvent, useEffect, useState } from 'react'
+import { useToast } from '@chakra-ui/react'
 
 import Card from "@/components/Card"
 import Input from '@/components/Input'
@@ -20,9 +21,11 @@ import { useSegment } from '@/store/segments'
 import { ProfileType } from '@/assets/data/type'
 import { useTaxRegime } from '@/store/taxRegime'
 import { updateProfile } from './actions'
+import { redirect } from 'next/navigation'
 
 
 const Profile = () => {
+  const toast = useToast()
   const user = useUser(({ id, services, profile, saveUserProfile }) => ({ id, services, profile, saveUserProfile }))
   const segments = useSegment(store => store.segments)
   const taxRegimes = useTaxRegime(store => store.taxRegimes)
@@ -34,11 +37,31 @@ const Profile = () => {
   const [payment, setPayment] = useState(user.profile.fiscal.worker.salary)
   const [weeklyHours, setweeklyHours] = useState(user.profile.fiscal.weekly_hours)
 
+  useEffect(() => {
+    setCompany(user.profile.name)
+    setSegment(user.profile.segment)
+    setTaxRegime(user.profile.tax_regime)
+    setAdministrativeExpenses(user.profile.fiscal.administrative_expenses)
+    setPayment(user.profile.fiscal.worker.salary)
+    setweeklyHours(user.profile.fiscal.weekly_hours)
+  }, [user.profile])
+
   const selectTheFollow = (value:string) => setSegment(value)
   const selectTheTaxRegime = (value:string) => setTaxRegime(value)
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
+
+    if (user.services.length === 0) {
+      toast({
+        title: 'Você precisa cadastrar um serviço para continuar',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+        position: 'top-right'
+      })
+      return
+    }
     
     const profile: ProfileType = {
       email: user.profile.email,
@@ -57,6 +80,14 @@ const Profile = () => {
 
     user.saveUserProfile(profile)
     updateProfile(user.id, profile)
+
+    toast({
+      title: 'Perfil atualizado com sucesso',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+      position: 'top-right'
+    })
   }
 
   return (

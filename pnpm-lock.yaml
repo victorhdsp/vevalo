@@ -38,6 +38,9 @@ dependencies:
   '@storybook/addon-viewport':
     specifier: ^7.6.6
     version: 7.6.6
+  clarity-js:
+    specifier: ^0.7.20
+    version: 0.7.20
   firebase:
     specifier: ^10.7.1
     version: 10.7.1
@@ -7122,6 +7125,10 @@ packages:
       inherits: 2.0.4
       safe-buffer: 5.2.1
     dev: true
+
+  /clarity-js@0.7.20:
+    resolution: {integrity: sha512-KyOOtv5gNav4M4PYX+onmWM67szp6JVl9OkN1UqU+1dmFe/2kWVrjONMiqD7UMlDvHHyreX7kHPyQsJ7obF5nA==}
+    dev: false
 
   /clean-css@5.3.3:
     resolution: {integrity: sha512-D5J+kHaVb/wKSFcyyV75uCn8fiY4sV38XJoe4CUyGQ+mOU/fMVYUdH1hJC+CJQ5uY3EnW27SbJYS4X8BiLrAFg==}

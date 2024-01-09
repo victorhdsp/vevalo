@@ -1,6 +1,8 @@
 import css from './layout.module.scss'
 
 import type { Metadata } from 'next'
+import { clarity } from 'clarity-js'
+clarity.identify('kjbojm1rzq')
 
 import '@/assets/styles/tailwind/index.scss'
 import '@/assets/styles/main/index.scss'

@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 import '@/assets/styles/tailwind/index.scss'
 import '@/assets/styles/main/index.scss'
 
-import Controller from '@/components/Controller'
+import ControllerMain from '@/components/Controller/Main'
 import Aside from '@/components/Aside'
 import History from '@/components/History'
 
@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <Controller />
+      <ControllerMain />
       <Aside />
       <main className={css["main"]}>
         <div className={css["pages"]}>

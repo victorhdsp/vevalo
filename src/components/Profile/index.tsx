@@ -88,6 +88,8 @@ const Profile = () => {
       isClosable: true,
       position: 'top-right'
     })
+
+    redirect('/calculadora')
   }
 
   return (

@@ -5,6 +5,8 @@ import Card from '@/components/Card';
 
 import { Star, MoreHorizontal } from 'lucide-react';
 import { ServiceTypes } from '@/assets/data/type';
+import EditOrDelete from '@/components/Popover/EditOrDelete';
+import { useUser } from '@/store/User';
 
 interface Props {
   item: ServiceTypes;
@@ -12,12 +14,15 @@ interface Props {
 }
 
 const Service = ({ item }: Props) => {
-  
+  const [removeService] = useUser(store => [store.removeService])
+
   const data = {
     name: item.name,
     costs: item.costs,
     profit_margin: item.profit_margin
   }
+
+  const handleClickToDeleteItem = () => removeService(item.id)
 
   return (
     <Card 
@@ -27,11 +32,15 @@ const Service = ({ item }: Props) => {
       <div className={css["body"]}>
         <div className={css["header"]}>
           <h3>{ data.name }</h3>
-          <ButtonIcon 
-            icon={MoreHorizontal} 
-            variant='invisible' 
-            size='small'
-          />
+          <EditOrDelete
+            onClickInDelete={handleClickToDeleteItem}
+          >
+            <ButtonIcon 
+              icon={MoreHorizontal} 
+              variant='invisible' 
+              size='none'
+            />
+          </EditOrDelete>
         </div>
 
         <div className={css["content"]}>
@@ -49,7 +58,7 @@ const Service = ({ item }: Props) => {
         <ButtonIcon 
           icon={Star} 
           variant='invisible' 
-          size='small'
+          size='none'
         />
       </div>
     </Card>

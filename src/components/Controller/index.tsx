@@ -13,7 +13,7 @@ const Controller = () => {
   
   useEffect(() => {
     Hotjar.init(siteId, hotjarVersion);
-    clarity.identify('kjbojm1rzq')
+    clarity.identify('kjbojm1rzq');
   }, [])
 
   return (

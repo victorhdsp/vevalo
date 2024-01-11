@@ -27,6 +27,10 @@
     --icon-size: /*30*/ 1.875rem;
     @apply p-xs;
   }
+  &[data-size='none'] {
+    --icon-size: /*16*/ 1rem;
+    @apply p-0;
+  }
 }
 
 //Variant

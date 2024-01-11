@@ -26,7 +26,7 @@ import { redirect } from 'next/navigation'
 
 const Profile = () => {
   const toast = useToast()
-  const user = useUser(({ id, services, profile, saveUserProfile }) => ({ id, services, profile, saveUserProfile }))
+  const user = useUser(({ id, services, profile, saveUserProfile, resetUser }) => ({ id, services, profile, saveUserProfile, resetUser }))
   const segments = useSegment(store => store.segments)
   const taxRegimes = useTaxRegime(store => store.taxRegimes)
 
@@ -36,6 +36,10 @@ const Profile = () => {
   const [administrativeExpenses, setAdministrativeExpenses] = useState(user.profile.fiscal.administrative_expenses)
   const [payment, setPayment] = useState(user.profile.fiscal.worker.salary)
   const [weeklyHours, setweeklyHours] = useState(user.profile.fiscal.weekly_hours)
+
+  useEffect(() => {
+    user.resetUser()
+  }, [])
 
   useEffect(() => {
     setCompany(user.profile.name)

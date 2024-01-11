@@ -1,8 +1,6 @@
 import css from './layout.module.scss'
 
 import type { Metadata } from 'next'
-import Script from 'next/script'
-// import { clarity } from 'clarity-js'
 
 import '@/assets/styles/tailwind/index.scss'
 import '@/assets/styles/main/index.scss'
@@ -22,9 +20,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // if (typeof window !== "undefined") {
-  //   clarity.identify('kjbojm1rzq')
-  // }
 
   return (
     <html lang="pt-BR">

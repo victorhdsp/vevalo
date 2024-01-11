@@ -11,7 +11,7 @@ import Input from '@/components/Input';
 import { loginGoogle } from '@/services/firebase/auth'
 import { userRegister } from '@/app/(access)/entrar/actions'
 import { User } from 'firebase/auth';
-import { getUser } from '@/services/firebase/database';
+import { getUserData } from '@/services/firebase/database';
 
 export default function Home() {
   const router = useRouter()
@@ -19,7 +19,7 @@ export default function Home() {
   const [password, setPassword] = useState('')
 
   const hasRegisted = async (currentUser: User) => {
-    let registed = await getUser()
+    let registed = await getUserData()
     
     if (!registed) {
       registed = await userRegister(currentUser)
@@ -40,7 +40,6 @@ export default function Home() {
     
     if (userHasConnected && userHasConnected.email) {
       await hasRegisted(userHasConnected)
-      
     }
   }
 

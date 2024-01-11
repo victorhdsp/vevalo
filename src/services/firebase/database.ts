@@ -5,7 +5,7 @@ import { currentUser, database } from './index'
 import { useUser } from "@/store/User";
 
 
-export async function createNewUser(uid:string, data:UserTypes) {
+export async function createNewUserData(uid:string, data:UserTypes) {
   try {
     await set(ref(database, 'users/' + uid), data);
     return true
@@ -15,7 +15,7 @@ export async function createNewUser(uid:string, data:UserTypes) {
   }
 }
 
-export async function updateUser(uid:string, data:UserTypes) {
+export async function updateUserData(uid:string, data:UserTypes) {
   try {
     await update(ref(database, 'users/' + uid), data);
     return true
@@ -25,7 +25,7 @@ export async function updateUser(uid:string, data:UserTypes) {
   }
 }
 
-export async function getUser() {
+export async function getUserData() {
   const uid = currentUser()?.uid
   if (!uid) { return false }
 
@@ -35,5 +35,5 @@ export async function getUser() {
   const user: UserTypes = snapshot.val()
   useUser.getState().saveUser(user)
   
-  return true
+  return user
 }

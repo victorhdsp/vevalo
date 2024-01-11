@@ -1,7 +1,7 @@
 "use client"
 
 import { UserTypes } from "@/assets/data/type";
-import { createNewUser } from "@/services/firebase/database";
+import { createNewUserData } from "@/services/firebase/database";
 import { useUser } from "@/store/User";
 import { User } from "firebase/auth";
 
@@ -20,7 +20,7 @@ export async function userRegister(currentUser: User) {
       projects
     }
     
-    const created = await createNewUser(user.id, user)
+    const created = await createNewUserData(user.id, user)
 
     if (created) {
       return true

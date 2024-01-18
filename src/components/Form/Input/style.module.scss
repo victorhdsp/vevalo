@@ -1,0 +1,33 @@
+.root {
+  @apply flex flex-col gap-[4px];
+
+  .input-box {
+    @apply flex items-center;
+    @apply bg-gray;
+    @apply h-[40px];
+    @apply rounded-sm;
+
+    .content {
+      @apply flex gap-xs items-center;
+      @apply w-full;
+      @apply pl-xs;
+
+      .icon {
+
+      }
+
+      .prefix {
+
+      }
+
+      .input {
+        @apply w-full;
+        @apply bg-transparent;
+      }
+    }
+
+    .select-type {
+
+    }
+  }
+}

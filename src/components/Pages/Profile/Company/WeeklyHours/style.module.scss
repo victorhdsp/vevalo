@@ -1,0 +1,7 @@
+.root {
+  @apply flex flex-col gap-xs;
+
+  .weekly_hours {
+    @apply flex flex-wrap items-center justify-center gap-xs;
+  }
+}

@@ -4,23 +4,23 @@ import css from "./style.module.scss"
 
 import { useUser } from "@/store/User";
 
-import { ProjectsTypes } from "@/assets/data/type";
+import { ProjectsType } from "@/assets/data/type";
 
 import Card from "@/components/Card";
 import ScrollArea from "@/components/ScrollArea"
 import OngoingProject from "@/components/Item/OngoingProject";
 import ArchivedProject from "@/components/Item/ArchivedProject";
 
-import Input from "@/components/Input";
+import Input from "@/components/Form/Input";
 import { Search } from "lucide-react";
 import { useState } from "react";
 
 const History = () => {
   const projects = useUser(store => store.projects)
-  const ongoingProjects: ProjectsTypes[] = projects.filter(project => project.status !== 'archived')
-  // const archivedProjects: ProjectsTypes[] = projects.filter(project => project.status === 'archived')
+  const ongoingProjects: ProjectsType[] = projects.filter(project => project.status !== 'archived')
+  // const archivedProjects: ProjectsType[] = projects.filter(project => project.status === 'archived')
 
-  const [archivedProjects, setArchivedProjects] = useState<ProjectsTypes[]>(projects.filter(project => project.status === 'archived'))
+  const [archivedProjects, setArchivedProjects] = useState<ProjectsType[]>(projects.filter(project => project.status === 'archived'))
 
   const handleInputSearch = (value: string) => {
     const filter = projects.filter(project => {

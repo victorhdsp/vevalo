@@ -1,15 +1,15 @@
 import { create } from 'zustand'
 
-import { ServiceTypes } from '@/assets/data/type'
+import { ServiceType } from '@/assets/data/type'
 import { generateId } from '@/assets/utils'
 
-type CurrentServiceStore = ServiceTypes & {
+type CurrentServiceStore = ServiceType & {
   reset: () => void
   createNewCost: () => void
   removeCost: (id: string) => void
 }
 
-const initialState: () => ServiceTypes = () => ({
+const initialState: () => ServiceType = () => ({
   id: generateId(),
   name: '',
   costs: [],

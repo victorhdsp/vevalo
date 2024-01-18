@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import Button from '@/components/Button/Default';
-import Input from '@/components/Input';
+import Input from '@/components/Form/Input';
 
 import { loginGoogle } from '@/services/firebase/auth'
 import { userRegister } from '@/app/(access)/entrar/actions'
@@ -66,7 +66,7 @@ export default function Home() {
         </form>
 
         <Button 
-          variant="secondary"
+          variant="outline"
           onClick={handleGoogleLogin}
         >
           Entrar com o google

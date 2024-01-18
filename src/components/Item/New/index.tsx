@@ -15,7 +15,9 @@ const New = (props: Props) => {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <span><ButtonNew /></span>
+        <span>
+          
+        </span>
       </Dialog.Trigger>
 
       <Dialog.Portal>

@@ -1,0 +1,50 @@
+.dialog-overlay {
+  @apply bg-slate-950 fixed inset-0 z-20;
+  --tw-bg-opacity: 0.50;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+}
+
+.dialog-content {
+  @apply fixed top-0 right-0 z-30;
+  @apply p-xl;
+  @apply h-full;
+  animation: contentShow 200ms;
+
+  &[data-state="open"] {
+    @apply translate-x-0;
+  }
+
+  .card {
+    @apply flex flex-col h-full;
+    
+    .header {
+      @apply flex justify-between items-center gap-xl;
+    }
+
+    .body {
+      @apply flex flex-col gap-md;
+      @apply h-full;
+    }
+  }
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    right: -100%;
+  }
+  to {
+    opacity: 1;
+    right: 0%;
+  }
+}

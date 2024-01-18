@@ -1,0 +1,26 @@
+.trigger {
+  @apply flex justify-between items-center gap-xs;
+  @apply px-xs py-0;
+  @apply w-full h-[40px];
+  @apply bg-gray;
+  @apply rounded-sm;
+  @apply font-normal;
+}
+
+.content {
+  @apply p-xs;
+  @apply bg-white;
+  @apply border border-gray rounded-sm;
+  @apply w-full;
+  @apply z-30;
+}
+
+.item {
+  @apply flex items-center gap-xs;
+  @apply cursor-pointer;
+  @apply rounded-sm;
+  
+  &:hover {
+    @apply bg-white;
+  }
+}

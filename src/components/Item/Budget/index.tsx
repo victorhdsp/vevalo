@@ -2,16 +2,16 @@ import css from './style.module.scss';
 
 import Button from '@/components/Button/Default';
 import Card from '@/components/Card';
-import Label from '@/components/Label';
+import Label from '@/components/Form/Label';
 
 import { Trash } from 'lucide-react';
 import { makeFinance } from '@/assets/utils/number';
 
-import { BudgetTypes } from '@/assets/data/type';
+import { BudgetType } from '@/assets/data/type';
 import { useCurrentProject } from '@/store/currentProject';
 
 interface Props {
-  item: BudgetTypes;
+  item: BudgetType;
   hiddenFooter?: boolean
 }
 

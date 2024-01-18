@@ -2,8 +2,10 @@
   @apply mb-auto;
   
   .card {
-    @apply w-[110px];
-    @apply h-[155px];
+    @apply w-[150px];
+    @apply h-[50px];
+    @apply bg-primary;
+    @apply text-white;
 
     @apply flex items-center justify-center;
     @apply transition-all duration-300 ease-in-out;
@@ -15,8 +17,7 @@
 
   &:hover {
     .card {
-      --tw-bg-opacity: 0.25;
-      @apply bg-zinc-100;
+      --tw-bg-opacity: 0.75;
     }
   }
 }

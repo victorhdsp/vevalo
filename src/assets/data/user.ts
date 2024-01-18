@@ -1,6 +1,6 @@
-import { BudgetTypes, ProjectsTypes, ServiceTypes, UserTypes } from "./type";
+import { BudgetType, ProjectsType, ServiceType, UserType } from "./type";
 
-const services: ServiceTypes[] = [
+const services: ServiceType[] = [
   {
     id: 'service1',
     name: 'Landing Page',
@@ -12,7 +12,7 @@ const services: ServiceTypes[] = [
   }
 ]
 
-const budgets: BudgetTypes[] = [
+const budgets: BudgetType[] = [
   {
     id: 'budget1',
     service: services[0],
@@ -37,7 +37,7 @@ const budgets: BudgetTypes[] = [
   }
 ]
 
-const projects: ProjectsTypes[] = [
+const projects: ProjectsType[] = [
   {
     id: 'project1',
     name: 'Project 1',
@@ -49,7 +49,7 @@ const projects: ProjectsTypes[] = [
   },
 ]
 
-const User: UserTypes = {
+const User: UserType = {
   id: 'user1',
   profile: {
     name: 'John Doe Desenvolvimento',

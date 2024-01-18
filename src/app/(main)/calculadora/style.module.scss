@@ -1,0 +1,11 @@
+.page {
+  @apply grid gap-lg;
+  grid-template-columns: minmax(min-content, 550px) 1fr;
+  @apply h-full;
+}
+
+@media screen and (max-width: 1150px) {
+  .page {
+    @apply grid-cols-2;
+  }
+}

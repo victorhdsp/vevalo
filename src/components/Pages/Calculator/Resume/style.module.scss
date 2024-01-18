@@ -1,0 +1,15 @@
+.root {
+  @apply flex flex-col gap-sm;
+
+  .services {
+    .content {
+      @apply flex flex-col gap-md;
+
+    }
+  }
+
+  .footer {
+    @apply h-full;
+    @apply flex flex-col justify-end;
+  }
+}

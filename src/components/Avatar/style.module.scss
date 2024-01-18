@@ -1,7 +1,8 @@
 .avatar-box {
-  @apply rounded-full;
-  @apply aspect-square;
+  @apply rounded-lg;
+  // @apply aspect-square;
   @apply overflow-hidden;
+  @apply w-full h-full;
 
   .image {
     @apply w-full h-full;

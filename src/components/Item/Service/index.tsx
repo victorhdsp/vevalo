@@ -4,12 +4,12 @@ import ButtonIcon from '@/components/Button/Icon';
 import Card from '@/components/Card';
 
 import { Star, MoreHorizontal } from 'lucide-react';
-import { ServiceTypes } from '@/assets/data/type';
+import { ServiceType } from '@/assets/data/type';
 import EditOrDelete from '@/components/Popover/EditOrDelete';
 import { useUser } from '@/store/User';
 
 interface Props {
-  item: ServiceTypes;
+  item: ServiceType;
   onClick?: () => void;
 }
 

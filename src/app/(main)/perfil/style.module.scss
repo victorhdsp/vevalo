@@ -1,0 +1,20 @@
+.page {
+  @apply grid grid-rows-2 gap-lg;
+  grid-template-columns: minmax(min-content, 550px) 1fr;
+  @apply h-full;
+
+  >*:nth-child(1) {
+    @apply row-span-2;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .page {
+    @apply grid-cols-2;
+    grid-template-rows: min-content 1fr;
+
+    >*:nth-child(1) {
+      @apply row-span-1 col-span-2;
+    }
+  }
+}

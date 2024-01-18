@@ -3,49 +3,70 @@ import type { Config } from 'tailwindcss'
 const settings = {
   colors: {
     primary: {
-      'DEFAULT': 'var(--primary-500)',
-      900: 'var(--primary-900)',
-      300: 'var(--primary-300)',
+      'DEFAULT': '#605BFF',
     },
     secondary: {
-      'DEFAULT': 'var(--secondary-500)',
-      900: 'var(--secondary-900)',
-      300: 'var(--secondary-300)',
+      'DEFAULT': '#FFCB32',
+    },
+    tertiary: {
+      'DEFAULT': '#67B0FF'
     },
     white: {
-      'DEFAULT': 'var(--white)',
-      full: 'var(--white-full)',
+      'DEFAULT': '#FFFFFF',
     },
-    black: 'var(--black)',
-    gray: 'var(--gray)',
-    red: 'var(--red)',
+    black: {
+      'DEFAULT': '#7B7B7B',
+    },
+    gray: {
+      'DEFAULT': '#F2F1FF',
+    },
+    red: {
+      'DEFAULT': '#DC2626',
+    },
   },
 
   spacing: {
     0: '0',
-    'xs': 'var(--spacing-xs)',
-    'sm': 'var(--spacing-sm)',
-    'md': 'var(--spacing-md)',
-    'lg': 'var(--spacing-lg)',
-    'xl': 'var(--spacing-xl)',
+    'xs': '0.7125rem',
+    'sm': '0.8125rem',
+    'md': '1.75rem',
+    'lg': '2.25rem',
+    'xl': '2.5rem'
+  },
+
+  gap: {
+    0: '0',
+    'xs': '0.5rem',
+    'sm': '0.75rem',
+    'md': '1.125rem',
+    'lg': '2.5rem',
+    'xl': '3.375rem',
+  },
+
+  borderRadius: {
+    'none': '0',
+    'xs': '0.25rem',
+    'sm': '0.5rem',
+    'md': '0.75rem',
+    'lg': '1rem',
+    'xl': '1.25rem',
+    'full': '9999px',
   },
 
   maxWidth: {
-    'xs': 'var(--max-width-xs)',
-    'sm': 'var(--max-width-sm)',
-    'md': 'var(--max-width-md)',
-    'lg': 'var(--max-width-lg)',
-    'xl': 'var(--max-width-xl)',
+    'xs': '4.125rem',
+    'sm': '12.75rem',
+    'md': '29.4375rem',
   },
 
   fontFamily: {
-    sans: ['Karla', 'sans-serif']
+    sans: ['Lora', 'serif']
   },
 
   fontSize: {
-    'lg': 'var(--font-size-lg)',
-    'base': 'var(--font-size-base)',
-    'sm': 'var(--font-size-sm)',
+    'lg': '1.125rem',
+    'base': '1rem',
+    'sm': '0.875rem',
   },
 
   fontWeight: {
@@ -66,11 +87,12 @@ const config: Config = {
       colors: settings.colors,
     },
     spacing: settings.spacing,
-    gap: settings.spacing,
+    gap: settings.gap,
     maxWidth: settings.maxWidth,
     fontFamily: settings.fontFamily,
     fontSize: settings.fontSize,
     fontWeight: settings.fontWeight,
+    borderRadius: settings.borderRadius
   },
   plugins: [],
 }

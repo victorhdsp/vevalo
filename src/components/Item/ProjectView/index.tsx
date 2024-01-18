@@ -9,12 +9,12 @@ import Card from "@/components/Card"
 import ScrollArea from "@/components/ScrollArea"
 import ItemBudget from "@/components/Item/Budget"
 
-import { ProjectsTypes, Status } from '@/assets/data/type'
+import { ProjectsType, Status } from '@/assets/data/type'
 import { makeFinance } from '@/assets/utils/number'
 
 interface Props {
   children: React.ReactNode
-  project: ProjectsTypes
+  project: ProjectsType
 }
 
 const ProjectView = ({children, project}: Props) => {

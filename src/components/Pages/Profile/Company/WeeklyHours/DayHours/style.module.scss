@@ -1,0 +1,19 @@
+.root {
+  @apply border-2 border-solid border-gray;
+  @apply bg-gray rounded-sm;
+  
+  .name,
+  .value {
+    @apply flex items-center justify-center gap-xs;
+    @apply w-[60px] h-[40px];
+
+    * {
+      @apply text-center;
+      padding: 0 !important;
+    }
+  }
+
+  .name {
+    @apply bg-white rounded-xs;
+  }
+}

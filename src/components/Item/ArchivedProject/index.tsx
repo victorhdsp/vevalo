@@ -2,7 +2,7 @@
 
 import css from './style.module.scss'
 
-import { ProjectsTypes } from "@/assets/data/type"
+import { ProjectsType } from "@/assets/data/type"
 import { Search } from "lucide-react"
 
 import Card from "@/components/Card"
@@ -12,7 +12,7 @@ import ProjectView from '@/components/Item/ProjectView'
 import { makeFinance } from "@/assets/utils/number"
 
 interface Props {
-  project: ProjectsTypes
+  project: ProjectsType
 }
 
 const ArchivedProject = ({project}: Props) => {

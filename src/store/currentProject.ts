@@ -1,20 +1,20 @@
 import { create } from 'zustand'
 
-import { BudgetTypes, ProjectsTypes } from '@/assets/data/type'
+import { BudgetType, ProjectsType } from '@/assets/data/type'
 import { generateId } from '@/assets/utils'
 import { useUser } from './User'
 
-type CurrentProjectStore = ProjectsTypes & {
+type CurrentProjectStore = ProjectsType & {
   reset: () => void
-  createNewBudget: (budget: BudgetTypes) => void
+  createNewBudget: (budget: BudgetType) => void
   removeBudget: (id: string) => void
 }
 
-const fiscal = useUser.getState().profile.fiscal
+const fiscal = useUser.getState().user.profile.fiscal
 
-const initialState: () => ProjectsTypes = () => ({
+const initialState: () => ProjectsType = () => ({
   id: generateId(),
-  expenses: `${fiscal.administrative_expenses + fiscal.worker.salary}`,
+  expenses: `${fiscal.administrative_expenses}`,
   name: '',
   status: 'ongoing',
   discount: '0',

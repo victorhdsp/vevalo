@@ -1,6 +1,7 @@
-import { BudgetTypes, CostsTypes, Money, ServiceTypes, WorkerType } from "../data/type";
+import { BudgetType, CostsTypes, Money, ServiceType, WorkerType } from "../data/type";
 
-export const makeFinance = (num: number): string => {
+export const makeFinance = (num: number|string): string => {
+  if(typeof num === 'string') num = parseFloat(num);
   return num.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 }
 

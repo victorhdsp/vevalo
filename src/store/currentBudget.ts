@@ -1,18 +1,18 @@
 import { create } from 'zustand'
 
-import { BudgetTypes, ServiceTypes } from '@/assets/data/type'
+import { BudgetType, ServiceType } from '@/assets/data/type'
 import { generateId } from '@/assets/utils'
 
 import { useUser } from '@/store/User'
 const services = useUser.getState().services
 
-type CurrentBudgetStore = BudgetTypes & {
-  selectService: (service: ServiceTypes) => void
+type CurrentBudgetStore = BudgetType & {
+  selectService: (service: ServiceType) => void
   reset: () => void
   changeCostValue: (name:string, value:string) => void
 }
 
-const initialState: () => BudgetTypes = () => ({
+const initialState: () => BudgetType = () => ({
   id: generateId(),
   service: services[0],
   worked_hours: 0,

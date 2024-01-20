@@ -2,7 +2,7 @@ export type Status = 'archived' | 'recused' | 'ongoing'
 
 export type Money = string
 
-export type CostsTypes = {
+export type CostsType = {
   id: string;
   name: string;
   value: Money 
@@ -17,7 +17,8 @@ export interface WorkerType {
 export interface ServiceType {
   id: string;
   name: string;
-  costs: CostsTypes[];
+  description: string;
+  costs: CostsType[];
   profit_margin: Money;
 }
 
@@ -37,7 +38,7 @@ export interface BudgetType {
   service: ServiceType;
   discount: Money
   worked_hours: number;
-  costs: CostsTypes[];
+  costs: CostsType[];
   profit_margin: Money;
   result?: ResultBudgetType
 }

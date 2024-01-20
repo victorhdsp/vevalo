@@ -6,6 +6,7 @@
   --scrollbar-size: 10px;
   
   .viewport {
+    @apply absolute inset-0;
     @apply w-full h-full;
     // @apply pr-md;
     border-radius: inherit;

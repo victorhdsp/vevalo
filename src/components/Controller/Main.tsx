@@ -2,7 +2,7 @@
 
 import { auth } from '@/services/firebase';
 
-import { getUser } from '@/services/firebase/database'
+import { getUserData } from '@/services/firebase/database'
 import { useUser } from '@/store/User';
 
 import { onAuthStateChanged } from 'firebase/auth';
@@ -14,7 +14,7 @@ const Controller = () => {
   useEffect(() => {
     onAuthStateChanged(auth, async (hasConnected) => {
       if (hasConnected) {
-        await getUser()
+        await getUserData()
       } else {
         window.location.href = '/entrar'
       }

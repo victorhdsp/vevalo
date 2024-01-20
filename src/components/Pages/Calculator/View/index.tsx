@@ -8,13 +8,16 @@ import Card from "@/components/Card"
 import Button from "@/components/Button/Default"
 
 import { makeFinance } from "@/assets/utils/number"
+import EditOrDelete from '@/components/Popover/EditOrDelete'
 
 interface Props {
   name: string,
-  value: string
+  value: string,
+  onClickInEdit?: () => void;
+  onClickInDelete?: () => void;
 }
 
-const CollaboratorView = ({name, value}: Props) => {
+const CollaboratorView = ({name, value, ...props}: Props) => {
   return (
     <div className={css["root"]}>
       <Card orientation="horizontal" className={css["calculator-view"]}>
@@ -24,7 +27,12 @@ const CollaboratorView = ({name, value}: Props) => {
         </div>
 
         <div className={css["footer"]}>
-          <Button variant='outline' icon={MoreHorizontal}/>
+          <EditOrDelete
+            onClickInEdit={props.onClickInEdit}
+            onClickInDelete={props.onClickInDelete}
+          >
+            <Button variant='outline' icon={MoreHorizontal}/>
+          </EditOrDelete>
         </div>
       </Card>
     </div>

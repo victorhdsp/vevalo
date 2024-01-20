@@ -10,10 +10,10 @@ type DatabaseUserStore = {
   getFromDatabase: () => void
 }
 
-
 export const useUserDatabase = create<DatabaseUserStore>((set) => ({
   user: null,
-  saveOnDatabase: (user) => {
+  // updateService: (key, value) => set(store => ({ service: { ...store.service, [key]: value } })),
+  saveOnDatabase: (user) => set((store) => {
     const isNewUser = useUserDatabase.getState().user === null
 
     if (isNewUser) {
@@ -21,16 +21,20 @@ export const useUserDatabase = create<DatabaseUserStore>((set) => ({
     } else {
       updateUserData(user.id, { ...user })
     }
-  },
-  getFromDatabase: () => {
+
+    return { user }
+  }),
+  getFromDatabase: () => set((store) => {
     // get user from database
     getUserData().then((user) => {
-      if (user) {
-        set({ user })
-      } else {
-        set({ user: null })
-        console.log('No user found')
+      if (user === false) {
+        console.log('user not found')
+        return { user: null }
       }
+      
+      set({ user})
     })
-  }
+
+    return { user: null }
+  })
 }))

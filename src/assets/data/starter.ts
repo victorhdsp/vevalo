@@ -12,7 +12,7 @@ const generateUser:GenerateUserType  = (uid) => ({
       email: '',
     },
     fiscal: {
-      administrative_expenses: '',
+      administrative_expenses: '0',
       weekly_hours: [
         { name: "seg", label: "Seg", value: "8" },
         { name: "ter", label: "Ter", value: "8" },

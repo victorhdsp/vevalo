@@ -15,5 +15,10 @@
 
   .name {
     @apply bg-white rounded-xs;
+    @apply transition-colors duration-300 ease-in-out;
+
+    &[data-value="0"] {
+      --tw-bg-opacity: 0.3;
+    }
   }
 }

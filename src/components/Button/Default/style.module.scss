@@ -20,7 +20,11 @@
     @apply bg-transparent;
     @apply text-black;
     @apply border-black
-    
+  }
+  &[data-variant='ghost'] {
+    @apply bg-transparent;
+    @apply text-black;
+    @apply border-transparent;
   }
 }
 

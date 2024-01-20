@@ -1,10 +1,13 @@
 import { create } from 'zustand'
 
-import { ServiceType } from '@/assets/data/type'
+import { CostsType, ServiceType } from '@/assets/data/type'
 import { generateId } from '@/assets/utils'
 
-type CurrentServiceStore = ServiceType & {
+type CurrentServiceStore = {
+  service: ServiceType
   reset: () => void
+  updateService: (key: keyof ServiceType, value: string) => void
+  updateCost: (costId: string, key: keyof CostsType, value: string) => void
   createNewCost: () => void
   removeCost: (id: string) => void
 }
@@ -12,14 +15,27 @@ type CurrentServiceStore = ServiceType & {
 const initialState: () => ServiceType = () => ({
   id: generateId(),
   name: '',
+  description: '',
   costs: [],
-  profit_margin: '20%'
+  profit_margin: '100'
+})
+
+const newCostGenerate = () => ({
+  id: generateId(),
+  name: '',
+  value: ''
 })
 
 export const useCurrentService = create<CurrentServiceStore>((set) => ({
-  ...initialState(),
-
-  reset: () => set(_ => ({ ...initialState() })),
-  createNewCost: () => set(store => ({ costs: [ ...store.costs, { id: generateId(), name: '', value: '0' }] })),
-  removeCost: (costId) => set(store => ({ costs: store.costs.filter(c => c.id !== costId) }))
+  service: initialState(),
+  reset: () => set(_ => ({ service: initialState() })),
+  updateService: (key, value) => set(store => ({ service: { ...store.service, [key]: value } })),
+  updateCost: (costId, key, value) => set(store => ({ service: { ...store.service, costs: store.service.costs.map(cost => {
+    if (cost.id === costId) {
+      return { ...cost, [key]: value }
+    }
+    return cost
+  })}})),
+  createNewCost: () => set(store => ({ service: { ...store.service, costs: [...store.service.costs, newCostGenerate()]}})),
+  removeCost: (costId) => set(store => ({ service: { ...store.service, costs: store.service.costs.filter(cost => cost.id !== costId)}}))
 }))

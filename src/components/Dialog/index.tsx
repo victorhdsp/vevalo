@@ -10,16 +10,21 @@ interface Props {
   title: string;
   children: React.ReactNode;
   trigger: React.ReactNode;
+  onOpenChange?: () => void;
+}
+
+export const ExternCloseDialog = () => {
+  const dialog = document.querySelector("#dialog-close-button") as HTMLButtonElement
+  console.log(dialog)
+  dialog?.click()
 }
 
 const _Dialog = (props: Props) => {
   
   return (
-    <Dialog.Root>
+    <Dialog.Root onOpenChange={props.onOpenChange}>
       <Dialog.Trigger asChild>
-        <span>
-          { props.trigger }
-        </span>
+        { props.trigger }
       </Dialog.Trigger>
 
       <Dialog.Portal>
@@ -31,7 +36,7 @@ const _Dialog = (props: Props) => {
                 { props.title }
               </Dialog.Title>
               <Dialog.Close asChild>
-                <Button className={css["close"]} variant='outline' icon={X}/>
+                <Button id="dialog-close-button" className={css["close"]} variant='outline' icon={X}/>
               </Dialog.Close>
             </div>
             

@@ -1,11 +1,19 @@
 .root {
   @apply flex flex-col gap-sm;
 
-  .collaborators {
+  .costs {
     @apply h-full;
+    
     .content {
       @apply flex flex-col gap-md;
 
+      .cost-item {
+        @apply flex items-center gap-sm;
+      }
+
+      button {
+        @apply w-max;
+      }
     }
   }
 

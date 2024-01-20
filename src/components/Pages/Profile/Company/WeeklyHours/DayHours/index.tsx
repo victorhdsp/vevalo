@@ -13,7 +13,7 @@ interface Props {
 const DayHours = (props:Props) => {
   return (
     <div className={css["root"]}>
-      <div className={css["name"]}>
+      <div className={css["name"]} data-value={props.value}>
         <Label name={props.name}>
           {props.label}
         </Label>
@@ -24,6 +24,7 @@ const DayHours = (props:Props) => {
           name={props.name} 
           value={props.value} 
           type="number" 
+          min={0}
           onInput={props?.onInput}
         />
       </div>

@@ -1,4 +1,4 @@
-import { BudgetType, CostsTypes, Money, ServiceType, WorkerType } from "../data/type";
+import { BudgetType, CostsType, Money, ServiceType, WorkerType } from "../data/type";
 
 export const makeFinance = (num: number|string): string => {
   if(typeof num === 'string') num = parseFloat(num);
@@ -12,7 +12,7 @@ export const calculeBudget = (
     weekly_hours: number;
     salary: string;
   }[],
-  costs: CostsTypes[],
+  costs: CostsType[],
   discount: string,
   profit_margin: string,
   worked_hours: number
@@ -29,7 +29,7 @@ export const calculeBudget = (
 
   const fixedCosts = costs.filter(cost => !cost.value.includes('%'));
   const variableCosts = costs.filter(cost => cost.value.includes('%'));
-  const parseCosts = (budgetCosts:CostsTypes[]) => budgetCosts.map(cost => ({...cost, value: parseFloat(cost.value)}))
+  const parseCosts = (budgetCosts:CostsType[]) => budgetCosts.map(cost => ({...cost, value: parseFloat(cost.value)}))
 
   if(!workers) return;
   contextWorkers.forEach(worker => workersHoursValue += worker.salary / (worker.weekly_hours * 4));

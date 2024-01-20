@@ -2,10 +2,10 @@
 
 import css from './style.module.scss'
 
-interface Props {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ElementType
   children?: React.ReactNode
-  variant?: 'primary' | 'secondary' | 'outline' | 'danger'
+  variant?: 'primary' | 'secondary' | 'outline' | 'danger' | 'ghost'
   type?: 'button' | 'submit' | 'reset'
   size?: 'small' | 'medium'
   label?: string
@@ -22,6 +22,7 @@ const _Button = (props: Props) => {
   
   return (
     <button 
+    {...props}
       data-variant={variant}
       data-size={size}
       className={`${css['button']} ${props.className || ''}`}

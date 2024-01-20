@@ -7,14 +7,16 @@ import { MoreHorizontal } from "lucide-react"
 import Card from "@/components/Card"
 import Button from "@/components/Button/Default"
 
-import { makeFinance } from "@/assets/utils/number"
+import EditOrDelete from '@/components/Popover/EditOrDelete'
 
 interface Props {
   name: string,
-  value: string
+  value: string,
+  onClickInEdit?: () => void;
+  onClickInDelete?: () => void;
 }
 
-const View = ({name, value}: Props) => {
+const View = ({name, value, ...props}: Props) => {
   return (
     <div className={css["root"]}>
       <Card orientation="horizontal" className={css["profile-view"]}>
@@ -24,7 +26,12 @@ const View = ({name, value}: Props) => {
         </div>
 
         <div className={css["footer"]}>
-          <Button variant='outline' icon={MoreHorizontal}/>
+          <EditOrDelete
+            onClickInEdit={props.onClickInEdit}
+            onClickInDelete={props.onClickInDelete}
+          >
+            <Button variant='outline' icon={MoreHorizontal}/>
+          </EditOrDelete>
         </div>
       </Card>
     </div>

@@ -35,6 +35,11 @@ const Input = ({icon:Icon, name, label, ...props}: Props) => {
     if (props.onInput) props.onInput(e)
   }
 
+  const [type, setType] = useState(props.type || 'text')
+  useEffect(() => {
+    if (props.isMoney || props.isPercent) setType('number')
+  }, [])
+
   return (
     <div className={css["root"]}>
       { label && <Label { ...props }  name={name}> { label } </Label> }
@@ -43,7 +48,8 @@ const Input = ({icon:Icon, name, label, ...props}: Props) => {
           { Icon && <Icon className={css["icon"]} /> }
           { prefix && <span className={css["prefix"]}>{ prefix }</span> }
           <input 
-            type="text" 
+            type={type}
+            min={0}
             {...props} 
             name={name} 
             value={value} 

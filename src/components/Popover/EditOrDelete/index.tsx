@@ -18,14 +18,10 @@ const EditOrDelete = (props: Props) => {
     <HoverCard.Trigger>
       { props.children }
     </HoverCard.Trigger>
-    <HoverCard.Content side="right" sideOffset={5}>
+    <HoverCard.Content className={css["root"]} side="right" sideOffset={5}>
       <Card orientation='vertical' className={css['card']}>
-        {/* <Button onClick={props.onClickInEdit} icon={Edit} variant='primary' size='medium'>
-          Editar
-        </Button> */}
-        <Button onClick={props.onClickInDelete} icon={Trash} variant='danger' size='medium'>
-          Deletar
-        </Button>
+        <Button onClick={props.onClickInEdit} icon={Edit} variant='primary' size='small'>Editar</Button>
+        <Button onClick={props.onClickInDelete} icon={Trash} variant='danger' size='small'>Deletar</Button>
       </Card>
     </HoverCard.Content>
   </HoverCard.Root>

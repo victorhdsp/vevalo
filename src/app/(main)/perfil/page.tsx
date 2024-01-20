@@ -18,11 +18,11 @@ export default function ProfilePage() {
     }
 
     if (!profile.company.name) createToast('Preencha o nome da empresa', 'error')
-    if (!profile.fiscal.administrative_expenses) createToast('Preencha as despesas administrativas', 'error')
-    if (!profile.fiscal.weekly_hours[0]) createToast('Preencha as horas semanais', 'error')
-    if (services.length == 0) createToast('Adicione pelo menos um serviço', 'error')
-    if (workers.length == 0) createToast('Adicione pelo menos um colaborador', 'error')
-    return
+    else if (!profile.fiscal.administrative_expenses) createToast('Preencha as despesas administrativas', 'error')
+    else if (!profile.fiscal.weekly_hours[0]) createToast('Preencha as horas semanais', 'error')
+    else if (services.length == 0) createToast('Adicione pelo menos um serviço', 'error')
+    else if (workers.length == 0) createToast('Adicione pelo menos um colaborador', 'error')
+    else createToast('Perfil salvo com sucesso', 'success')
   }
 
   return (

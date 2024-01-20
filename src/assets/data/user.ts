@@ -1,9 +1,10 @@
-import { BudgetType, ProjectsType, ServiceType, UserType } from "./type";
+import { BudgetType, ProjectsType, ServiceType, UserType, WorkerType } from "./type";
 
 const services: ServiceType[] = [
   {
     id: 'service1',
     name: 'Landing Page',
+    description: 'Landing Page',
     costs: [
       { id:'cost1', name: 'Hospedagem', value: '30' },
       { id: 'cost2', name: 'Domínio', value: '40' },
@@ -49,22 +50,37 @@ const projects: ProjectsType[] = [
   },
 ]
 
+const workers: WorkerType[] = [
+  {
+    id: 'worker1',
+    name: 'John Doe',
+    salary: '450',
+  },
+]
+
 const User: UserType = {
   id: 'user1',
   profile: {
-    name: 'John Doe Desenvolvimento',
-    tax_regime: 'simples',
-    segment: 'technology',
-    email: 'johndoe@gmail.com',
+    company: {
+      name: 'John Doe Desenvolvimento',
+      tax_regime: 'simples',
+      segment: 'technology',
+      email: 'johndoe@gmail.com',
+    },
     fiscal: {
       administrative_expenses: '834',
-      weekly_hours: 40,
-      worker: {
-        weekly_hours: 40,
-        salary: '3000',
-      }
+      weekly_hours: [
+        { name: 'seg', label: 'Seg', value: '8' },
+        { name: 'ter', label: 'Ter', value: '8' },
+        { name: 'qua', label: 'Qua', value: '8' },
+        { name: 'qui', label: 'Qui', value: '8' },
+        { name: 'sex', label: 'Sex', value: '8' },
+        { name: 'sab', label: 'Sab', value: '0' },
+        { name: 'dom', label: 'Dom', value: '0' }
+      ],
     },
   },
+  workers,
   projects,
   budgets,
   services,

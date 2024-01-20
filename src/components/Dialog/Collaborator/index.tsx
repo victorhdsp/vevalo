@@ -1,10 +1,10 @@
 import css from './style.module.scss'
 
 import { useToast } from '@chakra-ui/toast';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { User } from 'lucide-react';
 
-import  Dialog from '../index';
+import  Dialog, { ExternCloseDialog } from '../index';
 
 import Button from "@/components/Button/Default"
 import Input from '@/components/Form/Input'
@@ -22,27 +22,34 @@ const DialogCollaborator = ({worker, ...props}: Props) => {
   const toast = useToast()
   const updateWorkers = useUser((store) => (store.updateWorkers))
   const [name, setName] = useState(worker?.name || '')
-  const [salary, setSalary] = useState(worker?.salary || '')
+  const [salary, setSalary] = useState(worker?.salary || '0')
+
+  useEffect(() => {
+    setName(worker?.name || '')
+    setSalary(worker?.salary || '0')
+  }, [worker])
 
   const handleSaveWorker = () => {
     if(!name) { toast({ title: 'Nome é obrigatório', status: 'error' }) }
-    if(!salary) { toast({ title: 'Salário é obrigatório', status: 'error' }) }
-
-    const newWorker = {
-      id: worker?.id || generateId(),
-      name,
-      salary
+    else if(!salary) { toast({ title: 'Salário é obrigatório', status: 'error' }) }
+    else {
+      const newWorker = {
+        id: worker?.id || generateId(),
+        name,
+        salary
+      }
+  
+      if (worker) {
+        updateWorkers('update', newWorker)
+      } else {
+        updateWorkers('add', newWorker)
+      }
+  
+      ExternCloseDialog()
+      setName('')
+      setSalary('')
+      toast({ title: 'Colaborador salvo com sucesso', status: 'success' })
     }
-
-    if (worker) {
-      updateWorkers('update', newWorker)
-    } else {
-      updateWorkers('add', newWorker)
-    }
-
-    setName('')
-    setSalary('')
-    toast({ title: 'Colaborador salvo com sucesso', status: 'success' })
   }
 
   return (

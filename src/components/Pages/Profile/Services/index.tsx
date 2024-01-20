@@ -1,21 +1,24 @@
 import css from './style.module.scss'
 
-
-import { Save } from 'lucide-react'
+import { useState } from 'react'
 import { useUser } from '@/store/User'
-import { useToast } from '@chakra-ui/react'
 
 import Card from "@/components/Card"
 import ScrollArea from '@/components/ScrollArea'
-import ItemNew from '@/components/Item/New'
-// import FormService from '@/components/Form/Service'
 import ServiceView from '../View'
-
 import ButtonNew from '@/components/Button/New'
+import { ServiceType } from '@/assets/data/type'
+import Link from 'next/link'
+
 
 const Services = () => {
-  const toast = useToast()
-  const services = useUser((store) => (store.user.services))
+  const [services, updateServices] = useUser((store) => ([store.user.services, store.updateServices]))
+  const [currentService, setCurrentService] = useState<ServiceType|undefined>(undefined)
+
+  const handleEditService = (Service: ServiceType) => {
+    setCurrentService(Service)
+    document.getElementById('edit-collaborator')?.click()
+  }
 
   return (
     <Card className={css["root"]} orientation="vertical">
@@ -24,13 +27,22 @@ const Services = () => {
         <ScrollArea className={css["content"]}>
           {
             services &&
-            services.reverse().map((service) => (
-              <ServiceView key={service.id} name={service.name} value={service.profit_margin} />
-            ))
+            services
+              .sort((a, b) => (a.name > b.name ? 1 : -1))
+              .map((service) => (
+                <ServiceView 
+                  key={service.id} 
+                  name={service.name} 
+                  value={service.profit_margin} 
+                  onClickInEdit={() => handleEditService(service)}
+                  onClickInDelete={() => {updateServices("remove", service)}}
+                />
+              ))
           }
-
-          <ButtonNew />
         </ScrollArea>
+      </div>
+      <div className={css["footer"]}>
+        <Link href="/perfil/novo_servico"><ButtonNew /></Link>
       </div>
     </Card>
   )

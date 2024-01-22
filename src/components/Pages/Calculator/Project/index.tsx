@@ -14,7 +14,12 @@ import { makeFinance } from "@/assets/utils/number";
 import { newProject } from "../actions";
 
 const Project = () => {
-  const currentProject = useCurrentProject(store => store)
+  const [currentProject, updateProject] = useCurrentProject(store => [store.project, store.updateProject])
+
+  const handleSave = () => {
+    // newProject(currentProject)
+    console.log(currentProject)
+  }
 
   return (
     <Card className={css["root"]} orientation="vertical">
@@ -29,6 +34,18 @@ const Project = () => {
               name="name" 
               label="Nome do cliente" 
               required
+              value={currentProject.name}
+              onInput={(e) => updateProject('name', e.currentTarget.value)}
+            />
+            <Input 
+              type="number" 
+              name="discount" 
+              label="Desconto" 
+              required 
+              isMoney 
+              isPercent
+              value={currentProject.discount}
+              onInput={(e) => updateProject('discount', e.currentTarget.value)}
             />
             <Input 
               type="number" 
@@ -37,6 +54,8 @@ const Project = () => {
               required 
               isMoney 
               isPercent
+              value={currentProject.impost}
+              onInput={(e) => updateProject('impost', e.currentTarget.value)}
             />
           </div>
 
@@ -45,7 +64,7 @@ const Project = () => {
         </div>
 
         <div className={css["footer"]}>
-          <Button icon={Save} variant="outline">
+          <Button icon={Save} variant="outline" onClick={handleSave}>
             Salvar
           </Button>
         </div>

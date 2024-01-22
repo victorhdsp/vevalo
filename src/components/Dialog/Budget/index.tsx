@@ -49,6 +49,7 @@ const DialogBudget = ({budget, ...props}: Props) => {
       const newBudget:BudgetType = {
         ...currentBudget,
         id: budget ? budget.id : generateId(),
+        service: budget ? budget.service : currentBudget.service,
         result,
       }
   
@@ -58,6 +59,7 @@ const DialogBudget = ({budget, ...props}: Props) => {
         updateBudgets('add', newBudget)
       }
   
+      console.log(newBudget)
       ExternCloseDialog()
       toast({ title: 'Orçamento salvo com sucesso', status: 'success' })
     }

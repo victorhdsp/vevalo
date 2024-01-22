@@ -3,7 +3,7 @@ import css from './style.module.scss'
 import { useState } from 'react'
 
 import Input from '@/components/Form/Input'
-import BudgetCalendarRange from './CalendarRange'
+import BudgetCalendarRange from '@/components/Item/CalendarRange'
 import Select from '@/components/Form/Select/Default'
 
 import { useCurrentBudget } from '@/store/currentBudget'
@@ -22,6 +22,8 @@ const SelectHOursOrDays = () => {
     setSelected(value)
     updateBudget("worked_hours", '0')
   }
+
+  const selectCalendarRange = (worked_hours:number) => updateBudget("worked_hours", `${worked_hours}`)
 
   return (
     <div className={css["root"]}>
@@ -44,7 +46,7 @@ const SelectHOursOrDays = () => {
             onInput={(event) => updateBudget("worked_hours", event.currentTarget.value)}
           />
         ) : (
-          <BudgetCalendarRange />
+          <BudgetCalendarRange onChange={selectCalendarRange} />
         )
       }
     </div>

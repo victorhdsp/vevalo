@@ -6,7 +6,12 @@ export const makeFinance = (num: number|string): string => {
 }
 
 export const calculeWeeklyHours = (weekly_hours: WeeklyHourType[]) => {
-  return weekly_hours.reduce((acc, cur) => acc + parseInt(cur.value), 0) / 7
+  const weekly_hours_value = weekly_hours.reduce((acc, cur) => acc + parseInt(cur.value), 0)
+  return weekly_hours_value
+}
+
+export const calculeWeeklyHoursPerDay = (weekly_hours: WeeklyHourType[], days=7) => {
+  return calculeWeeklyHours(weekly_hours) / days
 }
 
 export const calculeBudget = (
@@ -33,7 +38,7 @@ export const calculeBudget = (
   const parseCosts = (budgetCosts:CostsType[]) => budgetCosts.map(cost => ({...cost, value: parseFloat(cost.value)}))
 
   if(!workers) return;
-  contextWorkers.forEach(worker => workersHoursValue += worker.salary / (worker.weekly_hours * 4));
+  contextWorkers.forEach(worker => workersHoursValue += worker.salary /( worker.weekly_hours * 4));
   const companyHourValue = parseFloat(administrative_expenses) / (weekly_hours * 4);
   const totalHoursValue = workersHoursValue + companyHourValue;
   

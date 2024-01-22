@@ -51,7 +51,6 @@ const DialogCollaborator = ({worker, ...props}: Props) => {
         updateWorkers('add', newWorker)
       }
   
-      console.log(newWorker)
       ExternCloseDialog()
 
       setName('')

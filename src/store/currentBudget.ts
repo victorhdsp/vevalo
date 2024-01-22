@@ -43,13 +43,13 @@ export const useCurrentBudget = create<CurrentBudgetStore>((set) => ({
       worked_hours: () => { if(typeof value =="string") budget.worked_hours = parseFloat(value) },
       service: () => {
         if(typeof value !="string") {
+          budget.service = value
           budget.costs = value.costs.map(cost => ({ ...cost,  id: generateId() }))
         }
       }
     }
 
     actions[key]()
-
     return { budget }
   })
 }))

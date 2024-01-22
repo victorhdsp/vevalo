@@ -12,6 +12,10 @@
       }
       
       @apply grid grid-cols-2 gap-sm;
+
+      >:last-child {
+        @apply col-span-2;
+      }
     }
 
     .budgets {

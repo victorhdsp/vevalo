@@ -19,7 +19,6 @@ const Budgets = () => {
   const handleEditBudget = (budget: BudgetType) => {
     setCurrentBudgets(budget)
     document.getElementById('edit-budget')?.click()
-    console.log(budget, 'budget')
   }
 
   return (
@@ -35,7 +34,7 @@ const Budgets = () => {
               .map((budget, index) => (
                 <BudgetView 
                   key={index} 
-                  name={budget.service.name} 
+                  name={budget.service?.name || ''} 
                   value={makeFinance(budget.result?.total || 0)} 
                   onClickInEdit={() => handleEditBudget(budget)}
                   onClickInDelete={() => {updateBudgets("remove", budget)}}

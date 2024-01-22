@@ -14,10 +14,10 @@ import Card from '@/components/Card';
 
 import { useCurrentBudget } from '@/store/currentBudget';
 import { useUser } from '@/store/User';
-import { calculeWeeklyHours } from '@/assets/utils/number';
+import { calculeWeeklyHoursPerDay } from '@/assets/utils/number';
 
 interface Props {
-
+  onChange?: (worked_hours: number) => void;
 }
 
 type SelectionRange = {
@@ -44,9 +44,8 @@ function BudgetCalendarRange (props: Props) {
 
     const days = Math.ceil((RangeSelection.endDate.getTime() - RangeSelection.startDate.getTime()) / (1000 * 3600 * 24)) + 1
   
-    const hoursPerDay = calculeWeeklyHours(weekly_hours)
-
-    updateBudget("worked_hours", `${Math.ceil(days * hoursPerDay)}`)
+    const hoursPerDay = calculeWeeklyHoursPerDay(weekly_hours)
+    props.onChange && props.onChange(Math.ceil(days * hoursPerDay))
   }
 
   return (

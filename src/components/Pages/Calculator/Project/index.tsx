@@ -2,27 +2,29 @@
 
 import css from "./style.module.scss";
 
+import { Save, Globe } from "lucide-react";
+
 import Card from "@/components/Card";
 import Input from "@/components/Form/Input";
-import ScrollArea from "@/components/ScrollArea";
-import ItemNew from "@/components/Item/New"
-// import FormBudget from "@/components/Form/Budget"
-import BudgetView from "../View"
+import Button from "@/components/Button/Default";
+import Budgets from "./Budgets";
 
 import { useCurrentProject } from "@/store/currentProject";
+import { makeFinance } from "@/assets/utils/number";
 import { newProject } from "../actions";
 
 const Project = () => {
   const currentProject = useCurrentProject(store => store)
 
   return (
-    <Card className="h-full" orientation="vertical">
+    <Card className={css["root"]} orientation="vertical">
       <h2>Novo projeto</h2>
 
       <div className={css["data"]}>
 
         <div className={css["inputs"]}>
           <div className={css["content"]}>
+            <h3>Novo projeto</h3>
             <Input 
               name="name" 
               label="Nome do cliente" 
@@ -38,20 +40,14 @@ const Project = () => {
             />
           </div>
 
-          <div className={css["budgets"]}>
-            <h3>Orçamentos</h3>
-            <ScrollArea className={css["content"]}>
-              {
-                currentProject.budgets &&
-                currentProject.budgets.reverse().map((budget) => (
-                  <BudgetView key={budget.id} name={budget.service.name} value={budget.result?.total+''} />
-                ))
-              }
-              <ItemNew title='Orçamento'>
-                {/* <FormBudget /> */}div
-              </ItemNew>
-            </ScrollArea>
-          </div>
+          <Budgets />
+
+        </div>
+
+        <div className={css["footer"]}>
+          <Button icon={Save} variant="outline">
+            Salvar
+          </Button>
         </div>
       </div>
     </Card>

@@ -1,0 +1,21 @@
+.root {
+  @apply flex flex-col gap-sm;
+  @apply h-full;
+
+  .costs {
+    @apply h-full;
+    
+    .content {
+      @apply flex flex-col gap-md;
+
+      .cost-item {
+        @apply grid items-center gap-sm;
+        grid-template-columns: 30% 1fr min-content
+      }
+
+      button {
+        @apply w-max;
+      }
+    }
+  }
+}

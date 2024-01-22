@@ -1,5 +1,6 @@
 .root {
   @apply flex flex-col gap-sm;
+  @apply w-max max-w-[550px];
 
   .new-service {
     @apply grid grid-cols-2 gap-md;

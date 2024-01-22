@@ -3,5 +3,14 @@
 
   .weekly_hours {
     @apply flex flex-wrap items-center justify-center gap-xs;
+    @apply w-max;
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  .root {
+    .weekly_hours {
+      @apply w-full;
+    }
   }
 }

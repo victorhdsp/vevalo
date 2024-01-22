@@ -23,7 +23,7 @@ const _Select = (props:Props) => {
       <span className={css["select"]} aria-disabled={props.disabled}>
         <Ghost
           { ...props }
-          defaultValue={props.defaultValue || (props.options ? props.options[0].value : '')}
+          defaultValue={props.defaultValue || (props.options.length>0 ? props.options[0].value : '')}
           className="w-full py-xs"
         />
       </span>

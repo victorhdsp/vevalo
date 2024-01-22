@@ -15,10 +15,17 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1090px) {
   .main {
     @apply h-max;
     @apply flex flex-col justify-start;
     @apply overflow-y-auto;
+
+    .pages {
+      @apply min-h-screen;
+      >* {
+        @apply overflow-y-auto;
+      }
+    }
   }
 }

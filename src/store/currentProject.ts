@@ -1,13 +1,15 @@
 import { create } from 'zustand'
 
-import { BudgetType, ProjectsType } from '@/assets/data/type'
 import { generateId } from '@/assets/utils'
+import { BudgetType, ProjectsType, ServiceType } from '@/assets/data/type'
+import { CrudKeyNames, generateProjectCrud } from './utils'
+
 import { useUser } from './User'
 
-type CurrentProjectStore = ProjectsType & {
+type CurrentProjectStore = {
+  project: ProjectsType
   reset: () => void
-  createNewBudget: (budget: BudgetType) => void
-  removeBudget: (id: string) => void
+  updateBudgets: (key: CrudKeyNames, budget: BudgetType) => void
 }
 
 const fiscal = useUser.getState().user.profile.fiscal
@@ -23,9 +25,11 @@ const initialState: () => ProjectsType = () => ({
 })
 
 export const useCurrentProject = create<CurrentProjectStore>((set) => ({
-  ...initialState(),
-
-  reset: () => set(_ => ({ ...initialState() })),
-  createNewBudget: (budget) => set(store => ({ budgets: [ ...store.budgets, {...budget}] })),
-  removeBudget: (budgetId) => set(store => ({ budgets: store.budgets.filter(b => b.id !== budgetId) }))
+  project: initialState(),
+  reset: () => set(_ => ({ project: initialState() })),
+  updateBudgets: (key, budget) => set((store) => {
+    console.log(store.project)
+    const project = generateProjectCrud(store.project, "budgets", key, budget)
+    return { project }
+  })
 }))

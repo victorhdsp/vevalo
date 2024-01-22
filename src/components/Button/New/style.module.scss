@@ -3,8 +3,9 @@
   @apply mb-auto;
   
   .card {
-    @apply w-[150px];
-    @apply h-[50px];
+    @apply p-xs;
+    @apply w-[12vw];
+    @apply h-[5vw];
     @apply bg-primary;
     @apply text-white;
 
@@ -20,5 +21,11 @@
     .card {
       --tw-bg-opacity: 0.75;
     }
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  .button .card {
+    
   }
 }

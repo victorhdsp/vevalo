@@ -82,7 +82,6 @@ const User: UserType = {
   },
   workers,
   projects,
-  budgets,
   services,
 }
 

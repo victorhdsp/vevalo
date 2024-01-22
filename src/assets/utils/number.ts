@@ -1,17 +1,18 @@
-import { BudgetType, CostsType, Money, ServiceType, WorkerType } from "../data/type";
+import { BudgetType, CostsType, Money, ServiceType, WeeklyHourType, WorkerType } from "../data/type";
 
 export const makeFinance = (num: number|string): string => {
   if(typeof num === 'string') num = parseFloat(num);
   return num.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 }
 
+export const calculeWeeklyHours = (weekly_hours: WeeklyHourType[]) => {
+  return weekly_hours.reduce((acc, cur) => acc + parseInt(cur.value), 0) / 7
+}
+
 export const calculeBudget = (
   administrative_expenses: string,
   weekly_hours: number,
-  workers: {
-    weekly_hours: number;
-    salary: string;
-  }[],
+  workers: WorkerType[],
   costs: CostsType[],
   discount: string,
   profit_margin: string,
@@ -24,7 +25,7 @@ export const calculeBudget = (
 
   const contextWorkers = workers.map(worker => ({ 
     salary: parseFloat(worker.salary), 
-    weekly_hours: worker.weekly_hours 
+    weekly_hours: calculeWeeklyHours(worker.weekly_hours)
   }))
 
   const fixedCosts = costs.filter(cost => !cost.value.includes('%'));

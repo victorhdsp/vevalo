@@ -12,6 +12,7 @@ export interface WorkerType {
   id: string;
   name: string;
   salary: Money;
+  weekly_hours: WeeklyHourType[];
 }
 
 export interface ServiceType {
@@ -77,6 +78,5 @@ export interface UserType {
   profile: ProfileType;
   workers: WorkerType[];
   services: ServiceType[];
-  budgets: BudgetType[];
   projects: ProjectsType[];
 }

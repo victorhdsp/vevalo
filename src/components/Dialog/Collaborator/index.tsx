@@ -8,9 +8,12 @@ import  Dialog, { ExternCloseDialog } from '../index';
 
 import Button from "@/components/Button/Default"
 import Input from '@/components/Form/Input'
+import WeeklyHours from '@/components/Item/WeeklyHours'
+
 import { WorkerType } from '@/assets/data/type';
 import { useUser } from '@/store/User';
 import { generateId } from '@/assets/utils';
+import { defaultWeeklyHours } from '@/assets/data/starter';
 
 interface Props {
   title: string;
@@ -23,10 +26,12 @@ const DialogCollaborator = ({worker, ...props}: Props) => {
   const updateWorkers = useUser((store) => (store.updateWorkers))
   const [name, setName] = useState(worker?.name || '')
   const [salary, setSalary] = useState(worker?.salary || '0')
+  const [weeklyHours, setWeeklyHours] = useState(worker?.weekly_hours || defaultWeeklyHours)
 
   useEffect(() => {
     setName(worker?.name || '')
     setSalary(worker?.salary || '0')
+    setWeeklyHours(worker?.weekly_hours || defaultWeeklyHours)
   }, [worker])
 
   const handleSaveWorker = () => {
@@ -36,7 +41,8 @@ const DialogCollaborator = ({worker, ...props}: Props) => {
       const newWorker = {
         id: worker?.id || generateId(),
         name,
-        salary
+        salary,
+        weekly_hours: weeklyHours
       }
   
       if (worker) {
@@ -45,16 +51,20 @@ const DialogCollaborator = ({worker, ...props}: Props) => {
         updateWorkers('add', newWorker)
       }
   
+      console.log(newWorker)
       ExternCloseDialog()
+
       setName('')
       setSalary('')
+      setWeeklyHours(defaultWeeklyHours)
+      
       toast({ title: 'Colaborador salvo com sucesso', status: 'success' })
     }
   }
 
   return (
     <Dialog
-      title="Novo colaborador"
+      title={props.title}
       trigger={props.children}
     >
       <Input 
@@ -72,6 +82,9 @@ const DialogCollaborator = ({worker, ...props}: Props) => {
         onInput={(event) => setSalary(event.currentTarget.value)}
         type='number'
       />
+      <div className={css["weekly"]}>
+        <WeeklyHours onChange={(days) => setWeeklyHours(days)}  />
+      </div>      
 
       <Button className={css["button"]} onClick={handleSaveWorker} icon={User}>
         Salvar colaborador

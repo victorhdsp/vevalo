@@ -11,15 +11,15 @@ import { useEffect } from "react";
 
 const Controller = () => {
 
-  useEffect(() => {
-    onAuthStateChanged(auth, async (hasConnected) => {
-      if (hasConnected) {
-        await getUserData()
-      } else {
-        window.location.href = '/entrar'
-      }
-    });
-  }, [])
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, async (hasConnected) => {
+  //     if (hasConnected) {
+  //       await getUserData()
+  //     } else {
+  //       window.location.href = '/entrar'
+  //     }
+  //   });
+  // }, [])
 
   return (
     <></>

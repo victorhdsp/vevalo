@@ -9,12 +9,13 @@ import Input from '@/components/Form/Input'
 import Button from '@/components/Button/Default'
 import Avatar from '@/components/Avatar'
 import Select from '@/components/Form/Select/Default'
-import WeeklyHours from './WeeklyHours'
+import WeeklyHours from '@/components/Item/WeeklyHours'
 
 import { useUser } from '@/store/User'
 import { useSegment } from '@/store/segments'
 
 import { useTaxRegime } from '@/store/taxRegime'
+import { WeeklyHourType } from '@/assets/data/type'
 
 interface Props {
   onSave?: () => void
@@ -35,6 +36,9 @@ const Profile = (props: Props) => {
   const selectTheTaxRegime = (value:string) => {
     setTaxRegime(value)
     updateProfile('tax_regime', value)
+  }
+  const selectTheWeeklyHours = (days: WeeklyHourType[]) => {
+    updateProfile("weekly_hours", days)
   }
 
   useEffect(() => {
@@ -93,7 +97,7 @@ const Profile = (props: Props) => {
           />
         </div>
         <div className={css["weekly"]}>
-          <WeeklyHours />
+          <WeeklyHours onChange={selectTheWeeklyHours} />
         </div>
 
        <div className={css["footer"]}>

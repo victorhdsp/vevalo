@@ -1,6 +1,6 @@
 .root {
   .form {
-    @apply flex flex-col gap-lg;
+    @apply flex flex-col gap-md;
     @apply h-full;
   
     .branding {
@@ -28,7 +28,7 @@
     }
   
     .footer {
-      @apply h-full;
+      @apply mt-auto;
       @apply flex flex-col justify-end;
     }
   }

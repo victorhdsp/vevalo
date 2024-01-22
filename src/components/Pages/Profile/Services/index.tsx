@@ -1,23 +1,28 @@
 import css from './style.module.scss'
 
+import Link from 'next/link'
 import { useState } from 'react'
 import { useUser } from '@/store/User'
+import { useCurrentService } from '@/store/currentService'
 
+import { ServiceType } from '@/assets/data/type'
+import { makeFinance } from '@/assets/utils/number'
+
+import ServiceView from '../View'
 import Card from "@/components/Card"
 import ScrollArea from '@/components/ScrollArea'
-import ServiceView from '../View'
 import ButtonNew from '@/components/Button/New'
-import { ServiceType } from '@/assets/data/type'
-import Link from 'next/link'
+import DialogService from '@/components/Dialog/Service'
+
 
 
 const Services = () => {
   const [services, updateServices] = useUser((store) => ([store.user.services, store.updateServices]))
-  const [currentService, setCurrentService] = useState<ServiceType|undefined>(undefined)
+  const [currentService, setCurrentService, reset] = useCurrentService((store) => ([store.service, store.setCurrentService, store.reset]))
 
   const handleEditService = (Service: ServiceType) => {
     setCurrentService(Service)
-    document.getElementById('edit-collaborator')?.click()
+    document.getElementById('edit-service')?.click()
   }
 
   return (
@@ -33,7 +38,7 @@ const Services = () => {
                 <ServiceView 
                   key={service.id} 
                   name={service.name} 
-                  value={service.profit_margin} 
+                  value={makeFinance(service.profit_margin)} 
                   onClickInEdit={() => handleEditService(service)}
                   onClickInDelete={() => {updateServices("remove", service)}}
                 />
@@ -42,7 +47,16 @@ const Services = () => {
         </ScrollArea>
       </div>
       <div className={css["footer"]}>
-        <Link href="/perfil/novo_servico"><ButtonNew /></Link>
+        <DialogService 
+          title="Editar serviço" 
+          service={currentService}
+        >
+          <div id='edit-service' ></div>
+        </DialogService>
+        
+        <DialogService title="Novo serviço">
+            <ButtonNew onClick={reset} />
+        </DialogService>
       </div>
     </Card>
   )

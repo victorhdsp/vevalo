@@ -15,7 +15,6 @@ interface Props {
 
 export const ExternCloseDialog = () => {
   const dialog = document.querySelector("#dialog-close-button") as HTMLButtonElement
-  console.log(dialog)
   dialog?.click()
 }
 
@@ -24,7 +23,7 @@ const _Dialog = (props: Props) => {
   return (
     <Dialog.Root onOpenChange={props.onOpenChange}>
       <Dialog.Trigger asChild>
-        { props.trigger }
+        <div>{ props.trigger }</div>
       </Dialog.Trigger>
 
       <Dialog.Portal>

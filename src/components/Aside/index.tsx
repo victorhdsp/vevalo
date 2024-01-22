@@ -13,19 +13,21 @@ const Aside = () => {
 
   return (
     <aside className={css["root"]}>
-      <Logo />
+      <div className={css["content"]}>
+        <Logo />
 
-      <menu>
-        <ul>
-          <AsideItem hasChevron icon={Calculator} title="Calculadora" href={pagePath.calculadora} />
-          <AsideItem hasChevron icon={User} title="Perfil" href={pagePath.perfil} />
-          <AsideItem hasChevron icon={History} title="Histórico" href={pagePath.historico} />
-        </ul>
+        <menu>
+          <ul>
+            <AsideItem hasChevron icon={Calculator} title="Calculadora" href={pagePath.calculadora} />
+            <AsideItem hasChevron icon={User} title="Perfil" href={pagePath.perfil} />
+            <AsideItem hasChevron icon={History} title="Histórico" href={pagePath.historico} />
+          </ul>
 
-        <span className={css['logout']}>
-          <AsideItem icon={LogOut} title="Sair" href={pagePath.sair} />
-        </span>
-      </menu>
+          <span className={css['logout']}>
+            <AsideItem icon={LogOut} title="Sair" href={pagePath.sair} />
+          </span>
+        </menu>
+      </div>
     </aside>
   );
 }

@@ -22,9 +22,9 @@ const Resume = () => {
           Proposta comercial
         </Button> */}
 
-        <Button icon={Save} variant="outline">
+        {/* <Button icon={Save} variant="outline">
           Salvar
-        </Button>
+        </Button> */}
       </div>
     </Card>
   );

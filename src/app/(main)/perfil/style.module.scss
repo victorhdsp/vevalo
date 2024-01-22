@@ -1,6 +1,6 @@
 .page {
   @apply grid grid-rows-2 gap-lg;
-  grid-template-columns: minmax(min-content, 550px) 1fr;
+  grid-template-columns: min-content 1fr;
   @apply h-full;
 
   >*:nth-child(1) {

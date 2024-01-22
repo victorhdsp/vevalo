@@ -1,19 +1,25 @@
 .root {
+  @apply relative;
   @apply w-[25vw] min-w-[230px] max-w-[300px];
-  @apply px-md py-lg;
-  @apply flex flex-col gap-lg;
-  @apply bg-primary;
-
-  menu {
+  
+  .content {
+    @apply sticky top-0 left-0;
+    @apply w-full h-screen;
+    @apply px-md py-lg;
     @apply flex flex-col gap-lg;
-    @apply h-full;
-
-    ul {
+    @apply bg-primary;
+  
+    menu {
       @apply flex flex-col gap-lg;
-    }
-
-    .logout {
-      @apply mt-auto;
+      @apply h-full;
+  
+      ul {
+        @apply flex flex-col gap-lg;
+      }
+  
+      .logout {
+        @apply mt-auto;
+      }
     }
   }
 }

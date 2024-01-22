@@ -6,6 +6,7 @@ import { generateId } from '@/assets/utils'
 type CurrentServiceStore = {
   service: ServiceType
   reset: () => void
+  setCurrentService: (service: ServiceType) => void
   updateService: (key: keyof ServiceType, value: string) => void
   updateCost: (costId: string, key: keyof CostsType, value: string) => void
   createNewCost: () => void
@@ -29,6 +30,7 @@ const newCostGenerate = () => ({
 export const useCurrentService = create<CurrentServiceStore>((set) => ({
   service: initialState(),
   reset: () => set(_ => ({ service: initialState() })),
+  setCurrentService: (service) => set(_ => ({ service })),
   updateService: (key, value) => set(store => ({ service: { ...store.service, [key]: value } })),
   updateCost: (costId, key, value) => set(store => ({ service: { ...store.service, costs: store.service.costs.map(cost => {
     if (cost.id === costId) {

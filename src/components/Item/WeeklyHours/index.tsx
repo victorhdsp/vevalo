@@ -6,13 +6,14 @@ import Label from '@/components/Form/Label'
 import DayHours from './DayHours'
 
 import { useUser } from '@/store/User'
+import { WeeklyHourType } from '@/assets/data/type'
 
 interface Props {
-  onChange?: (value: string) => void
+  onChange?: (days: WeeklyHourType[]) => void
 }
 
 const WeeklyHours = (props: Props) => {
-  const [profile, updateProfile] = useUser((store) => ([store.user.profile, store.updateProfile]))
+  const [profile] = useUser((store) => ([store.user.profile]))
 
   const [days, setDays] = useState(profile.fiscal.weekly_hours)
 
@@ -20,7 +21,7 @@ const WeeklyHours = (props: Props) => {
     const newDays = days.map((day) => day.name === key ? { ...day, value } : day)
     setDays(newDays)
 
-    updateProfile("weekly_hours", newDays)
+    props.onChange && props.onChange(newDays)
   }
 
   return (

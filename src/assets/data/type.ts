@@ -35,6 +35,7 @@ export interface ResultBudgetType {
 }
 
 export interface BudgetType {
+  name: ReactNode;
   id: string;
   service: ServiceType;
   discount: Money

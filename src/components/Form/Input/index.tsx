@@ -60,6 +60,7 @@ const Input = ({icon:Icon, name, label, ...props}: Props) => {
             value={value} 
             className={css["input"]} 
             onInput={handleInput}
+            placeholder={props.placeholder}
           />
         </div>
         {

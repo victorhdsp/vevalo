@@ -11,14 +11,15 @@ import Budgets from "./Budgets";
 
 import { useCurrentProject } from "@/store/currentProject";
 import { makeFinance } from "@/assets/utils/number";
-import { newProject } from "../actions";
+import { useUser } from "@/store/User";
 
 const Project = () => {
-  const [currentProject, updateProject] = useCurrentProject(store => [store.project, store.updateProject])
+  const updateProjects = useUser(store => store.updateProjects)
+  const [currentProject, updateProject, reset] = useCurrentProject(store => [store.project, store.updateProject, store.reset])
 
   const handleSave = () => {
-    // newProject(currentProject)
-    console.log(currentProject)
+    updateProjects('add', currentProject)
+    reset()
   }
 
   return (

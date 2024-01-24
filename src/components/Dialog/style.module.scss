@@ -48,3 +48,23 @@
     right: 0%;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .dialog-content {
+    @apply p-0;
+
+    .card {
+      @apply w-screen;
+      @apply rounded-none;
+
+      .header {
+        @apply items-start;
+
+        button {
+          @apply mt-xs;
+        }
+      }
+    }
+  }
+  
+}

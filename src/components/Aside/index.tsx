@@ -2,6 +2,7 @@
 
 import css from './style.module.scss'
 
+import { useState } from 'react';
 import { Calculator, User, History, LogOut } from 'lucide-react';
 import { AsideItem } from './Item';
 import Logo from '@/components/Icon/Logo';
@@ -10,11 +11,20 @@ import Logo from '@/components/Icon/Logo';
 import { pagePath } from '@/assets/data/sitemap'
 
 const Aside = () => {
+  const [active, setActive] = useState(false)
+
+  const toggleAside = () => setActive(!active)
 
   return (
-    <aside className={css["root"]}>
+    <aside className={css["root"]} data-active={active}>
+      <div className={css["trigger"]} onClick={toggleAside}>
+        <div />
+        <div />
+        <div />
+      </div>
+
       <div className={css["content"]}>
-        <Logo />
+        <Logo className={css["logo"]} />
 
         <menu>
           <ul>

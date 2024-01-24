@@ -10,3 +10,19 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .root {
+    @apply w-full;
+    @apply gap-md;
+    @apply p-0;
+
+    .new-service {
+      @apply grid-cols-1;
+
+      >*:last-child {
+        @apply col-span-1;
+      }
+    }
+  }
+}

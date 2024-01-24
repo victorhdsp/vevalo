@@ -29,3 +29,15 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .main {
+    @apply pt-md;
+    @apply bg-gray;
+
+    .pages {
+      @apply min-h-screen;
+      @apply p-md;
+    }
+  }
+}

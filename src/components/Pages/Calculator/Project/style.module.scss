@@ -64,3 +64,13 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .root {
+    .data {
+      .inputs {
+        @apply grid-cols-1;
+      }
+    }
+  }
+}

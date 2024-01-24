@@ -60,3 +60,26 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .root {
+    .form {
+      @apply grid auto-rows-min gap-md;
+      grid-template-columns: 1fr;
+  
+      .branding {
+        grid-template-rows: min-content 80px 80px;
+  
+        h3 {
+          @apply flex;
+        }
+      }
+
+      .finance {
+        @apply grid-cols-1;
+    
+        h3 { @apply col-span-1; }
+      }
+    }
+  }
+}

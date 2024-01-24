@@ -14,4 +14,16 @@
     @apply grid;
     grid-template-columns: 0px 1fr;
   }
+
+  .month {
+    @apply hidden;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .root {
+    .calendar {
+      grid-template-columns: 1fr;
+    }
+  }
 }

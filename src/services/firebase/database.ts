@@ -33,7 +33,7 @@ export async function getUserData() {
   if (!snapshot.exists()) { return false }
 
   const user: UserType = snapshot.val()
-  useUser.getState().saveUser(user)
+  useUser.getState().updateUser(user)
   
   return user
 }

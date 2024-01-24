@@ -11,7 +11,7 @@ type ProfileKeyNames = Exclude<keyof ProfileType["company"] | keyof ProfileType[
 
 type UserStore = {
   user: UserType
-  updateUserData: (user: UserType) => void
+  updateUser: (user: UserType) => void
   updateProfile: (key: ProfileKeyNames, value: string | WeeklyHourType[]) => void
   updateWorkers: (key: CrudKeyNames, worker: WorkerType) => void
   updateServices: (key: CrudKeyNames, service: ServiceType) => void
@@ -26,7 +26,7 @@ export const useUser = create(
   persist<UserStore>(
     (set) => ({
       user: initialState(),
-      updateUserData: (user) => set((store) => ({user})),
+      updateUser: (user) => set((store) => ({ user })),
       updateProfile: (key, value) => set((store) => { 
         const profile = store.user.profile
   

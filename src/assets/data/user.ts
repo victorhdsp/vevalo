@@ -34,7 +34,7 @@ const budgets: BudgetType[] = [
       discount: 0,
       received: 129.2,
       total: 838.63
-    }
+    },
   }
 ]
 
@@ -55,6 +55,7 @@ const workers: WorkerType[] = [
     id: 'worker1',
     name: 'John Doe',
     salary: '450',
+    weekly_hours: []
   },
 ]
 

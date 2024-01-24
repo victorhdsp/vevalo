@@ -7,13 +7,17 @@ import { useRouter } from 'next/navigation';
 
 import Button from '@/components/Button/Default';
 import Input from '@/components/Form/Input';
+import Logo from '@/components/Icon/Logo';
 
 import { loginGoogle } from '@/services/firebase/auth'
+import { getUserData } from '@/services/firebase/database';
 import { userRegister } from '@/app/(access)/entrar/actions'
 import { User } from 'firebase/auth';
-import { getUserData } from '@/services/firebase/database';
+
+import { useUser } from '@/store/User';
 
 export default function Home() {
+  const updateProfile = useUser(store => store.updateProfile)
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -35,6 +39,11 @@ export default function Home() {
     // await hasRegisted(currentUser)
   }
 
+  const handleAnonymousLogin = async () => {
+    updateProfile('email', 'anonymous@anonymous.com')
+    router.push('/perfil')
+  }
+
   const handleGoogleLogin = async () => {
     const userHasConnected = await loginGoogle()
     
@@ -46,31 +55,26 @@ export default function Home() {
   return (
     <>
       <main className={css["login"]}>
-        <h1>Bem vindo ao GET-VALUE</h1>
-        <form onSubmit={handleSubmitToLogin}>
-          {/* <Input 
-            name='email' 
-            label='E-mail' 
-            type='email' 
-            required
-            onInput={setEmail}
-          /> */}
-          {/* <Input 
-            name='password' 
-            label='Senha' 
-            type='password' 
-            required
-            onInput={setPassword}
-          /> */}
-          {/* <Button type="submit">Entrar</Button> */}
-        </form>
+        <div className={css["header"]}>
+          <h1>Bem vindo</h1>
+          <Logo type='default' />
+        </div>
 
-        <Button 
-          variant="outline"
-          onClick={handleGoogleLogin}
-        >
-          Entrar com o google
-        </Button>
+        <div className={css["footer"]}>
+          <Button 
+            variant="secondary"
+            onClick={handleAnonymousLogin}
+          >
+            Entrar anonimamente
+          </Button>
+
+          {/* <Button 
+            variant="primary"
+            onClick={handleGoogleLogin}
+          >
+            Entrar com o google
+          </Button> */}
+        </div>
       </main>
     </>
   )

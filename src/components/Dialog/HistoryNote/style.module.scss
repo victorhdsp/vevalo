@@ -1,50 +1,67 @@
-.body {
-  @apply flex flex-col gap-lg;
-  @apply w-[50vw];
-  @apply h-full;
-
-  .budgets {
-    @apply flex flex-col gap-sm;
-
-    .content {
-      @apply flex gap-sm;
-
-      .budget {
-        @apply px-md py-sm;
-        @apply bg-gray;
-        @apply border border-gray rounded-md;
+.root {
+  .body {
+    @apply flex flex-col gap-lg;
+    @apply w-[50vw];
+    @apply h-full;
+  
+    .budgets {
+      @apply flex flex-col gap-sm;
+  
+      .content {
+        @apply flex gap-sm;
+  
+        .budget {
+          @apply px-md py-sm;
+          @apply bg-gray;
+          @apply border border-gray rounded-md;
+        }
+      }
+    }
+  
+    .information {
+      @apply grid grid-cols-4 gap-md;
+  
+      >* {
+        @apply flex flex-col gap-sm items-center;
+        @apply max-w-[120px] mx-auto;
+        @apply text-center;
+  
+        .icon {
+          @apply p-sm rounded-sm;
+          @apply bg-gray;
+        }
       }
     }
   }
-
-  .information {
-    @apply grid grid-cols-4 gap-md;
-
-    >* {
-      @apply flex flex-col gap-sm items-center;
-      @apply max-w-[120px] mx-auto;
-      @apply text-center;
-
-      .icon {
-        @apply p-sm rounded-sm;
-        @apply bg-gray;
-      }
-    }
+  
+  .footer {
+    @apply mt-auto;
   }
-}
-
-.footer {
-  @apply mt-auto;
 }
 
 @media (max-width: 1024px) {
-  .body {
+  .root .body {
     @apply w-[80vw];
   }
 }
 
 @media (max-width: 768px) {
-  .body {
-    @apply w-[90vw];
+  .root {
+    .body {
+      @apply w-full h-auto gap-lg;
+  
+      .information {
+        @apply grid-cols-2;
+
+        >* {
+          @apply gap-xs;
+        }
+      }
+    }
+
+    .footer {
+      @apply flex flex-col items-center;
+      @apply mt-md;
+    }
   }
 }

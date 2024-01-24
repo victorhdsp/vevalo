@@ -7,7 +7,7 @@ import { Banknote, Clock, Landmark, PercentCircle, User } from 'lucide-react';
 import  Dialog, { ExternCloseDialog } from '../index';
 
 import { ProjectsType } from '@/assets/data/type';
-import { makeFinance } from '@/assets/utils/number';
+import { calculeProject, makeFinance } from '@/assets/utils/number';
 
 interface Props {
   title: string;
@@ -17,7 +17,8 @@ interface Props {
 
 const DialogHistoryNote = ({project, ...props}: Props) => {
   const workedHours = project.budgets.map(budget => budget.worked_hours).reduce((acc, cur) => acc + cur)
-  const total = project.budgets.map(budget => budget.result?.total || 0).reduce((acc, cur) => acc + cur)
+  // const total = project.budgets.map(budget => budget.result?.total || 0).reduce((acc, cur) => acc + cur)
+  const total = calculeProject(project.budgets, project.impost, project.discount)
   const received = project.budgets.map(budget => budget.result?.received || 0).reduce((acc, cur) => acc + cur)
   const salaries = project.budgets.map(budget => budget.result?.cost.salary || 0).reduce((acc, cur) => acc + cur)
 
@@ -31,6 +32,7 @@ const DialogHistoryNote = ({project, ...props}: Props) => {
     <Dialog
       title={props.title}
       trigger={props.children}
+      className={css["root"]}
     >
       <div className={css["body"]}>
         <div className="description">

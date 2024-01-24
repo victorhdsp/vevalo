@@ -10,6 +10,7 @@ interface Props {
   title: string;
   children: React.ReactNode;
   trigger: React.ReactNode;
+  className?: string;
   onOpenChange?: () => void;
 }
 
@@ -39,7 +40,7 @@ const _Dialog = (props: Props) => {
               </Dialog.Close>
             </div>
             
-            <div className={css["body"]}>
+            <div className={`${css["body"]} ${props.className}`}>
               { props.children  }
             </div>
           </Card>

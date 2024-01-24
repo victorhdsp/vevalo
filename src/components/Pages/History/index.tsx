@@ -4,8 +4,8 @@ import { useState } from 'react'
 
 import { Search } from 'lucide-react'
 
-import HistoryOngoingView from './Ongoing'
-import HistoryArchivedView from './Archived'
+import HistoryOngoingView from './View/Ongoing'
+import HistoryArchivedView from './View/Archived'
 import Card from '@/components/Card'
 import Input from '@/components/Form/Input'
 

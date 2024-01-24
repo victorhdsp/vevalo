@@ -29,8 +29,8 @@ const _Button = (props: Props) => {
       onClick={props.onClick}
       type={type}
     >
-      { content && <span data-pad={content?true:false} className={css["content"]}>{ content }</span> }
-      { Icon && <span data-pad={content?true:false} className={css["icon"]}><Icon size={18}/></span> }
+      { content && <span data-pad={content&&Icon?true:false} className={css["content"]}>{ content }</span> }
+      { Icon && <span data-pad={content&&Icon?true:false} className={css["icon"]}><Icon size={18}/></span> }
     </button>
   )
 }

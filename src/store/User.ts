@@ -7,7 +7,7 @@ import { CrudKeyNames, generateUserCrud } from './utils'
 
 import generateUser from '@/assets/data/starter'
 
-type ProfileKeyNames = Exclude<keyof ProfileType["company"] | keyof ProfileType["fiscal"], "email"> 
+type ProfileKeyNames = Exclude<keyof ProfileType["company"] | keyof ProfileType["fiscal"], ""> 
 
 type UserStore = {
   user: UserType
@@ -32,6 +32,7 @@ export const useUser = create(
   
         const actions: Record<ProfileKeyNames, () => void> = {
           name: () => { if(typeof value =="string") profile.company.name = value },
+          email: () => { if(typeof value =="string") profile.company.email = value },
           segment: () => { if(typeof value =="string") profile.company.segment = value },
           tax_regime: () => { if(typeof value =="string") profile.company.tax_regime = value },
           administrative_expenses: () => { if(typeof value =="string") profile.fiscal.administrative_expenses = value },

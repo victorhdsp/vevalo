@@ -2,25 +2,25 @@
 
 import css from './style.module.scss'
 
-import { Globe, Save } from "lucide-react"
+import { Globe, Printer } from "lucide-react"
 
 import Card from "@/components/Card"
 import Button from "@/components/Button/Default"
 
-import { makeFinance } from "@/assets/utils/number"
+import { calculeProject, makeFinance } from "@/assets/utils/number"
 import { ProjectsType } from '@/assets/data/type'
 import { useUser } from '@/store/User'
+import DialogHistoryNote from '@/components/Dialog/HistoryNote'
 
 interface Props {
   project: ProjectsType,
-  onClickInEdit?: () => void;
-  onClickInDelete?: () => void;
+  children?: React.ReactNode;
 }
 
-const HistoryArchivedView = ({project, ...props}: Props) => {
-  const updateProjects = useUser(store => store.updateProjects)
+const HistoryView = ({project, ...props}: Props) => {
   const workedHours = project.budgets.map(budget => budget.worked_hours).reduce((acc, cur) => acc + cur)
-  const total = project.budgets.map(budget => budget.result?.total || 0).reduce((acc, cur) => acc + cur)
+  // const total = project.budgets.map(budget => budget.result?.total || 0).reduce((acc, cur) => acc + cur)
+  const total = calculeProject(project.budgets, project.impost, project.discount)
 
   const status = () => {
     if (project.status === 'archived') return 'Arquivado'
@@ -29,14 +29,11 @@ const HistoryArchivedView = ({project, ...props}: Props) => {
   }
 
   const handleSave = () => {
-    const newProject = project
-    newProject.status = 'archived'
-    updateProjects('update', newProject)
   }
 
   return (
     <div className={css["root"]}>
-      <Card orientation="horizontal" className={css["calculator-view"]}>
+      <Card orientation="horizontal" className={css["history-view"]}>
         <div className={css["content"]}>
           <h3 className={css["name"]}>{ project.name }</h3>
           <p className={css["impost"]}>Imposto: { makeFinance(project.impost) }</p>
@@ -45,8 +42,8 @@ const HistoryArchivedView = ({project, ...props}: Props) => {
         </div>
 
         <div className={css["footer"]}>
-          <p className={css["status"]}>{ status() }</p>
-          <Button icon={Save} onClick={handleSave}> Finalizar </Button>
+          <p className={css["status"]} data-status={project.status}>{ status() }</p>
+          { props.children }
           {/* <Button icon={Globe}> Ver proposta </Button> */}
         </div>
       </Card>
@@ -54,4 +51,4 @@ const HistoryArchivedView = ({project, ...props}: Props) => {
   )
 }
 
-export default HistoryArchivedView
+export default HistoryView

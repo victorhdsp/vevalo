@@ -2,7 +2,6 @@
 
 import css from "./style.module.scss";
 import { useUser } from "@/store/User";
-import placeholder from '@/assets/images/avatar.jpg'
 
 import * as Avatar from '@radix-ui/react-avatar';
 
@@ -14,7 +13,7 @@ const _Avatar = () => {
       <Avatar.Root>
         <Avatar.Image
           className={css["image"]}
-          src={placeholder.src}
+          src="/images/avatar.jpg"
           alt={user.profile.company.name}
         />
         <Avatar.AvatarFallback>CT</Avatar.AvatarFallback>

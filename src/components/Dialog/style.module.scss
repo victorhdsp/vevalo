@@ -64,6 +64,10 @@
           @apply mt-xs;
         }
       }
+
+      .body {
+        @apply overflow-y-auto;
+      }
     }
   }
   

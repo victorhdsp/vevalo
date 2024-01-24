@@ -10,19 +10,20 @@ import { redirect } from 'next/navigation';
 import { useEffect } from "react";
 
 const Controller = () => {
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     const hasLoggedUser =  currentUser() ? true : false
+
+  useEffect(() => {
+    // setTimeout(() => {
+    //   const hasLoggedUser =  currentUser() ? true : false
       
-  //     if (hasLoggedUser) {
-  //       getUserData()
+    //   if (hasLoggedUser) {
+    //     getUserData()
         
-  //     } else {
-  //       // window.location.href = "/entrar"
-  //       redirect('/entrar')
-  //     }
-  //   }, 1000)
-  // }, [])
+    //   } else {
+    //     // window.location.href = "/entrar"
+    //     redirect('/entrar')
+    //   }
+    // }, 1000)
+  }, [])
 
   return (
     <></>

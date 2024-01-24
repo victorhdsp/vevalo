@@ -2,8 +2,10 @@
 
 import css from './style.module.scss'
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Calculator, User, History, LogOut } from 'lucide-react';
+
 import { AsideItem } from './Item';
 import Logo from '@/components/Icon/Logo';
 
@@ -11,9 +13,14 @@ import Logo from '@/components/Icon/Logo';
 import { pagePath } from '@/assets/data/sitemap'
 
 const Aside = () => {
+  const pathname = usePathname()
   const [active, setActive] = useState(false)
 
   const toggleAside = () => setActive(!active)
+
+  useEffect(() => {
+    setActive(false)
+  }, [pathname])
 
   return (
     <aside className={css["root"]} data-active={active}>
@@ -24,7 +31,7 @@ const Aside = () => {
       </div>
 
       <div className={css["content"]}>
-        <Logo className={css["logo"]} />
+        <Logo type='alt' className={css["logo"]} />
 
         <menu>
           <ul>

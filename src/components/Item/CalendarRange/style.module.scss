@@ -9,21 +9,30 @@
       @apply pointer-events-none;
     }
   }
+  
+  .card {
+    @apply p-0 gap-0;
+    --width: none;
 
-  .calendar {
-    @apply grid;
-    grid-template-columns: 0px 1fr;
-  }
+    .calendar {
+      @apply grid;
+      grid-template-columns: 0px 1fr;
+    }
 
-  .month {
-    @apply hidden;
+    .close {
+      @apply m-sm mt-0;
+    }
   }
 }
 
 @media screen and (max-width: 768px) {
   .root {
-    .calendar {
-      grid-template-columns: 1fr;
+    >div {
+      transform: none !important;
+    }
+    
+    .card {
+      --width: 100vw;
     }
   }
 }

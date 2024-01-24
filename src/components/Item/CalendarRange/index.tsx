@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Save } from 'lucide-react'
 import css from './style.module.scss'
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -64,6 +64,7 @@ function BudgetCalendarRange (props: Props) {
         </Popover.Trigger>
         <Popover.Content 
           side="bottom" 
+          align='end'
           sideOffset={-50}
         >
           <Card orientation='vertical' className={css['card']}>
@@ -71,7 +72,9 @@ function BudgetCalendarRange (props: Props) {
               classNames={{
                 dateRangePickerWrapper: css["calendar"],
                 definedRangesWrapper: css["defined-ranges-wrapper"],
-                month: "min-w-[100%]"
+                month: "min-w-[100%] max-w-[var(--width)]",
+                weekDays: "gap-x-xs",
+                days: "justify-between"
               }}
               ranges={[selectedRange]}
               locale={ptBR}
@@ -79,6 +82,9 @@ function BudgetCalendarRange (props: Props) {
               inputRanges={[]}
               onChange={handleSelect}
             />
+            <Popover.Close className={css["close"]} asChild>
+              <Button icon={Save}>Salvar</Button>
+            </Popover.Close>
           </Card>
         </Popover.Content>
       </Popover.Root>

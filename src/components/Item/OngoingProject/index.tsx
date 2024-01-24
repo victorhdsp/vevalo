@@ -9,7 +9,7 @@ import Card from "@/components/Card"
 import Button from "@/components/Button/Default"
 import ProjectView from '@/components/Item/ProjectView'
 
-import { makeFinance } from "@/assets/utils/number"
+import { calculeProject, makeFinance } from "@/assets/utils/number"
 
 interface Props {
   project: ProjectsType
@@ -17,7 +17,8 @@ interface Props {
 
 const OngoingProject = ({project}: Props) => {
   const workedHours = project.budgets.map(budget => budget.worked_hours).reduce((acc, cur) => acc + cur)
-  const total = project.budgets.map(budget => budget.result?.total || 0).reduce((acc, cur) => acc + cur)
+  // const total = project.budgets.map(budget => budget.result?.total || 0).reduce((acc, cur) => acc + cur)
+  const total = calculeProject(project.budgets, project.impost, project.discount)
  
   return (
     <Card orientation="vertical" className={css["project"]}>

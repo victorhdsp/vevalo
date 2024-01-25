@@ -5,8 +5,12 @@ import { useUser } from "@/store/User";
 
 import * as Avatar from '@radix-ui/react-avatar';
 
-const _Avatar = () => {
-  const user = useUser((store) => store.user);
+interface Props {
+  name: string;
+  onSave?: () => void;
+}
+
+const _Avatar = (props:Props) => {
 
   return (
     <div className={css["avatar-box"]}>
@@ -14,11 +18,9 @@ const _Avatar = () => {
         <Avatar.Image
           className={css["image"]}
           src="/images/avatar.jpg"
-          alt={user.profile.company.name}
         />
-        <Avatar.AvatarFallback>CT</Avatar.AvatarFallback>
-        <Avatar.Fallback className="AvatarFallback" delayMs={600}>
-          { user.profile.company.name }
+        <Avatar.Fallback className="AvatarFallback">
+          { props.name }
         </Avatar.Fallback>
       </Avatar.Root>
     </div>

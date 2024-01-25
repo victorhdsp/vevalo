@@ -28,7 +28,6 @@ type SelectionRange = {
 
 
 function BudgetCalendarRange (props: Props) {
-  const [updateBudget] = useCurrentBudget(store => [store.updateBudget])
   const [weekly_hours] = useUser(store => [store.user.profile.fiscal.weekly_hours])
 
 
@@ -41,9 +40,10 @@ function BudgetCalendarRange (props: Props) {
   function handleSelect(ranges:RangeKeyDict) {
     const RangeSelection = ranges.selection as SelectionRange
     setSelectedRange(RangeSelection)
-
-    const days = Math.ceil((RangeSelection.endDate.getTime() - RangeSelection.startDate.getTime()) / (1000 * 3600 * 24)) + 1
+  }
   
+  function handleSave() {
+    const days = Math.ceil((selectedRange.endDate.getTime() - selectedRange.startDate.getTime()) / (1000 * 3600 * 24)) + 1
     const hoursPerDay = calculeWeeklyHoursPerDay(weekly_hours)
     props.onChange && props.onChange(Math.ceil(days * hoursPerDay))
   }
@@ -83,7 +83,9 @@ function BudgetCalendarRange (props: Props) {
               onChange={handleSelect}
             />
             <Popover.Close className={css["close"]} asChild>
-              <Button icon={Save}>Salvar</Button>
+              <Button icon={Save} onClick={handleSave}>
+                Salvar
+              </Button>
             </Popover.Close>
           </Card>
         </Popover.Content>

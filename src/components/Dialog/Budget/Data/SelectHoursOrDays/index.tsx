@@ -1,6 +1,6 @@
 import css from './style.module.scss'
 
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 
 import Input from '@/components/Form/Input'
 import BudgetCalendarRange from '@/components/Item/CalendarRange'
@@ -18,12 +18,18 @@ const SelectHOursOrDays = () => {
 
   const [selected, setSelected] = useState(options[0].value)
 
-  const selectTheFollow = (value:string) => {
+  const selectHoursOrDays = (value:string) => {
     setSelected(value)
     updateBudget("worked_hours", '0')
   }
 
-  const selectCalendarRange = (worked_hours:number) => updateBudget("worked_hours", `${worked_hours}`)
+  const selectHoursRange = (event:FormEvent<HTMLInputElement>) => {
+    updateBudget("worked_hours", event.currentTarget.value)
+  }
+
+  const selectDaysRange = (worked_hours:number) => {
+    updateBudget("worked_hours", `${worked_hours}`)
+  }
 
   return (
     <div className={css["root"]}>
@@ -32,7 +38,7 @@ const SelectHOursOrDays = () => {
         name='hours_or_days' 
         options={options} 
         defaultValue={selected} 
-        onValueChange={selectTheFollow} 
+        onValueChange={selectHoursOrDays} 
       />
 
       {
@@ -43,10 +49,12 @@ const SelectHOursOrDays = () => {
             required
             value={worked_hours}
             type='number'
-            onInput={(event) => updateBudget("worked_hours", event.currentTarget.value)}
+            onInput={selectHoursRange}
           />
         ) : (
-          <BudgetCalendarRange onChange={selectCalendarRange} />
+          <BudgetCalendarRange 
+            onChange={selectDaysRange} 
+          />
         )
       }
     </div>

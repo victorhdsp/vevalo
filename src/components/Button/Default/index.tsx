@@ -2,7 +2,8 @@
 
 import css from './style.module.scss'
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface Props {
+  generic?: React.ButtonHTMLAttributes<HTMLButtonElement>
   icon?: React.ElementType
   children?: React.ReactNode
   variant?: 'primary' | 'secondary' | 'outline' | 'danger' | 'ghost'
@@ -22,12 +23,13 @@ const _Button = (props: Props) => {
   
   return (
     <button 
-    {...props}
+      {...props.generic}
       data-variant={variant}
       data-size={size}
       className={`${css['button']} ${props.className || ''}`}
       onClick={props.onClick}
       type={type}
+      aria-label={props.label}
     >
       { content && <span data-pad={content&&Icon?true:false} className={css["content"]}>{ content }</span> }
       { Icon && <span data-pad={content&&Icon?true:false} className={css["icon"]}><Icon size={18}/></span> }

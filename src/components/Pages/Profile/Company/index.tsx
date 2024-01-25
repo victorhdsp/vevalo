@@ -59,7 +59,7 @@ const Profile = (props: Props) => {
         <div className={css["branding"]}>
           <h3>Perfil</h3>
           <div className={css["userlogo"]}>
-            <Avatar />
+            <Avatar name={profile.company.name} />
           </div>
           <Input 
             name="name" 

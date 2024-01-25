@@ -1,6 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@700&display=swap');
+
 * {
   @apply outline-none;
+  font-family: 'Lora', serif;
+  @apply text-[16px];
 }
+
+h1,h2,h3 {
+  font-family: 'Poppins', sans-serif;
+  @apply font-bold;
+}
+
+h1 { @apply text-[40px]; }
+h2 { @apply text-[32px]; }
+h3 { @apply text-[24px]; }
+button { @apply text-[16px] font-bold; }
+
+.small-font { @apply text-[14px]; }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
@@ -12,13 +32,4 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
-}
-
-
-h2 {
-  @apply text-sm;
-}
-
-h3 {
-  @apply text-sm font-bold;
 }

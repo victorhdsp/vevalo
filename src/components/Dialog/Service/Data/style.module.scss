@@ -1,0 +1,28 @@
+.root {
+  @apply flex flex-col gap-sm;
+  @apply w-max max-w-[550px];
+
+  .new-service {
+    @apply grid grid-cols-2 gap-md;
+
+    >*:last-child {
+      @apply col-span-2;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .root {
+    @apply w-full;
+    @apply gap-md;
+    @apply p-0;
+
+    .new-service {
+      @apply grid-cols-1;
+
+      >*:last-child {
+        @apply col-span-1;
+      }
+    }
+  }
+}

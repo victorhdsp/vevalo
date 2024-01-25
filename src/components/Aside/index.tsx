@@ -1,36 +1,49 @@
 'use client';
 
 import css from './style.module.scss'
-import { LogOut } from 'lucide-react';
 
-import ItemAside from '@/components/Item/Aside';
-import Card from '@/components/Card'
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { Calculator, User, History, LogOut } from 'lucide-react';
 
+import { AsideItem } from './Item';
 import Logo from '@/components/Icon/Logo';
-import Avatar from '@/components/Avatar';
 
-import { logout } from '@/services/firebase';
+
+import { pagePath } from '@/assets/data/sitemap'
 
 const Aside = () => {
+  const pathname = usePathname()
+  const [active, setActive] = useState(false)
+
+  const toggleAside = () => setActive(!active)
+
+  useEffect(() => {
+    setActive(false)
+  }, [pathname])
 
   return (
-    <aside className={css["outside"]}>
-      <div className={css["inside"]}>
-        <Card className='w-full h-full'>
-          <menu type="toolbar">
-            <ul>
-              <ItemAside label='GET-VALUE' page='calculadora' icon={Logo} />
-              <ItemAside label='Perfil' page='perfil' icon={Avatar} />
+    <aside className={css["root"]} data-active={active}>
+      <div className={css["trigger"]} onClick={toggleAside}>
+        <div />
+        <div />
+        <div />
+      </div>
 
-              <li className={css["logout"]}>
-                <button onClick={logout}>
-                  <span className={css["icon"]}><LogOut /></span>
-                  <span className={css["label"]}>Sair</span>
-                </button>
-              </li>
-            </ul>
-          </menu>
-        </Card>
+      <div className={css["content"]}>
+        <Logo type='alt' className={css["logo"]} />
+
+        <menu>
+          <ul>
+            <AsideItem hasChevron icon={Calculator} title="Calculadora" href={pagePath.calculadora} />
+            <AsideItem hasChevron icon={User} title="Perfil" href={pagePath.perfil} />
+            <AsideItem hasChevron icon={History} title="Histórico" href={pagePath.historico} />
+          </ul>
+
+          <span className={css['logout']}>
+            <AsideItem icon={LogOut} title="Sair" href={pagePath.sair} />
+          </span>
+        </menu>
       </div>
     </aside>
   );

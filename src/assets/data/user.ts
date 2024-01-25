@@ -1,9 +1,10 @@
-import { BudgetTypes, ProjectsTypes, ServiceTypes, UserTypes } from "./type";
+import { BudgetType, ProjectsType, ServiceType, UserType, WorkerType } from "./type";
 
-const services: ServiceTypes[] = [
+const services: ServiceType[] = [
   {
     id: 'service1',
     name: 'Landing Page',
+    description: 'Landing Page',
     costs: [
       { id:'cost1', name: 'Hospedagem', value: '30' },
       { id: 'cost2', name: 'Domínio', value: '40' },
@@ -12,7 +13,7 @@ const services: ServiceTypes[] = [
   }
 ]
 
-const budgets: BudgetTypes[] = [
+const budgets: BudgetType[] = [
   {
     id: 'budget1',
     service: services[0],
@@ -33,11 +34,11 @@ const budgets: BudgetTypes[] = [
       discount: 0,
       received: 129.2,
       total: 838.63
-    }
+    },
   }
 ]
 
-const projects: ProjectsTypes[] = [
+const projects: ProjectsType[] = [
   {
     id: 'project1',
     name: 'Project 1',
@@ -49,24 +50,39 @@ const projects: ProjectsTypes[] = [
   },
 ]
 
-const User: UserTypes = {
+const workers: WorkerType[] = [
+  {
+    id: 'worker1',
+    name: 'John Doe',
+    salary: '450',
+    weekly_hours: []
+  },
+]
+
+const User: UserType = {
   id: 'user1',
   profile: {
-    name: 'John Doe Desenvolvimento',
-    tax_regime: 'simples',
-    segment: 'technology',
-    email: 'johndoe@gmail.com',
+    company: {
+      name: 'John Doe Desenvolvimento',
+      tax_regime: 'simples',
+      segment: 'technology',
+      email: 'johndoe@gmail.com',
+    },
     fiscal: {
       administrative_expenses: '834',
-      weekly_hours: 40,
-      worker: {
-        weekly_hours: 40,
-        salary: '3000',
-      }
+      weekly_hours: [
+        { name: 'seg', label: 'Seg', value: '8' },
+        { name: 'ter', label: 'Ter', value: '8' },
+        { name: 'qua', label: 'Qua', value: '8' },
+        { name: 'qui', label: 'Qui', value: '8' },
+        { name: 'sex', label: 'Sex', value: '8' },
+        { name: 'sab', label: 'Sab', value: '0' },
+        { name: 'dom', label: 'Dom', value: '0' }
+      ],
     },
   },
+  workers,
   projects,
-  budgets,
   services,
 }
 

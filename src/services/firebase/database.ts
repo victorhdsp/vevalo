@@ -1,11 +1,11 @@
-import { UserTypes } from "@/assets/data/type";
+import { UserType } from "@/assets/data/type";
 import { get, ref, set, update } from "firebase/database";
 
 import { currentUser, database } from './index'
 import { useUser } from "@/store/User";
 
 
-export async function createNewUserData(uid:string, data:UserTypes) {
+export async function createNewUserData(uid:string, data:UserType) {
   try {
     await set(ref(database, 'users/' + uid), data);
     return true
@@ -15,7 +15,7 @@ export async function createNewUserData(uid:string, data:UserTypes) {
   }
 }
 
-export async function updateUserData(uid:string, data:UserTypes) {
+export async function updateUserData(uid:string, data:UserType) {
   try {
     await update(ref(database, 'users/' + uid), data);
     return true
@@ -32,8 +32,8 @@ export async function getUserData() {
   const snapshot = await get(ref(database, 'users/' + uid))
   if (!snapshot.exists()) { return false }
 
-  const user: UserTypes = snapshot.val()
-  useUser.getState().saveUser(user)
+  const user: UserType = snapshot.val()
+  useUser.getState().updateUser(user)
   
   return user
 }

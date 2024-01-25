@@ -1,13 +1,18 @@
 
 #app {
-  @apply flex justify-center gap-xs;
-  @apply p-xs;
+  @apply flex justify-center;
   @apply h-screen;
   @apply relative;
 }
 
+@media screen and (max-width: 1090px) {
+  #app {
+    @apply h-full;
+  }
+}
+
 @media screen and (max-width: 768px) {
   #app {
-    @apply flex-col-reverse justify-start;
+    @apply flex-col justify-start;
   }
 }

@@ -1,7 +1,7 @@
-.card {
-  @apply p-xs;
+.root {
+  @apply z-50;
 
-  button {
-    @apply px-sm;
+  .card {
+    @apply p-sm;
   }
 }

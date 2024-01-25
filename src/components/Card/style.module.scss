@@ -1,7 +1,7 @@
 .card {
   @apply p-md;
   @apply flex gap-sm;
-  @apply bg-white-full;
+  @apply bg-white;
   @apply border border-gray rounded-xl;
 
   &[data-oriented="vertical"] {

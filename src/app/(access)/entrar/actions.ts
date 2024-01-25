@@ -1,22 +1,25 @@
 "use client"
 
-import { UserTypes } from "@/assets/data/type";
+import { UserType } from "@/assets/data/type";
 import { createNewUserData } from "@/services/firebase/database";
 import { useUser } from "@/store/User";
 import { User } from "firebase/auth";
 
 export async function userRegister(currentUser: User) {
   if (currentUser && currentUser.uid && currentUser.email) {
-    const { profile, services, budgets, projects} = useUser.getState()
+    const { profile, services, workers, projects} = useUser.getState().user
 
-    const user: UserTypes = {
+    const user: UserType = {
       id: currentUser.uid,
       profile: {
         ...profile,
-        email: currentUser.email,
+        company: {
+          ...profile.company,
+          email: currentUser.email,
+        } 
       },
       services,
-      budgets,
+      workers,
       projects
     }
     

@@ -2,25 +2,28 @@ export type Status = 'archived' | 'recused' | 'ongoing'
 
 export type Money = string
 
-export type CostsTypes = {
+export type CostsType = {
   id: string;
   name: string;
   value: Money 
 }
 
 export interface WorkerType {
-  weekly_hours: number;
-  salary: Money;
-}
-
-export interface ServiceTypes {
   id: string;
   name: string;
-  costs: CostsTypes[];
+  salary: Money;
+  weekly_hours: WeeklyHourType[];
+}
+
+export interface ServiceType {
+  id: string;
+  name: string;
+  description: string;
+  costs: CostsType[];
   profit_margin: Money;
 }
 
-export interface ResulBudgetTypes {
+export interface ResultBudgetType {
   cost: {
     admin: number;
     salary: number;
@@ -31,42 +34,49 @@ export interface ResulBudgetTypes {
   total: number;
 }
 
-export interface BudgetTypes {
+export interface BudgetType {
   id: string;
-  service: ServiceTypes;
+  service: ServiceType;
   discount: Money
   worked_hours: number;
-  costs: CostsTypes[];
+  costs: CostsType[];
   profit_margin: Money;
-  result?: ResulBudgetTypes
+  result?: ResultBudgetType
 }
 
-export interface ProjectsTypes {
+export interface ProjectsType {
   id: string;
   name: string;
   status: Status
   discount: Money;
   expenses: Money;
   impost: Money
-  budgets: BudgetTypes[];
+  budgets: BudgetType[];
+}
+
+export type WeeklyHourType = {
+  name: string;
+  label: string;
+  value: string;
 }
 
 export interface ProfileType {
-  name: string;
-  tax_regime: string;
-  segment: string;
-  email: string;
+  company: {
+    name: string;
+    tax_regime: string;
+    segment: string;
+    email: string;
+  }
   fiscal: {
     administrative_expenses: Money;
-    weekly_hours: number;
-    worker: WorkerType;
+    weekly_hours: WeeklyHourType[];
   };
 }
 
-export interface UserTypes {
+export interface UserType {
   id: string
   profile: ProfileType;
-  services: ServiceTypes[];
-  budgets: BudgetTypes[];
-  projects: ProjectsTypes[];
+  workers: WorkerType[];
+  services: ServiceType[];
+  projects: ProjectsType[];
 }

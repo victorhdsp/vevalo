@@ -2,12 +2,13 @@
   @apply w-full h-full;
   @apply rounded-md;
   @apply overflow-hidden;
-  @apply bg-white-full;
+  @apply bg-white;
   --scrollbar-size: 10px;
   
   .viewport {
+    @apply absolute inset-0;
     @apply w-full h-full;
-    @apply pr-md;
+    // @apply pr-md;
     border-radius: inherit;
   }
 

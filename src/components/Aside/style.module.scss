@@ -1,74 +1,86 @@
-.outside {
+.root {
   @apply relative;
-  @apply w-full max-w-xs h-full;
+  @apply w-[25vw] min-w-[230px] max-w-[300px];
   
-  .inside {
-    @apply absolute top-0 left-0 z-20;
-    @apply w-max h-full max-w-xs;
-    @apply transition-all duration-300 ease-in-out;
+  .trigger {
+    @apply hidden;
+  }
 
-    // &:hover {
-    //   max-width: 100vw;
-    // }
-    
+  .content {
+    @apply sticky top-0 left-0;
+    @apply w-full h-screen;
+    @apply px-md py-lg;
+    @apply flex flex-col gap-lg;
+    @apply bg-primary;
+
+    .logo {
+      @apply w-max;
+    }
+  
     menu {
+      @apply flex flex-col gap-lg;
+      @apply h-full;
+  
       ul {
         @apply flex flex-col gap-md;
-        @apply h-full;
-
-        .logout {
-          @apply transition-all duration-300 ease-in-out;
-          @apply cursor-pointer;
-          @apply flex items-center;
-          @apply mt-auto;
-          // grid-template-columns: 2rem 1fr;
-        
-          .icon {
-            @apply w-[2rem] h-[2rem];
-            @apply flex items-center justify-center;
-            
-            button {
-              @apply w-full;
-              @apply p-0;
-        
-              svg {
-                @apply w-full;
-              }
-            }
-          }
-          
-          .label {
-            @apply transition-all duration-300 ease-in-out;
-            @apply hidden;
-          }
-        }
+      }
+  
+      .logout {
+        @apply mt-auto;
       }
     }
   }
 }
 
 @media screen and (max-width: 768px) {
-  .outside {
-    max-width: none;
-    @apply h-max;
-    
-    .inside {
-      max-width: none;
-      @apply w-full h-max;
-      @apply relative;
+  .root {
+    @apply w-screen max-w-[none];
+    @apply fixed z-30;
+    @apply pointer-events-none;
 
-      menu {
-        @apply w-full;
-        
-        ul {
-          @apply flex-row;
-          @apply h-max w-full;
-  
-          .logout {
-            @apply mt-0 ml-auto;
-          }
+    .trigger {
+      @apply absolute top-md right-[1.75rem] z-10;
+      @apply flex flex-col gap-xs;
+      @apply w-[30px] h-[20px];
+      @apply pointer-events-auto;
+
+      > div {
+        @apply absolute top-1/2 left-1/2;
+        @apply w-full h-[3px];
+        @apply bg-black;
+        @apply rounded-full;
+        @apply transform -translate-x-1/2 -translate-y-1/2 origin-center;
+        @apply transition-all duration-200 ease-in-out;
+
+        &:first-child { @apply top-0; }
+        &:last-child { @apply top-full; }
+      }
+    }
+
+    .content {
+      @apply relative;
+      @apply pt-md;
+      @apply transform translate-x-full;
+      @apply transition-all duration-200 ease-in-out;
+      @apply pointer-events-none;
+    }
+
+    &[data-active="true"] {
+      .trigger {
+        > div {
+          @apply bg-white;
+
+          &:first-child { @apply rotate-45 top-1/2; }
+          &:nth-child(2) { @apply hidden; }
+          &:last-child { @apply -rotate-45 top-1/2; }
         }
+      }
+
+      .content {
+        @apply translate-x-0;
+        @apply pointer-events-auto;
       }
     }
   }
+  
 }

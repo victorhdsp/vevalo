@@ -1,9 +1,13 @@
 .button {
+  @apply w-max;
   @apply mb-auto;
   
   .card {
-    @apply w-[110px];
-    @apply h-[155px];
+    @apply p-xs;
+    @apply w-[12vw];
+    @apply h-[5vw];
+    @apply bg-primary;
+    @apply text-white;
 
     @apply flex items-center justify-center;
     @apply transition-all duration-300 ease-in-out;
@@ -15,8 +19,13 @@
 
   &:hover {
     .card {
-      --tw-bg-opacity: 0.25;
-      @apply bg-zinc-100;
+      --tw-bg-opacity: 0.75;
     }
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  .button .card {
+    
   }
 }

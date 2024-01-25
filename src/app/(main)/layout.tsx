@@ -7,7 +7,6 @@ import '@/assets/styles/main/index.scss'
 
 import ControllerMain from '@/components/Controller/Main'
 import Aside from '@/components/Aside'
-import History from '@/components/History'
 
 export const metadata: Metadata = {
   title: 'Get-value',
@@ -27,7 +26,6 @@ export default function RootLayout({
         <div className={css["pages"]}>
           {children}
         </div>
-        <History />
       </main>
     </>
   )

@@ -1,0 +1,23 @@
+.root {
+  @apply flex flex-col gap-sm;
+
+  .resume {
+    @apply flex flex-col gap-md;
+    @apply h-full;
+
+    .budgets {
+      @apply flex flex-col gap-sm;
+      @apply h-full;
+
+      .budget {
+        @apply pl-xs pt-[4px];
+      }
+    }
+
+    .information {
+      >* {
+        @apply flex gap-xs;
+      }
+    }
+  }
+}

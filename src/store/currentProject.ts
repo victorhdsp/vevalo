@@ -1,20 +1,25 @@
 import { create } from 'zustand'
 
-import { BudgetTypes, ProjectsTypes } from '@/assets/data/type'
 import { generateId } from '@/assets/utils'
+import { BudgetType, ProjectsType, ServiceType } from '@/assets/data/type'
+import { CrudKeyNames, generateProjectCrud } from './utils'
+
 import { useUser } from './User'
 
-type CurrentProjectStore = ProjectsTypes & {
+type ProjectKeyNames = Exclude<keyof ProjectsType, "status" | "expenses" | "budgets" | "id"> 
+
+type CurrentProjectStore = {
+  project: ProjectsType
   reset: () => void
-  createNewBudget: (budget: BudgetTypes) => void
-  removeBudget: (id: string) => void
+  updateProject: (key: ProjectKeyNames, value:string) => void
+  updateBudgets: (key: CrudKeyNames, budget: BudgetType) => void
 }
 
-const fiscal = useUser.getState().profile.fiscal
+const fiscal = useUser.getState().user.profile.fiscal
 
-const initialState: () => ProjectsTypes = () => ({
+const initialState: () => ProjectsType = () => ({
   id: generateId(),
-  expenses: `${fiscal.administrative_expenses + fiscal.worker.salary}`,
+  expenses: `${fiscal.administrative_expenses}`,
   name: '',
   status: 'ongoing',
   discount: '0',
@@ -23,9 +28,20 @@ const initialState: () => ProjectsTypes = () => ({
 })
 
 export const useCurrentProject = create<CurrentProjectStore>((set) => ({
-  ...initialState(),
-
-  reset: () => set(_ => ({ ...initialState() })),
-  createNewBudget: (budget) => set(store => ({ budgets: [ ...store.budgets, {...budget}] })),
-  removeBudget: (budgetId) => set(store => ({ budgets: store.budgets.filter(b => b.id !== budgetId) }))
+  project: initialState(),
+  reset: () => set(_ => ({ project: initialState() })),
+  updateProject: (key, value) => set(store => {
+    const project = store.project
+    const actions: Record<ProjectKeyNames, () => void> = {
+      name: () => { if(typeof value =="string") project.name = value },
+      discount: () => { if(typeof value =="string") project.discount = value },
+      impost: () => { if(typeof value =="string") project.impost = value },
+    }
+    actions[key]()
+    return { project }
+  }),
+  updateBudgets: (key, budget) => set((store) => {
+    const project = generateProjectCrud(store.project, "budgets", key, budget)
+    return { project }
+  })
 }))

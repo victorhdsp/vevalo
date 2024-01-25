@@ -1,0 +1,18 @@
+.root {
+  @apply flex flex-col gap-md;
+  @apply h-full;
+
+  .budgets {
+    @apply h-full;
+    @apply flex flex-col gap-xs;
+
+    .content {
+      @apply flex flex-col gap-md;
+
+    }
+  }
+
+  .footer {
+    @apply flex flex-col justify-end;
+  }
+}

@@ -10,20 +10,19 @@ import { redirect } from 'next/navigation';
 import { useEffect } from "react";
 
 const Controller = () => {
-  const [profile, saveUser] = useUser(store => [store.profile, store.saveUser])
-  
+
   useEffect(() => {
-    setTimeout(() => {
-      const hasLoggedUser =  currentUser() ? true : false
+    // setTimeout(() => {
+    //   const hasLoggedUser =  currentUser() ? true : false
       
-      if (hasLoggedUser) {
-        getUserData()
+    //   if (hasLoggedUser) {
+    //     getUserData()
         
-      } else {
-        // window.location.href = "/entrar"
-        redirect('/entrar')
-      }
-    }, 1000)
+    //   } else {
+    //     // window.location.href = "/entrar"
+    //     redirect('/entrar')
+    //   }
+    // }, 1000)
   }, [])
 
   return (

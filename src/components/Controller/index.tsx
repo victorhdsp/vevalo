@@ -11,10 +11,10 @@ import { useEffect } from "react";
 
 const Controller = () => {
   
-  useEffect(() => {
-    Hotjar.init(siteId, hotjarVersion);
-    clarity.identify('kjbojm1rzq');
-  }, [])
+  // useEffect(() => {
+  //   Hotjar.init(siteId, hotjarVersion);
+  //   clarity.identify('kjbojm1rzq');
+  // }, [])
 
   return (
     <></>

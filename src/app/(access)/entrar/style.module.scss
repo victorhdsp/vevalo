@@ -2,11 +2,16 @@
   @apply w-full h-full;
   @apply flex flex-col gap-lg items-center justify-center;
 
-  h1 {
-    @apply text-lg;
+  .header {
+    @apply flex flex-col gap-xs;
+    @apply text-center;
+
+    h1 {
+      @apply text-lg;
+    }
   }
 
-  form {
-    @apply flex flex-col gap-md;
+  .footer {
+    @apply flex flex-col gap-xs;
   }
 }

@@ -1,18 +1,43 @@
 .main {
   @apply w-full h-full;
   @apply relative overflow-hidden;
-  @apply grid grid-rows-1 gap-md;
-  grid-template-columns: 4fr 6fr;
+  @apply flex;
 
   .pages {
     @apply relative;
+    @apply w-full;
+    @apply p-xl;
+    @apply bg-gray;
+
+    >* {
+      @apply overflow-hidden;
+    }
+  }
+}
+
+@media screen and (max-width: 1090px) {
+  .main {
+    @apply h-max;
+    @apply flex flex-col justify-start;
+    @apply overflow-y-auto;
+
+    .pages {
+      @apply min-h-screen;
+      >* {
+        @apply overflow-y-auto;
+      }
+    }
   }
 }
 
 @media screen and (max-width: 768px) {
   .main {
-    @apply h-max;
-    @apply flex flex-col justify-start;
-    @apply overflow-y-auto;
+    @apply pt-md;
+    @apply bg-gray;
+
+    .pages {
+      @apply min-h-screen;
+      @apply p-md;
+    }
   }
 }

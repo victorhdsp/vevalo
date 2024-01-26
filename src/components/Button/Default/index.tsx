@@ -12,6 +12,7 @@ export interface Props {
   label?: string
   onClick?: () => void
   className?: string
+  id?: string
 }
 
 const _Button = (props: Props) => {
@@ -30,6 +31,7 @@ const _Button = (props: Props) => {
       onClick={props.onClick}
       type={type}
       aria-label={props.label}
+      id={props.id}
     >
       { content && <span data-pad={content&&Icon?true:false} className={css["content"]}>{ content }</span> }
       { Icon && <span data-pad={content&&Icon?true:false} className={css["icon"]}><Icon size={18}/></span> }

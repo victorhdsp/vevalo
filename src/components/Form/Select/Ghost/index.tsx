@@ -11,6 +11,7 @@ export interface SelectGhostProps {
   name?: string;
   placeholder?: string;
   defaultValue?: string;
+  value?: string;
   required?: boolean;
 
   options: {
@@ -31,6 +32,7 @@ const _Select = (props:SelectGhostProps) => {
   return (
     <Select.Root 
       defaultValue={props.defaultValue} 
+      value={props.value}
       required={props.required}
       onValueChange={props.onValueChange}
     >

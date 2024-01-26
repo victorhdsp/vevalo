@@ -11,6 +11,7 @@ type BudgetKeyNames = Exclude<keyof BudgetType, "costs" | "id" | "result">
 type CurrentBudgetStore = {
   budget: BudgetType
   reset: () => void
+  setBudget: (budget: BudgetType) => void
   changeCostValue: (name: keyof CostsType, value:string) => void
   updateBudget: (key: BudgetKeyNames, value: string|ServiceType) => void
 }
@@ -19,7 +20,7 @@ const initialState: () => BudgetType = () => ({
   id: generateId(),
   service: services[0],
   worked_hours: 0,
-  profit_margin: '20%',
+  profit_margin: '0',
   discount: '0',
   costs: services[0]?.costs || [],
 })
@@ -27,6 +28,7 @@ const initialState: () => BudgetType = () => ({
 export const useCurrentBudget = create<CurrentBudgetStore>((set) => ({
   budget: initialState(),
   reset: () => set(_ => ({ budget: initialState() })),
+  setBudget: (budget) => set(_ => ({ budget })),
 
   changeCostValue: (id, value) => set(store => {
     const budget = store.budget

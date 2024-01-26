@@ -10,17 +10,27 @@ import Button from "@/components/Button/Default";
 import Budgets from "./Budgets";
 
 import { useCurrentProject } from "@/store/currentProject";
-import { makeFinance } from "@/assets/utils/number";
 import { useUser } from "@/store/User";
+import { useEffect, useState } from "react";
 
 const Project = () => {
-  const updateProjects = useUser(store => store.updateProjects)
+  const [updateProjects, tax_regime] = useUser(store => ([store.updateProjects, store.user.profile.company.tax_regime]))
   const [currentProject, updateProject, reset] = useCurrentProject(store => [store.project, store.updateProject, store.reset])
+  const [impost, setImpost] = useState(currentProject.impost)
 
   const handleSave = () => {
     updateProjects('add', currentProject)
     reset()
   }
+
+  useEffect(() => {
+    let impost = currentProject.impost
+    if (tax_regime === 'MEI') { impost = "71" }
+    if (tax_regime === 'simples') { impost = "6%" }
+    if (tax_regime === 'none') { impost = "0" }
+    setImpost(impost)
+    updateProject('impost', impost)
+  }, [])
 
   return (
     <Card className={css["root"]} orientation="vertical">
@@ -55,7 +65,7 @@ const Project = () => {
               required 
               isMoney 
               isPercent
-              value={currentProject.impost}
+              value={impost}
               onInput={(e) => updateProject('impost', e.currentTarget.value)}
             />
           </div>

@@ -11,14 +11,19 @@ import ItemNew from "@/components/Item/New"
 import { makeFinance } from '@/assets/utils/number'
 import { BudgetType } from '@/assets/data/type'
 import { useCurrentProject } from '@/store/currentProject'
+import { useCurrentBudget } from '@/store/currentBudget'
 
 const Budgets = () => {
   const [budgets, updateBudgets] = useCurrentProject((store) => ([store.project.budgets, store.updateBudgets]))
-  const [currentBudgets, setCurrentBudgets] = useState<BudgetType|undefined>(undefined)
+  const [setBudget, reset] = useCurrentBudget(store => [store.setBudget, store.reset])
 
   const handleEditBudget = (budget: BudgetType) => {
-    setCurrentBudgets(budget)
+    setBudget(budget)
     document.getElementById('edit-budget')?.click()
+  }
+
+  const handleNewBudget = () => {
+    reset()
   }
 
   return (
@@ -45,15 +50,12 @@ const Budgets = () => {
       </div>
 
       <div className={css["footer"]}>
-        <DialogBudget
-          title="Editar colaborador" 
-          budget={currentBudgets}
-        >
-              <div id='edit-budget' ></div>
+        <DialogBudget title="Editar colaborador" hasEdit>
+          <div id='edit-budget' ></div>
         </DialogBudget>
         
         <DialogBudget title="Novo orçamento">
-            <ButtonNew />
+            <ButtonNew onClick={handleNewBudget} />
         </DialogBudget>
       </div>
     </div>

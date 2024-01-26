@@ -70,10 +70,15 @@ export const calculeProject = (budgets:BudgetType[], impost:string, discount:str
   const totalBudgets = budgets.length > 0 ? budgets.map(budget => budget.result?.total || 0).reduce((acc, cur) => acc + cur) : 0
   
   const totalImpost = impost.includes('%') ? parseFloat(impost) * totalBudgets / 100 : parseFloat(impost)
+  
+  const totalDiscount = discount.includes('%') ? parseFloat(discount) * totalBudgets / 100 : parseFloat(discount)
+  
+  const totalReceived = totalBudgets + totalImpost - totalDiscount
 
-  const totalDiscountValue = discount.includes('%') ? parseFloat(discount) * totalBudgets / 100 : parseFloat(discount)
-
-  const totalReceived = totalBudgets + totalImpost - totalDiscountValue
-
-  return totalReceived
+  return {
+    totalReceived,
+    totalImpost,
+    totalDiscount,
+    totalBudgets
+  }
 }

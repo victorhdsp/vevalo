@@ -21,15 +21,15 @@ import { useUser } from '@/store/User';
 interface Props {
   title: string;
   children: React.ReactNode;
-  budget?: BudgetType
+  hasEdit?: boolean
 }
 
-const DialogBudget = ({budget, ...props}: Props) => {
+const DialogBudget = ({hasEdit, ...props}: Props) => {
   
   const toast = useToast()
   const [workers, fiscal] = useUser(store => [store.user.workers, store.user.profile.fiscal])
   const updateBudgets = useCurrentProject((store) => (store.updateBudgets))
-  const currentBudget = useCurrentBudget(store => store.budget)
+  const [currentBudget] = useCurrentBudget(store => [store.budget, store.reset])
 
   const handleSaveBudget = () => {
     if(!currentBudget.worked_hours) toast({ title: "As horas estimadas não pode estar vazias", status: "error" })
@@ -48,12 +48,11 @@ const DialogBudget = ({budget, ...props}: Props) => {
 
       const newBudget:BudgetType = {
         ...currentBudget,
-        id: budget ? budget.id : generateId(),
-        service: budget ? budget.service : currentBudget.service,
+        id: currentBudget ? currentBudget.id : generateId(),
         result,
       }
   
-      if (budget) {
+      if (hasEdit) {
         updateBudgets('update', newBudget)
       } else {
         updateBudgets('add', newBudget)

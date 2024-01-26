@@ -11,22 +11,23 @@ import SelectHoursOrDays from './SelectHoursOrDays'
 
 const NewService = () => {
   const [userServices] = useUser(store => [store.user.services])
-  const [profit_margin, updateBudget] = useCurrentBudget(store => [store.budget.profit_margin, store.updateBudget])
+  const [currentProfitMargin, updateBudget, currentServiceId] = useCurrentBudget(store => [store.budget.profit_margin, store.updateBudget, store.budget.service.id])
+  const [profitMargin, setProfitMargin] =  useState(currentProfitMargin)
 
   const services = userServices.map(service => ({ label: service.name, value: service.id }))
-  const [service, setService] =  useState(services[0]?.value || '')
+  const [serviceId, setServiceId] =  useState(currentServiceId)
 
-  const selectTheFollow = (value:string) => setService(value)
-
-  useEffect(() => {
-    const currentService = userServices.find(s => s.id === service)
-    if (currentService) updateBudget("service", currentService)
-  }, [service])
+  const selectTheService = (value:string) => setServiceId(value)
 
   useEffect(() => {
-    const currentService = userServices.find(s => s.id === service)
-    if (currentService) updateBudget("service", currentService)
-  }, [])
+    const currentService = userServices.find(s => s.id === serviceId)
+    if (currentService) { 
+      updateBudget("service", currentService) 
+    }
+    setProfitMargin(currentService?.profit_margin || profitMargin)
+  }, [serviceId])
+
+  
   
   return (
     <div className={css["root"]}>
@@ -35,14 +36,14 @@ const NewService = () => {
           label='Seus serviços' 
           name='service' 
           options={services} 
-          defaultValue={service} 
-          onValueChange={selectTheFollow} 
+          value={serviceId} 
+          onValueChange={selectTheService} 
         />
         <Input 
           name="profit_margin" 
           label="Margem de lucro" 
           required
-          value={profit_margin}
+          value={profitMargin}
           isMoney
           isPercent
           onInput={(event) => updateBudget("profit_margin", event.currentTarget.value)}

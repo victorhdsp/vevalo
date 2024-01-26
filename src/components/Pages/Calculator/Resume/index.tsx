@@ -6,17 +6,16 @@ import { Save, Globe } from "lucide-react";
 import * as Accordion from '@radix-ui/react-accordion';
 
 import Card from "@/components/Card";
-import Button from "@/components/Button/Default";
 import { useCurrentProject } from "@/store/currentProject";
 import { calculeProject, makeFinance } from "@/assets/utils/number";
 
 const Resume = () => {
   const [project, impost, discount] = useCurrentProject(store => [store.project, store.project.impost, store.project.discount])
-
+  
   const workedHours = project.budgets.length > 0 ? 
       project.budgets.map(budget => budget.worked_hours || 0).reduce((acc, cur) => acc + cur) :
       0
-  const total = calculeProject(project.budgets, impost, discount)
+  const { totalReceived, totalImpost, totalDiscount } = calculeProject(project.budgets, impost, discount)
 
   return (
     <Card className={css["root"]} orientation="vertical">
@@ -47,12 +46,12 @@ const Resume = () => {
         <div className={css["information"]}>
           <div className={css["impost"]}>
             <p><b>Imposto:</b></p>
-            <p>{ makeFinance(impost) }</p>
+            <p>{ makeFinance(totalImpost) }</p>
           </div>
           
           <div className={css["discount"]}>
             <p><b>Desconto:</b></p>
-            <p>{ makeFinance(discount) }</p>
+            <p>{ makeFinance(totalDiscount) }</p>
           </div>
 
           <div className={css["worked_hours"]}>
@@ -62,7 +61,7 @@ const Resume = () => {
 
           <div className={css["worked_hours"]}>
             <p><b>Total:</b></p>
-            <p>{ makeFinance(total) }</p>
+            <p>{ makeFinance(totalReceived) }</p>
           </div>
         </div>
       </div>

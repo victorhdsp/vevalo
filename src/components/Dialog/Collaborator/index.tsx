@@ -23,15 +23,15 @@ interface Props {
 
 const DialogCollaborator = ({worker, ...props}: Props) => {
   const toast = useToast()
-  const updateWorkers = useUser((store) => (store.updateWorkers))
+  const [updateWorkers, companyWeeklyHours] = useUser((store) => ([store.updateWorkers, store.user.profile.fiscal.weekly_hours]))
   const [name, setName] = useState(worker?.name || '')
-  const [salary, setSalary] = useState(worker?.salary || '0')
-  const [weeklyHours, setWeeklyHours] = useState(worker?.weekly_hours || defaultWeeklyHours)
+  const [salary, setSalary] = useState(worker?.salary || '1412')
+  const [weeklyHours, setWeeklyHours] = useState(worker?.weekly_hours || companyWeeklyHours || defaultWeeklyHours)
 
   useEffect(() => {
-    setName(worker?.name || '')
-    setSalary(worker?.salary || '0')
-    setWeeklyHours(worker?.weekly_hours || defaultWeeklyHours)
+    setName(worker?.name || name)
+    setSalary(worker?.salary || salary)
+    setWeeklyHours(worker?.weekly_hours || weeklyHours)
   }, [worker])
 
   const handleSaveWorker = () => {

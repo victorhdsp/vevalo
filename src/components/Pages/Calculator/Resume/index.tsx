@@ -27,11 +27,11 @@ const Resume = () => {
           <Accordion.Root type="single" collapsible>
             {
               project.budgets.map(budget => (
-                <Accordion.Item key={budget.id} value={budget.id}>
-                  <Accordion.Trigger>
-                    • {budget.service.name}
+                <Accordion.Item key={budget.id} value={budget.id} className={css["budget"]}>
+                  <Accordion.Trigger className={css["trigger"]}>
+                    {budget.service.name}
                   </Accordion.Trigger>
-                  <Accordion.Content className={css["budget"]}>
+                  <Accordion.Content className={css["content"]}>
                     <p>Produção: {budget.result?.cost.total}</p>
                     <p>Lucro: {budget.result?.received}</p>
                     <p>Horas trabalhadas: {budget.worked_hours} horas</p>

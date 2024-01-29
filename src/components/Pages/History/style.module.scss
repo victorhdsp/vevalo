@@ -4,6 +4,10 @@
   .header {
     @apply flex justify-between items-center gap-md;
   }
+
+  .ongoing, .archived {
+    @apply flex flex-col gap-sm;
+  }
 }
 
 @media screen and (max-width: 768px) {

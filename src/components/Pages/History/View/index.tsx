@@ -38,7 +38,7 @@ const HistoryView = ({project, ...props}: Props) => {
           <h3 className={css["name"]}>{ project.name }</h3>
           <p className={css["impost"]}>Imposto: { makeFinance(project.impost) }</p>
           <p className={css["worked_hours"]}>Horas trabalhadas: { workedHours }</p>
-          <p className={css["total"]}>Total: { makeFinance(total) }</p>
+          <p className={css["total"]}>Total: { makeFinance(total.totalReceived) }</p>
         </div>
 
         <div className={css["footer"]}>

@@ -10,7 +10,27 @@
       @apply h-full;
 
       .budget {
-        @apply pl-xs pt-[4px];
+        
+        .trigger {
+          @apply pl-[18px] pt-[4px];
+          @apply relative;
+
+          &::before {
+            content: '▾';
+            @apply absolute left-0; 
+            @apply  transform -rotate-0;
+            @apply transition-transform duration-300;
+          }
+        }
+        .content {
+          @apply pl-[18px] pt-[4px];
+        }
+
+        &[data-state="closed"] {
+          .trigger::before {
+            @apply -rotate-90;
+          }
+        }
       }
     }
 

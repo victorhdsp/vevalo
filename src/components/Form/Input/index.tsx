@@ -29,6 +29,7 @@ const Input = ({icon:Icon, name, label, ...props}: Props) => {
   const [selected, setSelected] = useState(isFinance[0]?.value || '')
   const prefix = selected === 'money' && 'R$'
   
+  const [type, setType] = useState(props.type || 'text')
   const [value, setValue] = useState(`${props.value}` || '')
   
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
@@ -37,8 +38,12 @@ const Input = ({icon:Icon, name, label, ...props}: Props) => {
     if (selected === 'percent') {
       value = `${value}%`
     }
-    setValue(value)
     
+    if (type === 'number' && value === '') {
+      value = '0'
+    }
+    
+    setValue(value)
     const newEvent = {
       ...e,
       currentTarget: {
@@ -49,8 +54,6 @@ const Input = ({icon:Icon, name, label, ...props}: Props) => {
     
     if (props.onInput) props.onInput(newEvent)
   }
-
-  const [type, setType] = useState(props.type || 'text')
 
   if (value.includes('%')) {
     setValue(value.replace('%', ''))

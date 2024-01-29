@@ -5,24 +5,26 @@ import { currentUser } from '@/services/firebase';
 import { getUserData } from '@/services/firebase/database'
 
 import { useUser } from '@/store/User';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 import { useEffect } from "react";
 
 const Controller = () => {
+  const user = useUser(store => store.user)
+  const router = useRouter()
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   const hasLoggedUser =  currentUser() ? true : false
+    let hasLoggedUser = false
+
+    if(user.profile.company.email) {
+      hasLoggedUser = true
+    }
+    if (hasLoggedUser) {
+      // getUserData()
       
-    //   if (hasLoggedUser) {
-    //     getUserData()
-        
-    //   } else {
-    //     // window.location.href = "/entrar"
-    //     redirect('/entrar')
-    //   }
-    // }, 1000)
+    } else {
+      router.push('/entrar')
+    }
   }, [])
 
   return (

@@ -40,7 +40,7 @@ const History = () => {
             <Tab>Arquivados</Tab>
           </TabList>
           <TabPanels>
-            <TabPanel>
+            <TabPanel className={css["ongoing"]}>
               { 
                 ongoingProjects.length > 0 ? 
                 ongoingProjects.map(project => 
@@ -49,7 +49,7 @@ const History = () => {
                 <p>Nenhum projeto em andamento</p> 
               }
             </TabPanel>
-            <TabPanel>
+            <TabPanel className={css["archived"]}>
               { 
                 archivedProjects.length > 0 ? 
                 archivedProjects.map(project => 

@@ -91,7 +91,7 @@ const DialogHistoryNote = ({project, ...props}: Props) => {
       </div>
 
       <div className={css["footer"]}>
-        <h3>Total: {makeFinance(total)}</h3>
+        <h3>Total: {makeFinance(total.totalReceived)}</h3>
         <p>Status: {status()}</p>
       </div>
     </Dialog>

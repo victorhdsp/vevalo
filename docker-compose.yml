@@ -1,0 +1,33 @@
+services:
+
+    # db:
+    #   image: postgres
+    #   restart: always
+    #   environment:
+    #     POSTGRES_DB: "vevalo"
+    #     POSTGRES_USER: "admin"
+    #     POSTGRES_PASSWORD: "admin"
+    #   ports:
+    #     - "5432:5432"
+  
+    # backend:
+    #   build:
+    #     context: ./backend
+    #   depends_on:
+    #     - db
+    #   ports:
+    #     - "3333:3333"
+    #   volumes:
+    #     - ./backend:/opt/app
+    #   environment:
+    #     DATABASE_URL: "postgresql://admin:admin@db:5432/searchmind?schema=public"
+  
+    frontend:
+      build:
+        context: ./frontend
+      # depends_on:
+        # - backend
+      ports:
+        - "3000:3000"
+      volumes:
+        - ./frontend:/opt/app

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
     "@testing-library/jest-dom": "^6.4.8",
     "@testing-library/user-event": "^14.5.2",
     "class-variance-authority": "^0.7.0",

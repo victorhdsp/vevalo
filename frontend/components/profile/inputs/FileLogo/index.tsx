@@ -7,6 +7,7 @@ import { ChangeEvent, useRef, useState } from "react";
 interface InputFileLogoProps {
     src?: string,
     size?: number
+    onChange?: (file: File) => void
 }
 
 function InputFileLogo(props: InputFileLogoProps) {
@@ -21,6 +22,7 @@ function InputFileLogo(props: InputFileLogoProps) {
             if (logoSrc) URL.revokeObjectURL(logoSrc)
             const file = files[index];
             setLogoSrc(URL.createObjectURL(file))
+            props.onChange && props.onChange(file)
         }
     }
 

@@ -1,0 +1,12 @@
+.trigger {
+    @apply p-4 rounded-2xl
+            flex items-center justify-between
+            bg-slate-100;
+
+    .button {
+        @apply w-14 aspect-square
+                rounded-full
+                bg-slate-300
+                flex items-center justify-center;
+    }
+}

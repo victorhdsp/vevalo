@@ -1,54 +1,25 @@
-import { Button } from "@/components/ui/button";
-import { Input, InputProps } from "@/components/ui/input"
-import { Minus, Plus } from "lucide-react";
-import { FormEvent, useState } from "react";
+import css from "./input.module.scss";
+import { InputProps } from "@/components/ui/input"
+import InputIncrementalNumber from "./input";
 
-interface InputIncrementalNumberProps extends InputProps{
+interface IncrementalNumberProps extends InputProps{
+    label: string
     valueModifier?: number
 }
 
-function InputIncrementalNumber(props:InputIncrementalNumberProps) {
-    const valueModifier = props.valueModifier || 100
-    let value = 0;
-    if (typeof props.defaultValue === "number") value = props.defaultValue;
-    if (typeof props.value === "number") value = props.value;
-    const [currentValue, setCurrentValue] = useState<number>(value)
-
-    function handleInput(event: FormEvent<HTMLInputElement>) {
-        const { value } = event.currentTarget;
-        setCurrentValue(parseInt(value));
-    }
-
-    function changeValue(modifier:number) {
-        if (currentValue + modifier >= 0) 
-            setCurrentValue(currentValue + modifier)
-    }
+function IncrementalNumber(props:IncrementalNumberProps) {
 
     return (
-        <div className="flex gap-2 items-center">
-            <Input 
-                {...props} 
-                type="number" 
-                value={currentValue}
-                onInput={handleInput}
-                min={0}
+        <div className={css["root"]}>
+            <label htmlFor={props.name}>
+                {props.label}
+            </label>
+            <InputIncrementalNumber 
+                valueModifier={props.valueModifier} 
+                {...props}
             />
-            <Button 
-                size="icon"
-                onClick={() => changeValue(+valueModifier)}
-                className="rounded-full"
-            >
-                <Plus/>
-            </Button>
-            <Button 
-                size="icon"
-                onClick={() => changeValue(-valueModifier)}
-                className="rounded-full"
-            >
-                <Minus/>
-            </Button>
         </div>
     )
 }
 
-export default InputIncrementalNumber;
+export default IncrementalNumber;

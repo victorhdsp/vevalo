@@ -56,7 +56,7 @@ function classNameRoot(size: number) {
         `w-${size}`, 
         `h-${size}`, 
         "cursor-pointer", 
-        "bg-slate-50", 
+        "bg-slate-200", 
         "rounded-full"
     ];
     return classList.join(" ")

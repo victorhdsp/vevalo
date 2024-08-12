@@ -1,0 +1,14 @@
+.root {
+    @apply pb-8 mt-auto;
+
+    .content {
+        @apply container
+                flex justify-end;
+
+        .button {
+            @apply rounded-full
+                    aspect-square
+                    w-24 h-24;
+        }
+    }
+}

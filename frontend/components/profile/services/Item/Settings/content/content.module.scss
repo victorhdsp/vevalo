@@ -1,0 +1,38 @@
+.content {
+    @apply min-w-[30vw] w-max max-w-[60vw]
+            h-full
+            left-auto right-0
+            flex-row
+            rounded-none rounded-l-xl;
+
+    >*:not(.settings) {
+        @apply h-[100px] w-2
+                ml-2 my-auto mr-0
+                bg-slate-300;
+    }
+
+    .settings {
+        @apply flex flex-col gap-4
+                p-8
+                w-full;
+
+        .items {
+            @apply flex flex-col gap-2;
+
+            .item {
+                @apply flex flex-col gap-2;
+    
+                .selection {
+                    @apply grid grid-cols-[1fr,max-content] gap-2;
+    
+                    .button {
+                        @apply w-12 aspect-square
+                                rounded-full
+                                bg-slate-300
+                                flex items-center justify-center;
+                    }
+                }
+            }
+        }
+    }
+}

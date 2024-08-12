@@ -1,0 +1,22 @@
+.root {
+    @apply flex flex-col gap-12
+            min-h-screen;
+
+    .content {
+        @apply w-full container;
+
+        .tablist {
+            @apply w-full;
+        }
+
+        [role="tabpanel"] {
+            @apply px-4 py-7
+                    bg-muted
+                    rounded-3xl;
+        }
+    }
+}
+
+.trigger {
+    @apply w-full;
+}

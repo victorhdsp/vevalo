@@ -1,0 +1,20 @@
+.root {
+    @apply flex flex-col gap-2;
+
+    > label {
+        @apply text-[18px] font-semibold;
+    }
+}
+
+.week {
+    @apply flex gap-2
+            overflow-x-auto;
+}
+
+.day {
+    @apply rounded-full bg-slate-200 flex flex-col p-1;
+
+    input {
+        @apply bg-slate-300 rounded-full max-w-10 aspect-square text-center;
+    }
+}

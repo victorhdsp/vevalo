@@ -1,19 +1,15 @@
 "use client";
 
-import InputFileLogo from "@/components/profile/inputs/FileLogo";
-import InputIncrementalNumber from "@/components/profile/inputs/IncrementalNumber";
+import css from "./perfil.module.scss";
+import { database } from "@/lib/database";
+
+import UserPageMobile from "@/components/pages/user/mobile";
 
 function ProfilePage() {
-  const handleLogo = (file: File) => {
-    console.log(file)
-  }
+  const user = database.user;
 
   return (
-    <main>
-      <h1>Profile</h1>
-      <InputFileLogo src="http://localhost:3000/favicon.ico" onChange={handleLogo} />
-      <InputIncrementalNumber valueModifier={500} />
-    </main>
+    <UserPageMobile />
   );
 }
 

@@ -16,7 +16,7 @@ export default function Footer(props: FooterProps) {
                     className={css["button"]}
                     onClick={props.onClick}
                 >
-                    <Save size={40} strokeWidth={1.3} />
+                    <Save size={28} strokeWidth={1.3} />
                 </Button>
             </div>
         </footer>

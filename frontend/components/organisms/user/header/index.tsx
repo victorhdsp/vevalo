@@ -30,7 +30,7 @@ interface HeaderServiceProps {
     variant: (keyof typeof variants)
 }
 
-function HeaderService(props: HeaderServiceProps) {
+function HeaderUser(props: HeaderServiceProps) {
 
   return (
     <Header
@@ -41,4 +41,4 @@ function HeaderService(props: HeaderServiceProps) {
   );
 }
 
-export default HeaderService;
+export default HeaderUser;

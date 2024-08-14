@@ -1,7 +1,7 @@
 "use client";
 
 import css from "./user.module.scss"
-import HeaderService from "@/components/organisms/header/service";
+import HeaderUser from "@/components/organisms/user/header";
 import { Tabs, TabsList } from "@/components/ui/tabs";
 import UserPageMobileProfile from "./profile";
 import UserPageMobileServices from "./services";
@@ -14,7 +14,7 @@ export default function UserPageMobile() {
 
   return (
     <main className={css["root"]}>
-        <HeaderService variant="profile"/>
+        <HeaderUser variant="profile"/>
         <Tabs defaultValue="profile" className={css["content"]}>
           <TabsList className={css["tablist"]}>
               <UserPageMobileProfile.trigger />

@@ -42,7 +42,6 @@ Para instalar o vevalo, siga estas etapas:
 Linux e macOS:
 
 ```
-$ cd vevalo
 $ docker-compose up
 ```
 

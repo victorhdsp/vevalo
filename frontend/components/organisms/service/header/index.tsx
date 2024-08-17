@@ -3,21 +3,19 @@
 import Header from "@/components/molecules/header";
 import { Users } from "lucide-react"
 
-const variants = {
-    profile: {
+const variants = {service: {
         Icon: Users,
-        title: "Perfil",
-        description: "Informações da empresa"
+        description: "Planejando um serviço"
     },
-    services: {
+    input: {
         Icon: Users,
-        title: "Perfil",
-        description: "Modificando serviços"
-    }
+        description: "Modificando um campo"
+    },
 }
 
 interface HeaderServiceProps {
-    variant: (keyof typeof variants)
+    variant: (keyof typeof variants),
+    title: string
 }
 
 function HeaderUser(props: HeaderServiceProps) {
@@ -25,7 +23,7 @@ function HeaderUser(props: HeaderServiceProps) {
   return (
     <Header
         Icon={variants[props.variant].Icon}
-        title={variants[props.variant].title}
+        title={props.title}
         description={variants[props.variant].description}
     />
   );

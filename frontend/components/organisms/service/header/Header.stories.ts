@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Header from './index';
 
 const meta = {
-  title: 'Organisms/User/Header',
+  title: 'Organisms/Service/Header',
   component: Header,
   parameters: {
     layout: 'centered',
@@ -10,8 +10,11 @@ const meta = {
   argTypes: {
     variant: {
       description: "Variação entre alguns modelos padrões",
-      options:["profile", "services"]
+      options:["service", "input"]
     }
+  },
+  args: {
+    title: "Title"
   },
   tags: ['autodocs'],
 } satisfies Meta<typeof Header>;
@@ -19,10 +22,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Profile: Story = {
-  args: { variant: "profile" },
+export const Service: Story = {
+  args: { variant: "service" },
 };
 
-export const Services: Story = {
-  args: { variant: "services" },
+export const Input: Story = {
+  args: { variant: "input" },
 };

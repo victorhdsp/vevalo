@@ -1,0 +1,12 @@
+.root {
+    @apply flex flex-col gap-2;
+
+    > label {
+        @apply text-[18px] font-semibold;
+    }
+
+    .input {
+        @apply grid grid-cols-[1fr,max-content,max-content] gap-2 
+                items-center;
+    }
+}

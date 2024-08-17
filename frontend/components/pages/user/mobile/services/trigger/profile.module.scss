@@ -1,0 +1,8 @@
+.root {
+    @apply flex flex-col gap-6;
+
+    .identity {
+        @apply grid grid-cols-[min-content,1fr] gap-4
+                items-center;
+    }
+}

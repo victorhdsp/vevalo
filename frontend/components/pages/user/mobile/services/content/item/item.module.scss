@@ -1,0 +1,10 @@
+.root {
+    @apply flex justify-between items-center gap-12
+            w-full max-w-[90vw]
+            p-4 rounded-3xl
+            bg-muted;
+
+    .button {
+        @apply rounded-full;
+    }
+}

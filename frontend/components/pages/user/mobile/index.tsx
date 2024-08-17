@@ -2,12 +2,17 @@
 
 import css from "./user.module.scss"
 import HeaderUser from "@/components/organisms/user/header";
-import { Tabs, TabsList } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import UserPageMobileProfile from "./profile";
 import UserPageMobileServices from "./services";
 import Footer from "@/components/molecules/footer";
+import { User } from "@/lib/types";
 
-export default function UserPageMobile() {
+interface UserPageMobileProps {
+  user: User
+}
+
+export default function UserPageMobile(props: UserPageMobileProps) {
   const handleSave = () => {
 
   }
@@ -17,11 +22,21 @@ export default function UserPageMobile() {
         <HeaderUser variant="profile"/>
         <Tabs defaultValue="profile" className={css["content"]}>
           <TabsList className={css["tablist"]}>
-              <UserPageMobileProfile.trigger />
-              <UserPageMobileServices.trigger />
+              <TabsTrigger value="profile">
+                <UserPageMobileProfile.trigger />
+              </TabsTrigger>
+              <TabsTrigger value="services">
+                <UserPageMobileServices.trigger />
+              </TabsTrigger>
           </TabsList>
-          <UserPageMobileProfile.content />
-          <UserPageMobileServices.content />
+          <TabsContent value="profile">
+            <UserPageMobileProfile.content />
+          </TabsContent>
+          <TabsContent value="services">
+            <UserPageMobileServices.content 
+              items={props.user.services}
+            />
+          </TabsContent>
         </Tabs>
         <Footer onClick={handleSave} />
     </main>

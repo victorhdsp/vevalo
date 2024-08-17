@@ -1,0 +1,13 @@
+.root {
+    @apply flex flex-col gap-2
+            w-full;
+
+    > label {
+        @apply text-[18px] font-semibold
+                px-1;
+    }
+
+    input {
+        @apply w-full;
+    }
+}

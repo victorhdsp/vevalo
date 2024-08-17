@@ -16,9 +16,9 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 #### Front-end
 
-- [ ] Pagina de usuário.
+- [x] Pagina de usuário.
     - [x] Apresentação dos campos de perfil;
-    - [ ] Apresentação de uma lista de serviços;
+    - [x] Apresentação de uma lista de serviços;
 - [ ] Pagina de serviço.
     - [ ] Apresentação dos "campos personalizados" de determinado serviço;
     - [ ] Sistema de modificação para o campo de determinado serviço;

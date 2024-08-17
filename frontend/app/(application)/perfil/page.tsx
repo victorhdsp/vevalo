@@ -9,7 +9,7 @@ function ProfilePage() {
   const user = database.user;
 
   return (
-    <UserPageMobile />
+    <UserPageMobile user={user} />
   );
 }
 

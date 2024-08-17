@@ -1,0 +1,13 @@
+.root {
+    @apply flex flex-col gap-12
+            min-h-screen;
+
+    .inputs {
+        @apply w-full container
+                flex flex-col gap-4;
+    }
+}
+
+.trigger {
+    @apply w-full;
+}
